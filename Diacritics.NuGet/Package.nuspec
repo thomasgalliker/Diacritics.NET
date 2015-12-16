@@ -2,12 +2,12 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>Diacritics</id>
-    <version>1.0.0-pre1</version>
+    <version>1.0.1</version>
     <title>Diacritics.NET</title>
     <authors>Thomas Galliker</authors>
     <licenseUrl>http://opensource.org/licenses/Apache-2.0</licenseUrl>
     <projectUrl>https://github.com/thomasgalliker/Diacritics.NET</projectUrl>
-    <iconUrl>https://nuget.org/Content/Images/packageDefaultIcon-50x50.png</iconUrl>
+    <iconUrl>https://raw.githubusercontent.com/thomasgalliker/Diacritics.NET/master/Diacritics.NuGet/logo50x50.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <summary>Diacritics.NET finds and replaces diacritics in strings</summary>
     <description>
