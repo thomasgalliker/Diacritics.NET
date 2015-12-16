@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diacritics.Tests", "Diacrit
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diacritics", "Diacritics\Diacritics.csproj", "{CBA31ECF-3D41-4AF0-B966-7815F2AD25E9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diacritics.NuGet", "Diacritics.NuGet\Diacritics.NuGet.csproj", "{2CF5E868-1098-4C6D-9001-27D8DC0D87BE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nuget", "nuget", "{BDCBE467-1A49-4483-BFFC-80BC240F74FF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,8 +25,14 @@ Global
 		{CBA31ECF-3D41-4AF0-B966-7815F2AD25E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CBA31ECF-3D41-4AF0-B966-7815F2AD25E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CBA31ECF-3D41-4AF0-B966-7815F2AD25E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CF5E868-1098-4C6D-9001-27D8DC0D87BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CF5E868-1098-4C6D-9001-27D8DC0D87BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CF5E868-1098-4C6D-9001-27D8DC0D87BE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2CF5E868-1098-4C6D-9001-27D8DC0D87BE} = {BDCBE467-1A49-4483-BFFC-80BC240F74FF}
 	EndGlobalSection
 EndGlobal
