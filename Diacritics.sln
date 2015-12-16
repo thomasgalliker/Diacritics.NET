@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diacritics.NET", "Diacritics.NET.csproj", "{CBA31ECF-3D41-4AF0-B966-7815F2AD25E9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diacritics.Tests", "Diacritics.Tests\Diacritics.Tests.csproj", "{D8F20DC2-E69A-4432-A68B-FD4A8232BA43}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diacritics", "Diacritics\Diacritics.csproj", "{CBA31ECF-3D41-4AF0-B966-7815F2AD25E9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,6 +13,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D8F20DC2-E69A-4432-A68B-FD4A8232BA43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8F20DC2-E69A-4432-A68B-FD4A8232BA43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8F20DC2-E69A-4432-A68B-FD4A8232BA43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8F20DC2-E69A-4432-A68B-FD4A8232BA43}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CBA31ECF-3D41-4AF0-B966-7815F2AD25E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CBA31ECF-3D41-4AF0-B966-7815F2AD25E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CBA31ECF-3D41-4AF0-B966-7815F2AD25E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
