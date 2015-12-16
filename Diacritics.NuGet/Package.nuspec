@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Diacritics.NET</id>
+    <version>1.0.0-pre1</version>
+    <title>Diacritics.NET</title>
+    <authors>Thomas Galliker</authors>
+    <licenseUrl>http://opensource.org/licenses/Apache-2.0</licenseUrl>
+    <projectUrl>https://github.com/thomasgalliker/Diacritics.NET</projectUrl>
+    <iconUrl>https://nuget.org/Content/Images/packageDefaultIcon-50x50.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <summary>Xamarin.Forms integration for Diacritics.NET</summary>
+    <description>
+      Diacritics.NET enables Diacritics.NET to be used with Xamarin.Forms.
+    </description>
+    <tags>
+      xamarin pcl Diacritics.NET plugin for settings Diacritics.NET
+      windows phone winphone wp8 wpa81 win81 windowsphone android xamarin.forms xamarin.ios ios monoandroid monodroid monotouch mvvmcross mvvmlight
+    </tags>
+    <releaseNotes>
+      This is the initial release of Diacritics.NET. Please report problems here: https://github.com/thomasgalliker/Diacritics.NET.
+      Contributions on github are welcome!
+    </releaseNotes>
+    <copyright>Copyright 2015</copyright>
+    <language>en-US</language>
+    <dependencies>
+    </dependencies>
+  </metadata>
+  <files>
+    <!--PCL-->
+    <file src="..\Diacritics.NET\bin\Release\Diacritics.NET.dll" target="lib\portable-net45+dnxcore50+wp80+wpa81+win81+netcore45+monoandroid10+monotouch10+xamarin.ios10\Diacritics.NET.dll" />
+    <file src="..\Diacritics.NET\bin\Release\Diacritics.NET.pdb" target="lib\portable-net45+dnxcore50+wp80+wpa81+win81+netcore45+monoandroid10+monotouch10+xamarin.ios10\Diacritics.NET.pdb" />
+    <file src="..\Diacritics.NET\bin\Release\Diacritics.NET.xml" target="lib\portable-net45+dnxcore50+wp80+wpa81+win81+netcore45+monoandroid10+monotouch10+xamarin.ios10\Diacritics.NET.xml" />
+    
+    <file src="tools\init.ps1" target="tools\init.ps1" />
+    <file src="tools\install.ps1" target="tools\install.ps1" />
+    <file src="tools\uninstall.ps1" target="tools\uninstall.ps1" />
+  </files>
+</package>
