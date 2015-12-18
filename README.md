@@ -40,6 +40,13 @@ string removeDiacritics = InputString.RemoveDiacritics();
 // Assert
 removeDiacritics.Should().Be("Je veux aller a Saint-Etienne");
 ```
+#### Using Diacritics with IoC
+The example shown above uses extension methods which use a default implementation of ```IDiacriticsMapper```, namely type ```DefaultDiacriticsMapper```. If you're using an IoC container, you can register ```IDiacriticsMapper``` either with the provided ```DefaultDiacriticsMapper``` or with your own implementation of ```IDiacriticsMapper```.
+
+#### Add custom diactrics mappings
+Diacritics is extensible! You can write your own language accent by implementing ```IAccentMapping``` (or ```AccentMapping``` base class). ```DiacriticsMapper``` accepts any ```IAccentMappin```g type at construction time.
+
+TODO: Add/Remove methods for adding/removing accents at runtime.
 
 ### License
 Diacritics is Copyright &copy; 2015 [Thomas Galliker](https://ch.linkedin.com/in/thomasgalliker). Free for non-commercial use. For commercial use please contact the author.
