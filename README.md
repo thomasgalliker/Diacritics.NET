@@ -49,4 +49,4 @@ Diacritics is extensible! You can write your own language accent by implementing
 TODO: Add/Remove methods for adding/removing accents at runtime.
 
 ### License
-Diacritics is Copyright &copy; 2015 [Thomas Galliker](https://ch.linkedin.com/in/thomasgalliker). Free for non-commercial use. For commercial use please contact the author.
+This project is Copyright &copy; 2015 [Thomas Galliker](https://ch.linkedin.com/in/thomasgalliker). Free for non-commercial use. For commercial use please contact the author.
