@@ -1,20 +1,15 @@
-﻿
+﻿using System.Collections.Generic;
+
 namespace Diacritics.AccentMappings
 {
-    public class BulgarianAccentsMapping : AccentMapping
+    public class BulgarianAccentsMapping : IAccentMapping
     {
-        private static readonly char[] BulgarianAccents = { 'ъ', 'ѝ' };
-
-        private static readonly char[] BulgarianReplace = { 'ь', 'и' };
-
-        protected override char[] GetCharacters()
+        private static readonly IDictionary<char, char> MappingDictionary = new Dictionary<char, char>
         {
-            return BulgarianAccents;
-        }
+            { 'ъ', 'ь' },
+            { 'ѝ', 'и' },
+        };
 
-        protected override char[] GetReplacements()
-        {
-            return BulgarianReplace;
-        }
+        public IDictionary<char, char> Mapping { get { return MappingDictionary; } }
     }
 }

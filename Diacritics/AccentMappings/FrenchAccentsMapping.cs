@@ -1,20 +1,29 @@
-﻿
+﻿using System.Collections.Generic;
+
 namespace Diacritics.AccentMappings
 {
-    class FrenchAccentsMapping : AccentMapping
+    public class FrenchAccentsMapping : IAccentMapping
     {
-        private static readonly char[] FrenchAccents = { 'à', 'â', 'ä', 'æ', 'ç', 'é', 'è', 'ê', 'ë', 'î', 'ï', 'ô', 'œ', 'ù', 'û', 'ü' };
-
-        private static readonly char[] FrenchReplace = { 'a', 'a', 'a', 'a', 'c', 'e', 'e', 'e', 'e', 'i', 'i', 'o', 'o', 'u', 'u', 'u' };
-
-        protected override char[] GetCharacters()
+        private static readonly IDictionary<char, char> MappingDictionary = new Dictionary<char, char>
         {
-            return FrenchAccents;
-        }
+            { 'à', 'a' },
+            { 'â', 'a' },
+            { 'ä', 'a' },
+            { 'æ', 'a' },
+            { 'ç', 'c' },
+            { 'é', 'e' },
+            { 'è', 'e' },
+            { 'ê', 'e' },
+            { 'ë', 'e' },
+            { 'î', 'i' },
+            { 'ï', 'i' },
+            { 'ô', 'o' },
+            { 'œ', 'o' },
+            { 'ù', 'u' },
+            { 'û', 'u' },
+            { 'ü', 'u' },
+        };
 
-        protected override char[] GetReplacements()
-        {
-            return FrenchReplace;
-        }
+        public IDictionary<char, char> Mapping { get { return MappingDictionary; } }
     }
 }

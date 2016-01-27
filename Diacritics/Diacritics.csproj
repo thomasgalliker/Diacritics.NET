@@ -98,14 +98,12 @@
     <Compile Include="AccentMappings\TurkishAccentsMapping.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="AccentMappings\UkarainianAccents.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="AccentMappings\UkarainianAccentsMapping.cs" />
+    <Compile Include="IDiacriticsMapper.cs" />
     <Compile Include="StaticDiacritics.cs" />
     <Compile Include="DefaultDiacriticsMapper.cs" />
     <Compile Include="DiacriticsMapper.cs" />
     <Compile Include="AccentMappings\ArabicAccentsMapping.cs" />
-    <Compile Include="AccentMappings\AccentMapping.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AccentMappings\IAccentMapping.cs" />

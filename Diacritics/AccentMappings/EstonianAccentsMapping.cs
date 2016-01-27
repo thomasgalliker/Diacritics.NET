@@ -1,20 +1,17 @@
-﻿
+﻿using System.Collections.Generic;
+
 namespace Diacritics.AccentMappings
 {
-    class EstonianAccentsMapping : AccentMapping
+    public class EstonianAccentsMapping : IAccentMapping
     {
-        private static readonly char[] EstonianAccents = { 'ä', 'ö', 'õ', 'ü' };
-
-        private static readonly char[] EstonianReplace = { 'a', 'o', 'o', 'u' };
-
-        protected override char[] GetCharacters()
+        private static readonly IDictionary<char, char> MappingDictionary = new Dictionary<char, char>
         {
-            return EstonianAccents;
-        }
+            { 'ä', 'a' },
+            { 'ö', 'o' },
+            { 'õ', 'o' },
+            { 'ü', 'u' },
+        };
 
-        protected override char[] GetReplacements()
-        {
-            return EstonianReplace;
-        }
+        public IDictionary<char, char> Mapping { get { return MappingDictionary; } }
     }
 }

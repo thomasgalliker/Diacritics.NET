@@ -1,20 +1,21 @@
-﻿
+﻿using System.Collections.Generic;
+
 namespace Diacritics.AccentMappings
 {
-    internal class TurkishAccentsMapping : AccentMapping
+    public class TurkishAccentsMapping : IAccentMapping
     {
-        private static readonly char[] TurkishAccents = { 'ç', 'é', 'ë', 'ğ', 'İ', 'ï', 'ó', 'ö', 'ü' };
-
-        private static readonly char[] TurkishReplace = { 'c', 'e', 'e', 'g', 'i', 'i', 'o', 'o', 'u' };
-
-        protected override char[] GetCharacters()
-        {
-            return TurkishAccents;
-        }
-
-        protected override char[] GetReplacements()
-        {
-            return TurkishReplace;
-        }
+        private static readonly IDictionary<char, char> MappingDictionary = new Dictionary<char, char>
+                                                                                {
+                                                                                    { 'ç', 'c' },
+                                                                                    { 'é', 'e' },
+                                                                                    { 'ë', 'e' },
+                                                                                    { 'ğ', 'g' },
+                                                                                    { 'İ', 'i' },
+                                                                                    { 'ï', 'i' },
+                                                                                    { 'ó', 'o' },
+                                                                                    { 'ö', 'o' },
+                                                                                    { 'ü', 'u' },
+                                                                                };
+        public IDictionary<char, char> Mapping { get { return MappingDictionary; } }
     }
 }

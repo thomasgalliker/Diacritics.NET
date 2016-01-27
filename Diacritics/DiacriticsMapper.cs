@@ -1,12 +1,13 @@
-﻿using Diacritics.AccentMappings;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+using Diacritics.AccentMappings;
+
 namespace Diacritics
 {
-    public class DiacriticsMapper : IEnumerable<KeyValuePair<char, char>>, IDiacriticsMapper
+    public class DiacriticsMapper : IDiacriticsMapper
     {
         private Dictionary<char, char> diacriticsMapping;
 
@@ -15,7 +16,7 @@ namespace Diacritics
             this.UpdateMappings(mappings);
         }
 
-        protected void UpdateMappings(IAccentMapping[] mappings)
+        private void UpdateMappings(IAccentMapping[] mappings)
         {
             this.diacriticsMapping = new Dictionary<char, char>();
             var all = new List<KeyValuePair<char, char>>();
@@ -24,30 +25,16 @@ namespace Diacritics
             {
                 foreach (var accentMapping in mappings)
                 {
-                    var map = accentMapping.GetMapping();
-                    //PrintDictionary(map, accentMapping.GetType().Name);
+                    var map = accentMapping.Mapping;
                     all.AddRange(map);
                 }
             }
 
             // Group keys so that duplicates are eliminated
-            this.diacriticsMapping = all.GroupBy(x => x.Key).ToDictionary(k => k.Key, v => v.First().Value);
+            this.diacriticsMapping = all
+                .GroupBy(x => x.Key)
+                .ToDictionary(k => k.Key, v => v.First().Value);
         }
-
-        //TODO GATH: TO be used for a performance improvement. Zip (Linq) can be eliminated.
-        ////private static void PrintDictionary(Dictionary<char, char> dict, string name)
-        ////{
-        ////    StringBuilder sb = new StringBuilder();
-        ////    sb.AppendLine(string.Format("var {0} = new Dictionary<char, char>", name));
-        ////    sb.AppendLine("{");
-        ////    foreach (var d in dict)
-        ////    {
-        ////        sb.AppendLine(string.Format("{{ '{0}', '{1}' }},", d.Key, d.Value));
-        ////    }
-        ////    sb.AppendLine("};");
-
-        ////    Debug.WriteLine(sb.ToString());
-        ////}
 
         public IEnumerator<KeyValuePair<char, char>> GetEnumerator()
         {
@@ -87,12 +74,5 @@ namespace Diacritics
         {
             return source != this.RemoveDiacritics(source);
         }
-    }
-
-    public interface IDiacriticsMapper
-    {
-        string RemoveDiacritics(string source);
-
-        bool HasDiacritics(string source);
     }
 }

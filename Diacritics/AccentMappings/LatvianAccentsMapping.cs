@@ -1,20 +1,14 @@
-﻿
+﻿using System.Collections.Generic;
+
 namespace Diacritics.AccentMappings
 {
-    internal class LatvianAccentsMapping : AccentMapping
+    public class LatvianAccentsMapping : IAccentMapping
     {
-        private static readonly char[] LatvianAccents = { 'ē' };
-
-        private static readonly char[] LatvianReplace = { 'e' };
-
-        protected override char[] GetCharacters()
+        private static readonly IDictionary<char, char> MappingDictionary = new Dictionary<char, char>
         {
-            return LatvianAccents;
-        }
+            { 'ē', 'e' },
+        };
 
-        protected override char[] GetReplacements()
-        {
-            return LatvianReplace;
-        }
+        public IDictionary<char, char> Mapping { get { return MappingDictionary; } }
     }
 }

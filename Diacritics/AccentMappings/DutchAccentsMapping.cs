@@ -1,20 +1,19 @@
-﻿
+﻿using System.Collections.Generic;
+
 namespace Diacritics.AccentMappings
 {
-    public class DutchAccentsMapping : AccentMapping
+    public class DutchAccentsMapping : IAccentMapping
     {
-        private static readonly char[] DutchAccents = { 'é', 'ë', 'ï', 'ó', 'ö', 'ü' };
-
-        private static readonly char[] DutchReplace = { 'e', 'e', 'i', 'o', 'o', 'u' };
-
-        protected override char[] GetCharacters()
+        private static readonly IDictionary<char, char> MappingDictionary = new Dictionary<char, char>
         {
-            return DutchAccents;
-        }
+            { 'é', 'e' },
+            { 'ë', 'e' },
+            { 'ï', 'i' },
+            { 'ó', 'o' },
+            { 'ö', 'o' },
+            { 'ü', 'u' },
+        };
 
-        protected override char[] GetReplacements()
-        {
-            return DutchReplace;
-        }
+        public IDictionary<char, char> Mapping { get { return MappingDictionary; } }
     }
 }

@@ -1,20 +1,22 @@
-﻿
+﻿using System.Collections.Generic;
+
 namespace Diacritics.AccentMappings
 {
-    internal class HungarianAccentsMapping : AccentMapping
+    public class HungarianAccentsMapping : IAccentMapping
     {
-        private static readonly char[] HungarianAccents = { 'á', 'é', 'í', 'ö', 'ó', 'ő', 'ü', 'ú', 'ű' };
-
-        private static readonly char[] HungarianReplace = { 'a', 'e', 'i', 'o', 'o', 'o', 'u', 'u', 'u' };
-
-        protected override char[] GetCharacters()
+        private static readonly IDictionary<char, char> MappingDictionary = new Dictionary<char, char>
         {
-            return HungarianAccents;
-        }
+            { 'á', 'a' },
+            { 'é', 'e' },
+            { 'í', 'i' },
+            { 'ö', 'o' },
+            { 'ó', 'o' },
+            { 'ő', 'o' },
+            { 'ü', 'u' },
+            { 'ú', 'u' },
+            { 'ű', 'u' },
+        };
 
-        protected override char[] GetReplacements()
-        {
-            return HungarianReplace;
-        }
+        public IDictionary<char, char> Mapping { get { return MappingDictionary; } }
     }
 }

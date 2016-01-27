@@ -1,20 +1,18 @@
-﻿
+﻿using System.Collections.Generic;
+
 namespace Diacritics.AccentMappings
 {
-    class CroatianAccentsMapping : AccentMapping
+    public class CroatianAccentsMapping : IAccentMapping
     {
-        private static readonly char[] CroatianAccents = { 'č', 'ć', 'đ', 'š', 'ž' };
-
-        private static readonly char[] CroatianReplace = { 'c', 'c', 'd', 's', 'z' };
-
-        protected override char[] GetCharacters()
+        private static readonly IDictionary<char, char> MappingDictionary = new Dictionary<char, char>
         {
-            return CroatianAccents;
-        }
+            { 'č', 'c' },
+            { 'ć', 'c' },
+            { 'đ', 'd' },
+            { 'š', 's' },
+            { 'ž', 'z' },
+        };
 
-        protected override char[] GetReplacements()
-        {
-            return CroatianReplace;
-        }
+        public IDictionary<char, char> Mapping { get { return MappingDictionary; } }
     }
 }

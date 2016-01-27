@@ -1,20 +1,25 @@
-﻿
+﻿using System.Collections.Generic;
+
 namespace Diacritics.AccentMappings
 {
-    internal class PortugueseAccentsMapping : AccentMapping
+    public class PortugueseAccentsMapping : IAccentMapping
     {
-        private static readonly char[] PortugueseAccents = { 'ã', 'á', 'â', 'à', 'é', 'ê', 'í', 'õ', 'ó', 'ô', 'ú', 'ü' };
-
-        private static readonly char[] PortugueseReplace = { 'a', 'a', 'a', 'a', 'e', 'e', 'i', 'o', 'o', 'o', 'u', 'u' };
-
-        protected override char[] GetCharacters()
+        private static readonly IDictionary<char, char> MappingDictionary = new Dictionary<char, char>
         {
-            return PortugueseAccents;
-        }
+            { 'ã', 'a' },
+            { 'á', 'a' },
+            { 'â', 'a' },
+            { 'à', 'a' },
+            { 'é', 'e' },
+            { 'ê', 'e' },
+            { 'í', 'i' },
+            { 'õ', 'o' },
+            { 'ó', 'o' },
+            { 'ô', 'o' },
+            { 'ú', 'u' },
+            { 'ü', 'u' },
+        };
 
-        protected override char[] GetReplacements()
-        {
-            return PortugueseReplace;
-        }
+        public IDictionary<char, char> Mapping { get { return MappingDictionary; } }
     }
 }

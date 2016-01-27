@@ -1,20 +1,14 @@
-﻿
+﻿using System.Collections.Generic;
+
 namespace Diacritics.AccentMappings
 {
-    internal class EnglishAccentsMapping : AccentMapping
+    public class EnglishAccentsMapping : IAccentMapping
     {
-        private static readonly char[] EnglishAccents = { 'é' };
-
-        private static readonly char[] EnglishReplace = { 'e' };
-
-        protected override char[] GetCharacters()
+        private static readonly IDictionary<char, char> MappingDictionary = new Dictionary<char, char>
         {
-            return EnglishAccents;
-        }
+            { 'é', 'e' },
+        };
 
-        protected override char[] GetReplacements()
-        {
-            return EnglishReplace;
-        }
+        public IDictionary<char, char> Mapping { get { return MappingDictionary; } }
     }
 }

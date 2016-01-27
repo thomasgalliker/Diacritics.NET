@@ -1,20 +1,14 @@
-﻿
+﻿using System.Collections.Generic;
+
 namespace Diacritics.AccentMappings
 {
-    internal class RussianAccentsMapping : AccentMapping
+    public class RussianAccentsMapping : IAccentMapping
     {
-        private static readonly char[] RussianAccents = { 'ъ' };
-
-        private static readonly char[] RussianReplace = { 'b' };
-
-        protected override char[] GetCharacters()
+        private static readonly IDictionary<char, char> MappingDictionary = new Dictionary<char, char>
         {
-            return RussianAccents;
-        }
+            { 'ъ', 'b' },
+        };
 
-        protected override char[] GetReplacements()
-        {
-            return RussianReplace;
-        }
+        public IDictionary<char, char> Mapping { get { return MappingDictionary; } }
     }
 }

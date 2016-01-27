@@ -1,20 +1,30 @@
-﻿
+﻿using System.Collections.Generic;
+
 namespace Diacritics.AccentMappings
 {
-    internal class SlovakianAccentsMapping : AccentMapping
+    public class SlovakianAccentsMapping : IAccentMapping
     {
-        private static readonly char[] SlovakianAccents = { 'á', 'ä', 'č', 'ď', 'é', 'í', 'ĺ', 'ľ', 'ň', 'ó', 'ô', 'ŕ', 'š', 'ť', 'ú', 'ý', 'ž' };
-
-        private static readonly char[] SlovakianReplace = { 'a', 'a', 'c', 'd', 'e', 'i', 'l', 'l', 'n', 'o', 'o', 'r', 's', 't', 'u', 'y', 'z' };
-
-        protected override char[] GetCharacters()
+        private static readonly IDictionary<char, char> MappingDictionary = new Dictionary<char, char>
         {
-            return SlovakianAccents;
-        }
+            { 'á', 'a' },
+            { 'ä', 'a' },
+            { 'č', 'c' },
+            { 'ď', 'd' },
+            { 'é', 'e' },
+            { 'í', 'i' },
+            { 'ĺ', 'l' },
+            { 'ľ', 'l' },
+            { 'ň', 'n' },
+            { 'ó', 'o' },
+            { 'ô', 'o' },
+            { 'ŕ', 'r' },
+            { 'š', 's' },
+            { 'ť', 't' },
+            { 'ú', 'u' },
+            { 'ý', 'y' },
+            { 'ž', 'z' },
+        };
 
-        protected override char[] GetReplacements()
-        {
-            return SlovakianReplace;
-        }
+        public IDictionary<char, char> Mapping { get { return MappingDictionary; } }
     }
 }

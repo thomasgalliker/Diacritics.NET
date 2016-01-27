@@ -1,20 +1,29 @@
-﻿
+﻿using System.Collections.Generic;
+
 namespace Diacritics.AccentMappings
 {
-    class CzechAccentsMapping : AccentMapping
+    public class CzechAccentsMapping : IAccentMapping
     {
-        private static readonly char[] CzechAccents = { 'ã', 'á', 'á', 'č', 'ď', 'é', 'ě', 'í', 'ň', 'ó', 'ř', 'š', 'ť', 'ú', 'ů', 'ý', 'ž' };
-
-        private static readonly char[] CzechReplace = { 'a', 'a', 'a', 'c', 'd', 'e', 'e', 'i', 'n', 'o', 'r', 's', 't', 'u', 'u', 'y', 'z' };
-
-        protected override char[] GetCharacters()
+        private static readonly IDictionary<char, char> MappingDictionary = new Dictionary<char, char>
         {
-            return CzechAccents;
-        }
+            { 'ã', 'a' },
+            { 'á', 'a' },
+            { 'č', 'c' },
+            { 'ď', 'd' },
+            { 'é', 'e' },
+            { 'ě', 'e' },
+            { 'í', 'i' },
+            { 'ň', 'n' },
+            { 'ó', 'o' },
+            { 'ř', 'r' },
+            { 'š', 's' },
+            { 'ť', 't' },
+            { 'ú', 'u' },
+            { 'ů', 'u' },
+            { 'ý', 'y' },
+            { 'ž', 'z' },
+        };
 
-        protected override char[] GetReplacements()
-        {
-            return CzechReplace;
-        }
+        public IDictionary<char, char> Mapping { get { return MappingDictionary; } }
     }
 }

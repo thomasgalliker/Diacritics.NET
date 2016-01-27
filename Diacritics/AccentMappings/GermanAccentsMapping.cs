@@ -1,20 +1,17 @@
-﻿
+﻿using System.Collections.Generic;
+
 namespace Diacritics.AccentMappings
 {
-    class GermanAccentsMapping : AccentMapping
+    public class GermanAccentsMapping : IAccentMapping
     {
-        private static readonly char[] GermanAccents = { 'ä', 'ö', 'ü', 'ß' };
-
-        private static readonly char[] GermanReplace = { 'a', 'o', 'u', 's' };
-
-        protected override char[] GetCharacters()
+        private static readonly IDictionary<char, char> MappingDictionary = new Dictionary<char, char>
         {
-            return GermanAccents;
-        }
+            { 'ä', 'a' },
+            { 'ö', 'o' },
+            { 'ü', 'u' },
+            { 'ß', 's' },
+        };
 
-        protected override char[] GetReplacements()
-        {
-            return GermanReplace;
-        }
+        public IDictionary<char, char> Mapping { get { return MappingDictionary; } }
     }
 }

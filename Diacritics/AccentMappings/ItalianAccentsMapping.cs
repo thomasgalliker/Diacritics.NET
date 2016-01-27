@@ -1,20 +1,20 @@
-﻿
+﻿using System.Collections.Generic;
+
 namespace Diacritics.AccentMappings
 {
-    internal class ItalianAccentsMapping : AccentMapping
+    public class ItalianAccentsMapping : IAccentMapping
     {
-        private static readonly char[] ItalianAccents = { 'à', 'è', 'é', 'ì', 'ò', 'ó', 'ù' };
-
-        private static readonly char[] ItalianReplace = { 'a', 'e', 'e', 'i', 'o', 'o', 'u' };
-
-        protected override char[] GetCharacters()
+        private static readonly IDictionary<char, char> MappingDictionary = new Dictionary<char, char>
         {
-            return ItalianAccents;
-        }
+            { 'à', 'a' },
+            { 'è', 'e' },
+            { 'é', 'e' },
+            { 'ì', 'i' },
+            { 'ò', 'o' },
+            { 'ó', 'o' },
+            { 'ù', 'u' },
+        };
 
-        protected override char[] GetReplacements()
-        {
-            return ItalianReplace;
-        }
+        public IDictionary<char, char> Mapping { get { return MappingDictionary; } }
     }
 }

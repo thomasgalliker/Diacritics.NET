@@ -1,20 +1,18 @@
-﻿
+﻿using System.Collections.Generic;
+
 namespace Diacritics.AccentMappings
 {
-    internal class SpanishAccentsMapping : AccentMapping
+    public class SpanishAccentsMapping : IAccentMapping
     {
-        private static readonly char[] SpanishAccents = { 'á', 'é', 'í', 'ó', 'ú' };
-
-        private static readonly char[] SpanishReplace = { 'a', 'e', 'i', 'o', 'u' };
-
-        protected override char[] GetCharacters()
+        private static readonly IDictionary<char, char> MappingDictionary = new Dictionary<char, char>
         {
-            return SpanishAccents;
-        }
+            { 'á', 'a' },
+            { 'é', 'e' },
+            { 'í', 'i' },
+            { 'ó', 'o' },
+            { 'ú', 'u' },
+        };
 
-        protected override char[] GetReplacements()
-        {
-            return SpanishReplace;
-        }
+        public IDictionary<char, char> Mapping { get { return MappingDictionary; } }
     }
 }

@@ -1,20 +1,24 @@
-﻿
+﻿using System.Collections.Generic;
+
 namespace Diacritics.AccentMappings
 {
-    class GreekAccentsMapping : AccentMapping
+    public class GreekAccentsMapping : IAccentMapping
     {
-        private static readonly char[] GreekAccents = { 'ά', 'έ', 'ή', 'ί', 'ϊ', 'ΐ', 'ό', 'ύ', 'ϋ', 'ΰ', 'ώ' };
-
-        private static readonly char[] GreekReplace = { 'α', 'ε', 'η', 'ι', 'ι', 'ι', 'ο', 'υ', 'υ', 'υ', 'ω' };
-
-        protected override char[] GetCharacters()
+        private static readonly IDictionary<char, char> MappingDictionary = new Dictionary<char, char>
         {
-            return GreekAccents;
-        }
+            { 'ά', 'α' },
+            { 'έ', 'ε' },
+            { 'ή', 'η' },
+            { 'ί', 'ι' },
+            { 'ϊ', 'ι' },
+            { 'ΐ', 'ι' },
+            { 'ό', 'ο' },
+            { 'ύ', 'υ' },
+            { 'ϋ', 'υ' },
+            { 'ΰ', 'υ' },
+            { 'ώ', 'ω' },
+        };
 
-        protected override char[] GetReplacements()
-        {
-            return GreekReplace;
-        }
+        public IDictionary<char, char> Mapping { get { return MappingDictionary; } }
     }
 }

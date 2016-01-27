@@ -1,20 +1,20 @@
-﻿
+﻿using System.Collections.Generic;
+
 namespace Diacritics.AccentMappings
 {
-    internal class RomanianAccentsMapping : AccentMapping
+    public class RomanianAccentsMapping : IAccentMapping
     {
-        private static readonly char[] RomanianAccents = { 'ă', 'â', 'î', 'ş', 'ș', 'ţ', 'ț' };
-
-        private static readonly char[] RomanianReplace = { 'a', 'a', 'i', 's', 's', 't', 't' };
-
-        protected override char[] GetCharacters()
+        private static readonly IDictionary<char, char> MappingDictionary = new Dictionary<char, char>
         {
-            return RomanianAccents;
-        }
+            { 'ă', 'a' },
+            { 'â', 'a' },
+            { 'î', 'i' },
+            { 'ş', 's' },
+            { 'ș', 's' },
+            { 'ţ', 't' },
+            { 'ț', 't' },
+        };
 
-        protected override char[] GetReplacements()
-        {
-            return RomanianReplace;
-        }
+        public IDictionary<char, char> Mapping { get { return MappingDictionary; } }
     }
 }

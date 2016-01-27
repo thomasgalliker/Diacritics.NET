@@ -1,20 +1,22 @@
-﻿
+﻿using System.Collections.Generic;
+
 namespace Diacritics.AccentMappings
 {
-    internal class PolishAccentsMapping : AccentMapping
+    public class PolishAccentsMapping : IAccentMapping
     {
-        private static readonly char[] PolishAccents = { 'ą', 'ć', 'ę', 'ł', 'ń', 'ó', 'ś', 'ż', 'ź' };
-
-        private static readonly char[] PolishReplace = { 'a', 'c', 'e', 'l', 'n', 'o', 's', 'z', 'z' };
-
-        protected override char[] GetCharacters()
+        private static readonly IDictionary<char, char> MappingDictionary = new Dictionary<char, char>
         {
-            return PolishAccents;
-        }
+            { 'ą', 'a' },
+            { 'ć', 'c' },
+            { 'ę', 'e' },
+            { 'ł', 'l' },
+            { 'ń', 'n' },
+            { 'ó', 'o' },
+            { 'ś', 's' },
+            { 'ż', 'z' },
+            { 'ź', 'z' },
+        };
 
-        protected override char[] GetReplacements()
-        {
-            return PolishReplace;
-        }
+        public IDictionary<char, char> Mapping { get { return MappingDictionary; } }
     }
 }

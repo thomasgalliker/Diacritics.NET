@@ -1,20 +1,32 @@
-﻿
+﻿using System.Collections.Generic;
+
 namespace Diacritics.AccentMappings
 {
-    public class ArabicAccentsMapping : AccentMapping
+    public class ArabicAccentsMapping : IAccentMapping
     {
-        private static readonly char[] ArabicAccents = { 'أ', 'إ', 'آ', 'ء', 'پ', 'ض', 'ذ', 'ـ', 'خ', 'خ', 'غ', 'ش', 'ة', 'ث', 'ً', 'ٰ', 'ؤ', 'ظ', 'ى', 'ئ' };
-
-        private static readonly char[] ArabicReplace = { 'ا', 'ا', 'ا', 'ا', 'ب', 'ص', 'د', 'ّ', 'ح', 'ك', 'ع', 'س', 'ت', 'ت', 'َ', 'َ', 'و', 'ط', 'ي', 'ي' };
-
-        protected override char[] GetCharacters()
+        private static readonly IDictionary<char, char> MappingDictionary = new Dictionary<char, char>
         {
-            return ArabicAccents;
-        }
+            { 'أ', 'ا' },
+            { 'إ', 'ا' },
+            { 'آ', 'ا' },
+            { 'ء', 'ا' },
+            { 'پ', 'ب' },
+            { 'ض', 'ص' },
+            { 'ذ', 'د' },
+            { 'ـ', 'ّ' },
+            { 'خ', 'ح' },
+            { 'غ', 'ع' },
+            { 'ش', 'س' },
+            { 'ة', 'ت' },
+            { 'ث', 'ت' },
+            { 'ً', 'َ' },
+            { 'ٰ', 'َ' },
+            { 'ؤ', 'و' },
+            { 'ظ', 'ط' },
+            { 'ى', 'ي' },
+            { 'ئ', 'ي' },
+        };
 
-        protected override char[] GetReplacements()
-        {
-            return ArabicReplace;
-        }
+        public IDictionary<char, char> Mapping { get { return MappingDictionary; } }
     }
 }

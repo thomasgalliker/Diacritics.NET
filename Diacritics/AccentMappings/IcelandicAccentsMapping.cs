@@ -1,20 +1,14 @@
-﻿
+﻿using System.Collections.Generic;
+
 namespace Diacritics.AccentMappings
 {
-    internal class IcelandicAccentsMapping : AccentMapping
+    public class IcelandicAccentsMapping : IAccentMapping
     {
-        private static readonly char[] IcelandicAccents = { 'ö' };
-
-        private static readonly char[] IcelandicReplace = { 'o' };
-
-        protected override char[] GetCharacters()
+        private static readonly IDictionary<char, char> MappingDictionary = new Dictionary<char, char>
         {
-            return IcelandicAccents;
-        }
+            { 'ö', 'o' },
+        };
 
-        protected override char[] GetReplacements()
-        {
-            return IcelandicReplace;
-        }
+        public IDictionary<char, char> Mapping { get { return MappingDictionary; } }
     }
 }
