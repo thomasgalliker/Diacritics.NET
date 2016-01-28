@@ -45,6 +45,7 @@ The example shown above uses extension methods which use a default implementatio
 
 #### Add custom diactrics mappings
 Diacritics is extensible! You can write your own language accent by implementing ```IAccentMapping``` (or ```AccentMapping``` base class). ```DiacriticsMapper``` accepts any ```IAccentMappin```g type at construction time.
+You are highly welcome to contribute to this library. Just create a fork, commit your changes and create a pull request.
 
 TODO: Add/Remove methods for adding/removing accents at runtime.
 
