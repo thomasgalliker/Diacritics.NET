@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>Diacritics</id>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <title>Diacritics.NET</title>
     <authors>Thomas Galliker</authors>
     <licenseUrl>http://opensource.org/licenses/Apache-2.0</licenseUrl>
@@ -16,12 +16,38 @@
       Diacritics.NET is a basic mapper between diacritic characters an non-diacritic characters.
     </description>
     <tags>
-      xamarin pcl Diacritics.NET plugin for diacritics replacement Diacritics.NET
-      windows phone winphone wp8 wpa81 win81 windowsphone android xamarin.forms xamarin.ios ios monoandroid monodroid monotouch mvvmcross mvvmlight
+      xamarin pcl Diacritics.NET plugin for diacritics special character replacement
+      windows phone winphone wp8 wpa81 win81 windowsphone uwp android xamarin.forms xamarin.ios ios monoandroid monodroid monotouch
     </tags>
     <releaseNotes>
-      This is the initial release of Diacritics.NET. Please report problems here: https://github.com/thomasgalliker/Diacritics.NET.
-      Contributions on github are welcome!
+      1.0.2
+      - Improved initialization performance by factor 8
+
+      1.0.1
+      - Added ArabicAccentsMapping
+      - Added BulgarianAccentsMapping
+      - Added CatalanAccentsMapping
+      - Added CroatianAccentsMapping
+      - Added CzechAccentsMapping
+      - Added DutchAccentsMapping
+      - Added EnglishAccentsMapping
+      - Added EstonianAccentsMapping
+      - Added FilipinoAccentsMapping
+      - Added FrenchAccentsMapping
+      - Added GermanAccentsMapping
+      - Added GreekAccentsMapping
+      - Added HungarianAccentsMapping
+      - Added IcelandicAccentsMapping
+      - Added ItalianAccentsMapping
+      - Added LatvianAccentsMapping
+      - Added PolishAccentsMapping
+      - Added PortugueseAccentsMapping
+      - Added RomanianAccentsMapping
+      - Added RussianAccentsMapping
+      - Added SlovakianAccentsMapping
+      - Added SpanishAccentsMapping
+      - Added TurkishAccentsMapping
+      - Added UkarainianAccentsMapping
     </releaseNotes>
     <copyright>Copyright 2016</copyright>
     <language>en-US</language>
