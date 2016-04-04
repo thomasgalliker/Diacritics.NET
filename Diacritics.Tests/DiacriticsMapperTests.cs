@@ -1,17 +1,15 @@
-﻿using FluentAssertions;
-using System.Diagnostics;
-using System.Linq;
+﻿using Diacritics.AccentMappings;
 
-using Diacritics.AccentMappings;
+using FluentAssertions;
 
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Diacritics.Tests
 {
     public class DiacriticsMapperTests
     {
         #region RemoveDiacritics
+
         [Fact]
         public void ShouldNotRemoveDiacriticsIfNoMappingsAvailable()
         {
@@ -34,7 +32,7 @@ namespace Diacritics.Tests
             IDiacriticsMapper diacriticsMapper = new DiacriticsMapper(new FrenchAccentsMapping());
             const string InputText = "ètôile";
             const string ExpectedText = "etoile";
-            
+
             // Act
             var output = diacriticsMapper.RemoveDiacritics(InputText);
 
@@ -71,9 +69,25 @@ namespace Diacritics.Tests
             // Assert
             output.Should().Be(ExpectedText);
         }
+
+        [Fact]
+        public void ShouldRemoveDiacriticsFromUppercaseCharacters()
+        {
+            // Arrange
+            IDiacriticsMapper diacriticsMapper = new DiacriticsMapper(new FrenchAccentsMapping());
+            const string InputText = "ÈtoilE";
+            const string ExpectedText = "EtoilE";
+
+            // Act
+            var output = diacriticsMapper.RemoveDiacritics(InputText);
+
+            // Assert
+            output.Should().Be(ExpectedText);
+        }
         #endregion
 
         #region HasDiacritics
+
         [Fact]
         public void ShouldReturnFalseIfHasNoMappings()
         {
@@ -115,6 +129,7 @@ namespace Diacritics.Tests
             // Assert
             output.Should().BeTrue();
         }
+
         #endregion
     }
 }

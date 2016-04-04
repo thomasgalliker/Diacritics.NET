@@ -46,26 +46,37 @@ namespace Diacritics
             return this.GetEnumerator();
         }
 
-        public string RemoveDiacritics(string source)
+        public string RemoveDiacritics(string input)
         {
             int startIndex = 0;
             int currentIndex = 0;
-            var result = new StringBuilder(source.Length);
+            var result = new StringBuilder(input.Length);
+            var source = input.ToLower();
 
             while ((currentIndex = source.IndexOfAny(this.diacriticsMapping.Keys.ToArray(), startIndex)) != -1)
             {
                 result.Append(source.Substring(startIndex, currentIndex - startIndex));
-                result.Append(this.diacriticsMapping[source[currentIndex]]);
+                char diacriticChar = source[currentIndex];
+                char diacriticRemovedChar = this.diacriticsMapping[diacriticChar];
+
+                // If the diacritic character from the input is an uppercase letter,
+                // we also want to have the non-diacritic character to be an uppercase letter.
+                if (char.IsUpper(input[currentIndex]))
+                {
+                    diacriticRemovedChar = char.ToUpper(diacriticRemovedChar);
+                }
+
+                result.Append(diacriticRemovedChar);
 
                 startIndex = currentIndex + 1;
             }
 
             if (startIndex == 0)
             {
-                return source;
+                return input;
             }
 
-            result.Append(source.Substring(startIndex));
+            result.Append(input.Substring(startIndex));
 
             return result.ToString();
         }
