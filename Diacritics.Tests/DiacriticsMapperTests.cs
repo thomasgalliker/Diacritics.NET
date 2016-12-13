@@ -30,8 +30,8 @@ namespace Diacritics.Tests
         {
             // Arrange
             IDiacriticsMapper diacriticsMapper = new DiacriticsMapper(new FrenchAccentsMapping());
-            const string InputText = "ètôile";
-            const string ExpectedText = "etoile";
+            const string InputText = "Delémont";
+            const string ExpectedText = "Delemont";
 
             // Act
             var output = diacriticsMapper.RemoveDiacritics(InputText);
