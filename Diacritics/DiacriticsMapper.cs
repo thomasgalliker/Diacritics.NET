@@ -55,7 +55,7 @@ namespace Diacritics
 
             while ((currentIndex = source.IndexOfAny(this.diacriticsMapping.Keys.ToArray(), startIndex)) != -1)
             {
-                result.Append(source.Substring(startIndex, currentIndex - startIndex));
+                result.Append(input.Substring(startIndex, currentIndex - startIndex));
                 char diacriticChar = source[currentIndex];
                 char diacriticRemovedChar = this.diacriticsMapping[diacriticChar];
 
