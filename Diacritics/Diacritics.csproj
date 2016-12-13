@@ -38,76 +38,9 @@
     <!-- A reference to the entire .NET Framework is automatically included -->
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccentMappings\BulgarianAccentsMapping.cs" />
-    <Compile Include="AccentMappings\CroatianAccentsMapping.cs" />
-    <Compile Include="AccentMappings\CatalanAccentsMapping.cs" />
-    <Compile Include="AccentMappings\CzechAccentsMapping.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="AccentMappings\DutchAccentsMapping.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="AccentMappings\EstonianAccentsMapping.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="AccentMappings\EnglishAccentsMapping.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="AccentMappings\FilipinoAccentsMapping.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="AccentMappings\FrenchAccentsMapping.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="AccentMappings\GermanAccentsMapping.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="AccentMappings\GreekAccentsMapping.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="AccentMappings\HungarianAccentsMapping.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="AccentMappings\IcelandicAccentsMapping.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="AccentMappings\ItalianAccentsMapping.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="AccentMappings\LatvianAccentsMapping.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="AccentMappings\PolishAccentsMapping.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="AccentMappings\PortugueseAccentsMapping.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="AccentMappings\RomanianAccentsMapping.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="AccentMappings\RussianAccentsMapping.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="AccentMappings\SlovakianAccentsMapping.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="AccentMappings\SpanishAccentsMapping.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="AccentMappings\TurkishAccentsMapping.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="AccentMappings\UkarainianAccentsMapping.cs" />
-    <Compile Include="IDiacriticsMapper.cs" />
-    <Compile Include="StaticDiacritics.cs" />
-    <Compile Include="DefaultDiacriticsMapper.cs" />
-    <Compile Include="DiacriticsMapper.cs" />
-    <Compile Include="AccentMappings\ArabicAccentsMapping.cs" />
-    <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="AccentMappings\IAccentMapping.cs" />
   </ItemGroup>
+  <Import Project="..\Diacritics.Shared\Diacritics.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

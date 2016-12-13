@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>Diacritics</id>
-    <version>1.0.3</version>
+    <version>1.0.4-pre1</version>
     <title>Diacritics.NET</title>
     <authors>Thomas Galliker</authors>
     <licenseUrl>http://opensource.org/licenses/Apache-2.0</licenseUrl>
@@ -20,6 +20,9 @@
       windows phone winphone wp8 wpa81 win81 windowsphone uwp android xamarin.forms xamarin.ios ios monoandroid monodroid monotouch
     </tags>
     <releaseNotes>
+      1.0.4-pre
+      - Add .Net 4.5 implementation as dedicated assembly
+      
       1.0.3
       - Bug fix: RemoveDiacritics now also removes upper case diacritic characters
       - Bug fix: Correct handling of first letter upper case characters
@@ -64,6 +67,11 @@
     <file src="..\Diacritics\bin\Release\Diacritics.pdb" target="lib\portable-net45+dnxcore50+wp80+wpa81+win81+netcore45+monoandroid10+monotouch10+xamarin.ios10\Diacritics.pdb" />
     <file src="..\Diacritics\bin\Release\Diacritics.xml" target="lib\portable-net45+dnxcore50+wp80+wpa81+win81+netcore45+monoandroid10+monotouch10+xamarin.ios10\Diacritics.xml" />
     
+    <!--Netfx 4.5-->
+    <file src="..\Diacritics.Net45\bin\Release\Diacritics.dll" target="lib\net45\Diacritics.dll" />
+    <file src="..\Diacritics.Net45\bin\Release\Diacritics.xml" target="lib\net45\Diacritics.xml" />
+    <file src="..\Diacritics.Net45\bin\Release\Diacritics.pdb" target="lib\net45\Diacritics.pdb" />
+
     <file src="tools\init.ps1" target="tools\init.ps1" />
     <file src="tools\install.ps1" target="tools\install.ps1" />
     <file src="tools\uninstall.ps1" target="tools\uninstall.ps1" />

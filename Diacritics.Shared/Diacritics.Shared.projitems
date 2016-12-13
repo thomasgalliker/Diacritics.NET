@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>6e0aa8c3-1b54-4df5-99d2-2dca3a6f5190</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Diacritics</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)AccentMappings\ArabicAccentsMapping.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AccentMappings\BulgarianAccentsMapping.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AccentMappings\CatalanAccentsMapping.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AccentMappings\CroatianAccentsMapping.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AccentMappings\CzechAccentsMapping.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)AccentMappings\DutchAccentsMapping.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)AccentMappings\EnglishAccentsMapping.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)AccentMappings\EstonianAccentsMapping.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)AccentMappings\FilipinoAccentsMapping.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)AccentMappings\FrenchAccentsMapping.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)AccentMappings\GermanAccentsMapping.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)AccentMappings\GreekAccentsMapping.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)AccentMappings\HungarianAccentsMapping.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)AccentMappings\IAccentMapping.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AccentMappings\IcelandicAccentsMapping.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)AccentMappings\ItalianAccentsMapping.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)AccentMappings\LatvianAccentsMapping.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)AccentMappings\PolishAccentsMapping.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)AccentMappings\PortugueseAccentsMapping.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)AccentMappings\RomanianAccentsMapping.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)AccentMappings\RussianAccentsMapping.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)AccentMappings\SlovakianAccentsMapping.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)AccentMappings\SpanishAccentsMapping.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)AccentMappings\TurkishAccentsMapping.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)AccentMappings\UkarainianAccentsMapping.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DefaultDiacriticsMapper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DiacriticsMapper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\StringExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IDiacriticsMapper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)StaticDiacritics.cs" />
+  </ItemGroup>
+</Project>
