@@ -1,6 +1,6 @@
-﻿using FluentAssertions;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Linq;
+using FluentAssertions;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -28,7 +28,7 @@ namespace Diacritics.Tests
             stopwatch.Stop();
 
             // Assert
-            defaultDiacriticsMapping.Should().HaveCount(92);
+            defaultDiacriticsMapping.Should().HaveCount(103);
             this.testOutputHelper.WriteLine("stopwatch.ElapsedMilliseconds = {0}ms", stopwatch.ElapsedMilliseconds);
             stopwatch.ElapsedMilliseconds.Should().BeLessThan(50);
         }
