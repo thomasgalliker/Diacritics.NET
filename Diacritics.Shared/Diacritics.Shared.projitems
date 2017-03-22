@@ -77,5 +77,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\StringExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IDiacriticsMapper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)StaticDiacritics.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AccentMappings\OtherAccentsMapping.cs" />
   </ItemGroup>
 </Project>

@@ -28,7 +28,8 @@ namespace Diacritics
                 new SlovakianAccentsMapping(),
                 new SpanishAccentsMapping(),
                 new TurkishAccentsMapping(),
-                new UkarainianAccentsMapping())
+                new UkarainianAccentsMapping(),
+                new OtherAccentsMapping())
         {
         }
     }
