@@ -9,7 +9,7 @@ namespace Diacritics
 {
     public class DiacriticsMapper : IDiacriticsMapper
     {
-        private Dictionary<char, char> diacriticsMapping;
+        private Dictionary<char, string> diacriticsMapping;
 
         public DiacriticsMapper(params IAccentMapping[] mappings)
         {
@@ -18,8 +18,8 @@ namespace Diacritics
 
         private void UpdateMappings(IAccentMapping[] mappings)
         {
-            this.diacriticsMapping = new Dictionary<char, char>();
-            var all = new List<KeyValuePair<char, char>>();
+            this.diacriticsMapping = new Dictionary<char, string>();
+            var all = new List<KeyValuePair<char, string>>();
 
             if (mappings != null)
             {
@@ -36,7 +36,7 @@ namespace Diacritics
                 .ToDictionary(k => k.Key, v => v.First().Value);
         }
 
-        public IEnumerator<KeyValuePair<char, char>> GetEnumerator()
+        public IEnumerator<KeyValuePair<char, string>> GetEnumerator()
         {
             return this.diacriticsMapping.GetEnumerator();
         }
@@ -56,14 +56,14 @@ namespace Diacritics
             while ((currentIndex = source.IndexOfAny(this.diacriticsMapping.Keys.ToArray(), startIndex)) != -1)
             {
                 result.Append(input.Substring(startIndex, currentIndex - startIndex));
-                char diacriticChar = source[currentIndex];
-                char diacriticRemovedChar = this.diacriticsMapping[diacriticChar];
+                var diacriticChar = source[currentIndex];
+                var diacriticRemovedChar = this.diacriticsMapping[diacriticChar];
 
                 // If the diacritic character from the input is an uppercase letter,
                 // we also want to have the non-diacritic character to be an uppercase letter.
                 if (char.IsUpper(input[currentIndex]))
                 {
-                    diacriticRemovedChar = char.ToUpper(diacriticRemovedChar);
+                    diacriticRemovedChar = diacriticRemovedChar.ToUpper();
                 }
 
                 result.Append(diacriticRemovedChar);

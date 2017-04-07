@@ -5,6 +5,6 @@ namespace Diacritics.AccentMappings
 {
     public interface IAccentMapping
     {
-        IDictionary<char, char> Mapping { get; }
+        IDictionary<char, string> Mapping { get; }
     }
 }

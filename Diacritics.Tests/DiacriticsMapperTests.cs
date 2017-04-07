@@ -84,6 +84,21 @@ namespace Diacritics.Tests
             // Assert
             output.Should().Be(ExpectedText);
         }
+
+        [Fact]
+        public void ShouldRemoveCombinedCedilleDiacritics()
+        {
+            // Arrange
+            IDiacriticsMapper diacriticsMapper = new DiacriticsMapper(new FrenchAccentsMapping());
+            const string InputText = "François";
+            const string ExpectedText = "Francois";
+
+            // Act
+            var output = diacriticsMapper.RemoveDiacritics(InputText);
+
+            // Assert
+            output.Should().Be(ExpectedText);
+        }
         #endregion
 
         #region HasDiacritics

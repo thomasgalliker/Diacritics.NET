@@ -2,7 +2,7 @@
 
 namespace Diacritics
 {
-    public interface IDiacriticsMapper : IEnumerable<KeyValuePair<char, char>>
+    public interface IDiacriticsMapper : IEnumerable<KeyValuePair<char, string>>
     {
         string RemoveDiacritics(string source);
 

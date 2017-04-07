@@ -4,14 +4,14 @@ namespace Diacritics.AccentMappings
 {
     public class GermanAccentsMapping : IAccentMapping
     {
-        private static readonly IDictionary<char, char> MappingDictionary = new Dictionary<char, char>
+        private static readonly IDictionary<char, string> MappingDictionary = new Dictionary<char, string>
         {
-            { 'ä', 'a' },
-            { 'ö', 'o' },
-            { 'ü', 'u' },
-            { 'ß', 's' },
+            { 'ä', "a" },
+            { 'ö', "o" },
+            { 'ü', "u" },
+            { 'ß', "s" },
         };
 
-        public IDictionary<char, char> Mapping { get { return MappingDictionary; } }
+        public IDictionary<char, string> Mapping { get { return MappingDictionary; } }
     }
 }

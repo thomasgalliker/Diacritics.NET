@@ -4,16 +4,16 @@ namespace Diacritics.AccentMappings
 {
     public class DutchAccentsMapping : IAccentMapping
     {
-        private static readonly IDictionary<char, char> MappingDictionary = new Dictionary<char, char>
+        private static readonly IDictionary<char, string> MappingDictionary = new Dictionary<char, string>
         {
-            { 'é', 'e' },
-            { 'ë', 'e' },
-            { 'ï', 'i' },
-            { 'ó', 'o' },
-            { 'ö', 'o' },
-            { 'ü', 'u' },
+            { 'é', "e" },
+            { 'ë', "e" },
+            { 'ï', "i" },
+            { 'ó', "o" },
+            { 'ö', "o" },
+            { 'ü', "u" },
         };
 
-        public IDictionary<char, char> Mapping { get { return MappingDictionary; } }
+        public IDictionary<char, string> Mapping { get { return MappingDictionary; } }
     }
 }
