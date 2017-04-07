@@ -4,14 +4,14 @@ namespace Diacritics.AccentMappings
 {
     public class EstonianAccentsMapping : IAccentMapping
     {
-        private static readonly IDictionary<char, char> MappingDictionary = new Dictionary<char, char>
+        private static readonly IDictionary<char, string> MappingDictionary = new Dictionary<char, string>
         {
-            { 'ä', 'a' },
-            { 'ö', 'o' },
-            { 'õ', 'o' },
-            { 'ü', 'u' },
+            { 'ä', "a" },
+            { 'ö', "o" },
+            { 'õ', "o" },
+            { 'ü', "u" },
         };
 
-        public IDictionary<char, char> Mapping { get { return MappingDictionary; } }
+        public IDictionary<char, string> Mapping { get { return MappingDictionary; } }
     }
 }

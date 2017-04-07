@@ -4,19 +4,19 @@ namespace Diacritics.AccentMappings
 {
     public class CatalanAccentsMapping : IAccentMapping
     {
-        private static readonly IDictionary<char, char> MappingDictionary = new Dictionary<char, char>
+        private static readonly IDictionary<char, string> MappingDictionary = new Dictionary<char, string>
         {
-            { 'à', 'a' },
-            { 'è', 'e' },
-            { 'é', 'e' },
-            { 'í', 'i' },
-            { 'ï', 'i' },
-            { 'ò', 'o' },
-            { 'ó', 'o' },
-            { 'ú', 'u' },
-            { 'ü', 'u' },
+            { 'à', "a" },
+            { 'è', "e" },
+            { 'é', "e" },
+            { 'í', "i" },
+            { 'ï', "i" },
+            { 'ò', "o" },
+            { 'ó', "o" },
+            { 'ú', "u" },
+            { 'ü', "u" },
         };
 
-        public IDictionary<char, char> Mapping { get { return MappingDictionary; } }
+        public IDictionary<char, string> Mapping { get { return MappingDictionary; } }
     }
 }

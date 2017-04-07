@@ -4,11 +4,11 @@ namespace Diacritics.AccentMappings
 {
     public class EnglishAccentsMapping : IAccentMapping
     {
-        private static readonly IDictionary<char, char> MappingDictionary = new Dictionary<char, char>
+        private static readonly IDictionary<char, string> MappingDictionary = new Dictionary<char, string>
         {
-            { 'é', 'e' },
+            { 'é', "e" },
         };
 
-        public IDictionary<char, char> Mapping { get { return MappingDictionary; } }
+        public IDictionary<char, string> Mapping { get { return MappingDictionary; } }
     }
 }

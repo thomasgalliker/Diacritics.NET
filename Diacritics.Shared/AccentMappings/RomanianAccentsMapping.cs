@@ -4,17 +4,17 @@ namespace Diacritics.AccentMappings
 {
     public class RomanianAccentsMapping : IAccentMapping
     {
-        private static readonly IDictionary<char, char> MappingDictionary = new Dictionary<char, char>
+        private static readonly IDictionary<char, string> MappingDictionary = new Dictionary<char, string>
         {
-            { 'ă', 'a' },
-            { 'â', 'a' },
-            { 'î', 'i' },
-            { 'ş', 's' },
-            { 'ș', 's' },
-            { 'ţ', 't' },
-            { 'ț', 't' },
+            { 'ă', "a" },
+            { 'â', "a" },
+            { 'î', "i" },
+            { 'ş', "s" },
+            { 'ș', "s" },
+            { 'ţ', "t" },
+            { 'ț', "t" },
         };
 
-        public IDictionary<char, char> Mapping { get { return MappingDictionary; } }
+        public IDictionary<char, string> Mapping { get { return MappingDictionary; } }
     }
 }
