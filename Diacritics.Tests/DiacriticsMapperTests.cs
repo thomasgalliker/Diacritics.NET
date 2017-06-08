@@ -99,6 +99,21 @@ namespace Diacritics.Tests
             // Assert
             output.Should().Be(ExpectedText);
         }
+
+        [Fact]
+        public void ShouldRemoveEszett()
+        {
+            // Arrange
+            IDiacriticsMapper diacriticsMapper = new DiacriticsMapper(new GermanAccentsMapping());
+            const string InputText = "Paßstraße";
+            const string ExpectedText = "Passstrasse";
+
+            // Act
+            var output = diacriticsMapper.RemoveDiacritics(InputText);
+
+            // Assert
+            output.Should().Be(ExpectedText);
+        }
         #endregion
 
         #region HasDiacritics

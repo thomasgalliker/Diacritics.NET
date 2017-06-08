@@ -9,7 +9,7 @@ namespace Diacritics.AccentMappings
             { 'ä', "a" },
             { 'ö', "o" },
             { 'ü', "u" },
-            { 'ß', "s" },
+            { 'ß', "ss" },
         };
 
         public IDictionary<char, string> Mapping { get { return MappingDictionary; } }
