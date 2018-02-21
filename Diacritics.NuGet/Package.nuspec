@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>Diacritics</id>
-    <version>1.0.5</version>
+    <version>1.0.6</version>
     <title>Diacritics.NET</title>
     <authors>Thomas Galliker</authors>
     <licenseUrl>http://opensource.org/licenses/Apache-2.0</licenseUrl>
@@ -20,47 +20,50 @@
       windows phone winphone wp8 wpa81 win81 windowsphone uwp android xamarin.forms xamarin.ios ios monoandroid monodroid monotouch
     </tags>
     <releaseNotes>
-      1.0.5
-      - Add support for combined cedilla characters
-      - Fix German ß mapping to ss
+1.0.6
+- Add Spanish ñ mapping to n
 
-      1.0.4
-      - Add .Net 4.5 implementation as dedicated assembly
-      - Add missing accents mappings
-      - Bug fix: Russian accents mapping fixed
+1.0.5
+- Add support for combined cedilla characters
+- Fix German ß mapping to ss
 
-      1.0.3
-      - Bug fix: RemoveDiacritics now also removes upper case diacritic characters
-      - Bug fix: Correct handling of first letter upper case characters
+1.0.4
+- Add .Net 4.5 implementation as dedicated assembly
+- Add missing accents mappings
+- Bug fix: Russian accents mapping fixed
 
-      1.0.2
-      - Improved initialization performance by factor 8
+1.0.3
+- Bug fix: RemoveDiacritics now also removes upper case diacritic characters
+- Bug fix: Correct handling of first letter upper case characters
 
-      1.0.1
-      - Added ArabicAccentsMapping
-      - Added BulgarianAccentsMapping
-      - Added CatalanAccentsMapping
-      - Added CroatianAccentsMapping
-      - Added CzechAccentsMapping
-      - Added DutchAccentsMapping
-      - Added EnglishAccentsMapping
-      - Added EstonianAccentsMapping
-      - Added FilipinoAccentsMapping
-      - Added FrenchAccentsMapping
-      - Added GermanAccentsMapping
-      - Added GreekAccentsMapping
-      - Added HungarianAccentsMapping
-      - Added IcelandicAccentsMapping
-      - Added ItalianAccentsMapping
-      - Added LatvianAccentsMapping
-      - Added PolishAccentsMapping
-      - Added PortugueseAccentsMapping
-      - Added RomanianAccentsMapping
-      - Added RussianAccentsMapping
-      - Added SlovakianAccentsMapping
-      - Added SpanishAccentsMapping
-      - Added TurkishAccentsMapping
-      - Added UkarainianAccentsMapping
+1.0.2
+- Improved initialization performance by factor 8
+
+1.0.1
+- Added ArabicAccentsMapping
+- Added BulgarianAccentsMapping
+- Added CatalanAccentsMapping
+- Added CroatianAccentsMapping
+- Added CzechAccentsMapping
+- Added DutchAccentsMapping
+- Added EnglishAccentsMapping
+- Added EstonianAccentsMapping
+- Added FilipinoAccentsMapping
+- Added FrenchAccentsMapping
+- Added GermanAccentsMapping
+- Added GreekAccentsMapping
+- Added HungarianAccentsMapping
+- Added IcelandicAccentsMapping
+- Added ItalianAccentsMapping
+- Added LatvianAccentsMapping
+- Added PolishAccentsMapping
+- Added PortugueseAccentsMapping
+- Added RomanianAccentsMapping
+- Added RussianAccentsMapping
+- Added SlovakianAccentsMapping
+- Added SpanishAccentsMapping
+- Added TurkishAccentsMapping
+- Added UkarainianAccentsMapping
     </releaseNotes>
     <copyright>Copyright 2016</copyright>
     <language>en-US</language>
