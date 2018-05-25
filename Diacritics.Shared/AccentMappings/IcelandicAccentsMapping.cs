@@ -7,6 +7,7 @@ namespace Diacritics.AccentMappings
         private static readonly IDictionary<char, string> MappingDictionary = new Dictionary<char, string>
         {
             { 'ö', "o" },
+            { 'ð', "o" },
         };
 
         public IDictionary<char, string> Mapping { get { return MappingDictionary; } }
