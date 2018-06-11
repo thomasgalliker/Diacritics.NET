@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2011
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diacritics.Tests", "Diacritics.Tests\Diacritics.Tests.csproj", "{D8F20DC2-E69A-4432-A68B-FD4A8232BA43}"
 EndProject
@@ -14,6 +14,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diacritics.Net45", "Diacritics.Net45\Diacritics.Net45.csproj", "{5574F7BE-29F8-4CD6-93F6-C6D7CDB15B7D}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Diacritics.Shared", "Diacritics.Shared\Diacritics.Shared.shproj", "{6E0AA8C3-1B54-4DF5-99D2-2DCA3A6F5190}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diacritics.NetStandard", "Diacritics.NetStandard\Diacritics.NetStandard.csproj", "{7DA72CC0-ABF7-41F5-BF29-8D8886916DE9}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -42,11 +44,18 @@ Global
 		{5574F7BE-29F8-4CD6-93F6-C6D7CDB15B7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5574F7BE-29F8-4CD6-93F6-C6D7CDB15B7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5574F7BE-29F8-4CD6-93F6-C6D7CDB15B7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DA72CC0-ABF7-41F5-BF29-8D8886916DE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DA72CC0-ABF7-41F5-BF29-8D8886916DE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DA72CC0-ABF7-41F5-BF29-8D8886916DE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DA72CC0-ABF7-41F5-BF29-8D8886916DE9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{2CF5E868-1098-4C6D-9001-27D8DC0D87BE} = {BDCBE467-1A49-4483-BFFC-80BC240F74FF}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {46294172-BC59-4710-8105-CF322C619EA8}
 	EndGlobalSection
 EndGlobal

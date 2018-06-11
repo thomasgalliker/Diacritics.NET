@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.0</TargetFramework>
+    <AssemblyName>Diacritics</AssemblyName>
+    <RootNamespace>Diacritics</RootNamespace>
+  </PropertyGroup>
+
+  <Import Project="..\Diacritics.Shared\Diacritics.Shared.projitems" Label="Shared" />
+
+</Project>

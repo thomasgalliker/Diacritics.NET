@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>Diacritics</id>
-    <version>1.0.6</version>
+    <version>1.0.7-pre1</version>
     <title>Diacritics.NET</title>
     <authors>Thomas Galliker</authors>
     <licenseUrl>http://opensource.org/licenses/Apache-2.0</licenseUrl>
@@ -20,6 +20,9 @@
       windows phone winphone wp8 wpa81 win81 windowsphone uwp android xamarin.forms xamarin.ios ios monoandroid monodroid monotouch
     </tags>
     <releaseNotes>
+1.0.7
+- 
+
 1.0.6
 - Add Spanish ñ mapping to n
 
@@ -65,7 +68,7 @@
 - Added TurkishAccentsMapping
 - Added UkarainianAccentsMapping
     </releaseNotes>
-    <copyright>Copyright 2016</copyright>
+    <copyright>Copyright 2018</copyright>
     <language>en-US</language>
     <dependencies>
     </dependencies>
@@ -80,6 +83,11 @@
     <file src="..\Diacritics.Net45\bin\Release\Diacritics.dll" target="lib\net45\Diacritics.dll" />
     <file src="..\Diacritics.Net45\bin\Release\Diacritics.xml" target="lib\net45\Diacritics.xml" />
     <file src="..\Diacritics.Net45\bin\Release\Diacritics.pdb" target="lib\net45\Diacritics.pdb" />
+
+    <!--Net Standard 1.0-->
+    <file src="..\Diacritics.NetStandard\bin\Release\netstandard1.0\Diacritics.dll" target="lib\netstandard1.0\Diacritics.dll" />
+    <file src="..\Diacritics.NetStandard\bin\Release\netstandard1.0\Diacritics.pdb" target="lib\netstandard1.0\Diacritics.pdb" />
+    <file src="..\Diacritics.NetStandard\bin\Release\netstandard1.0\Diacritics.deps.json" target="lib\netstandard1.0\Diacritics.deps.json" />
 
     <file src="tools\init.ps1" target="tools\init.ps1" />
     <file src="tools\install.ps1" target="tools\install.ps1" />
