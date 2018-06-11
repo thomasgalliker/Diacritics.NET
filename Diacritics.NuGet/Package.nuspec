@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>Diacritics</id>
-    <version>1.0.7-pre1</version>
+    <version>1.0.7-pre2</version>
     <title>Diacritics.NET</title>
     <authors>Thomas Galliker</authors>
     <licenseUrl>http://opensource.org/licenses/Apache-2.0</licenseUrl>
@@ -21,7 +21,8 @@
     </tags>
     <releaseNotes>
 1.0.7
-- 
+- Support for .Net Standard 1.0
+- Add Icelandic ð mapping to o
 
 1.0.6
 - Add Spanish ñ mapping to n
