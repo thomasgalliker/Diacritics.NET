@@ -8,6 +8,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diacritics", "Diacritics\Diacritics.csproj", "{CBA31ECF-3D41-4AF0-B966-7815F2AD25E9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diacritics.NuGet", "Diacritics.NuGet\Diacritics.NuGet.csproj", "{2CF5E868-1098-4C6D-9001-27D8DC0D87BE}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5574F7BE-29F8-4CD6-93F6-C6D7CDB15B7D} = {5574F7BE-29F8-4CD6-93F6-C6D7CDB15B7D}
+		{7DA72CC0-ABF7-41F5-BF29-8D8886916DE9} = {7DA72CC0-ABF7-41F5-BF29-8D8886916DE9}
+		{CBA31ECF-3D41-4AF0-B966-7815F2AD25E9} = {CBA31ECF-3D41-4AF0-B966-7815F2AD25E9}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nuget", "nuget", "{BDCBE467-1A49-4483-BFFC-80BC240F74FF}"
 EndProject
@@ -15,7 +20,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diacritics.Net45", "Diacrit
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Diacritics.Shared", "Diacritics.Shared\Diacritics.Shared.shproj", "{6E0AA8C3-1B54-4DF5-99D2-2DCA3A6F5190}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diacritics.NetStandard", "Diacritics.NetStandard\Diacritics.NetStandard.csproj", "{7DA72CC0-ABF7-41F5-BF29-8D8886916DE9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Diacritics.NetStandard", "Diacritics.NetStandard\Diacritics.NetStandard.csproj", "{7DA72CC0-ABF7-41F5-BF29-8D8886916DE9}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
