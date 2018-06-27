@@ -1,4 +1,6 @@
 # Diacritics.NET
+[![Version](https://img.shields.io/nuget/v/Diacritics.svg)](https://www.nuget.org/packages/Diacritics)  [![Downloads](https://img.shields.io/nuget/dt/Diacritics.svg)](https://www.nuget.org/packages/Diacritics)
+
 <img src="https://raw.githubusercontent.com/thomasgalliker/Diacritics.NET/master/logo.png" alt="Diacritics.NET" align="right">
 Diacritics are used across many languages in order to change the sound-values of the letters to which they are added.
 In software development, diacritics often have to be replaced with non-diacritics, e.g. to improve usability of user input.
