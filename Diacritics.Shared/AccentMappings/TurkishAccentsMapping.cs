@@ -12,6 +12,7 @@ namespace Diacritics.AccentMappings
                                                                                     { 'ğ', "g" },
                                                                                     { 'İ', "i" },
                                                                                     { 'ï', "i" },
+                                                                                    { 'ı', "i" },
                                                                                     { 'ó', "o" },
                                                                                     { 'ö', "o" },
                                                                                     { 'ü', "u" },
