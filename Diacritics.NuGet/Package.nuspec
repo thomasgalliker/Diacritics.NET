@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>Diacritics</id>
-    <version>1.0.7</version>
+    <version>1.0.8-pre1</version>
     <title>Diacritics.NET</title>
     <authors>Thomas Galliker</authors>
     <licenseUrl>http://opensource.org/licenses/Apache-2.0</licenseUrl>
@@ -20,6 +20,9 @@
       windows phone winphone wp8 wpa81 win81 windowsphone uwp android xamarin.forms xamarin.ios ios monoandroid monodroid monotouch
     </tags>
     <releaseNotes>
+1.0.8
+- Add Turkish ı mapping to i
+
 1.0.7
 - Support for .Net Standard 1.0
 - Add Icelandic ð mapping to o
