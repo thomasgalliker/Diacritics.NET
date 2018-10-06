@@ -8,7 +8,7 @@
     <Authors>Thomas Galliker</Authors>
     <TargetFrameworks>netstandard1.2;net45</TargetFrameworks>
     <AssemblyName>Diacritics</AssemblyName>
-    <PackageId>Diacritics.NET</PackageId>
+    <PackageId>Diacritics</PackageId>
     <PackageTags>diacritics;diacritic;Diacritics.NET plugin for diacritics special character replacement;special;character;replacement</PackageTags>
     <PackageIconUrl>https://raw.githubusercontent.com/thomasgalliker/Diacritics.NET/master/logo.png</PackageIconUrl>
     <PackageProjectUrl>https://github.com/thomasgalliker/Diacritics.NET</PackageProjectUrl>
