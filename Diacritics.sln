@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2011
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diacritics.Tests", "Diacritics.Tests\Diacritics.Tests.csproj", "{D8F20DC2-E69A-4432-A68B-FD4A8232BA43}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diacritics", "Diacritics\Diacritics.csproj", "{CBA31ECF-3D41-4AF0-B966-7815F2AD25E9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diacritics.NuGet", "Diacritics.NuGet\Diacritics.NuGet.csproj", "{2CF5E868-1098-4C6D-9001-27D8DC0D87BE}"
@@ -22,6 +20,10 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Diacritics.Shared", "Diacri
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Diacritics.NetStandard", "Diacritics.NetStandard\Diacritics.NetStandard.csproj", "{7DA72CC0-ABF7-41F5-BF29-8D8886916DE9}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{82C933E0-5F3A-46DD-BE18-233590F11503}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diacritics.Tests", "Tests\Diacritics.Tests\Diacritics.Tests.csproj", "{D8F20DC2-E69A-4432-A68B-FD4A8232BA43}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Diacritics.Shared\Diacritics.Shared.projitems*{5574f7be-29f8-4cd6-93f6-c6d7cdb15b7d}*SharedItemsImports = 4
@@ -33,10 +35,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D8F20DC2-E69A-4432-A68B-FD4A8232BA43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D8F20DC2-E69A-4432-A68B-FD4A8232BA43}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D8F20DC2-E69A-4432-A68B-FD4A8232BA43}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D8F20DC2-E69A-4432-A68B-FD4A8232BA43}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CBA31ECF-3D41-4AF0-B966-7815F2AD25E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CBA31ECF-3D41-4AF0-B966-7815F2AD25E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CBA31ECF-3D41-4AF0-B966-7815F2AD25E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -53,12 +51,17 @@ Global
 		{7DA72CC0-ABF7-41F5-BF29-8D8886916DE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7DA72CC0-ABF7-41F5-BF29-8D8886916DE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7DA72CC0-ABF7-41F5-BF29-8D8886916DE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8F20DC2-E69A-4432-A68B-FD4A8232BA43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8F20DC2-E69A-4432-A68B-FD4A8232BA43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8F20DC2-E69A-4432-A68B-FD4A8232BA43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8F20DC2-E69A-4432-A68B-FD4A8232BA43}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{2CF5E868-1098-4C6D-9001-27D8DC0D87BE} = {BDCBE467-1A49-4483-BFFC-80BC240F74FF}
+		{D8F20DC2-E69A-4432-A68B-FD4A8232BA43} = {82C933E0-5F3A-46DD-BE18-233590F11503}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {46294172-BC59-4710-8105-CF322C619EA8}
