@@ -1,7 +1,5 @@
 ﻿using Diacritics.AccentMappings;
-
 using FluentAssertions;
-
 using Xunit;
 
 namespace Diacritics.Tests

@@ -1,9 +1,8 @@
-﻿
-using Diacritics.Extensions;
+﻿using Diacritics.Extensions;
 using FluentAssertions;
 using Xunit;
 
-namespace Diacritics.Tests
+namespace Diacritics.Tests.Extensions
 {
     public class StringExtensionsTests
     {

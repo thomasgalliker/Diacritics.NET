@@ -47,7 +47,7 @@
     <Company>superdev GmbH</Company>
     <Product>Diacritics.NET</Product>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <RootNamespace>System.Diagnostics</RootNamespace>
+    <RootNamespace>Diacritics</RootNamespace>
     <PackageReleaseNotes>2.0.0
 - Refactoring to NetStandard + NET 4.5.2
 
