@@ -52,4 +52,4 @@ You are highly welcome to contribute to this library. Just create a fork, commit
 TODO: Add/Remove methods for adding/removing accents at runtime.
 
 ### License
-This project is Copyright &copy; 2015 [Thomas Galliker](https://ch.linkedin.com/in/thomasgalliker). Free for non-commercial use. For commercial use please contact the author.
+This project is Copyright &copy; 2018 [Thomas Galliker](https://ch.linkedin.com/in/thomasgalliker). Free for non-commercial use. For commercial use please contact the author.
