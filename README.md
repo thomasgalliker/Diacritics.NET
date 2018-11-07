@@ -19,8 +19,7 @@ You can use this library in any .Net project which is compatible to PCL (e.g. Xa
 The most common use case of this library is to detect and remove diacritic characters from a given string.
 
 HasDiacritics simply tells you if the given string contains any diacritic character. The effort for this check is the same as if you remove the characters using RemoveDiacritics.
-
-```
+```C#
 // Arrange
 const string InputString = "Je veux aller à Saint-Étienne";
 
@@ -32,7 +31,7 @@ hasDiacritics.Should().BeTrue();
 ```
 
 RemoveDiacritics returns a string for which all diacritics have been replaced.
-```
+```C#
 // Arrange
 const string InputString = "Je veux aller à Saint-Étienne";
 
@@ -42,14 +41,15 @@ string removeDiacritics = InputString.RemoveDiacritics();
 // Assert
 removeDiacritics.Should().Be("Je veux aller a Saint-Etienne");
 ```
+
 #### Using Diacritics with IoC
 The example shown above uses extension methods which use a default implementation of ```IDiacriticsMapper```, namely type ```DefaultDiacriticsMapper```. If you're using an IoC container, you can register ```IDiacriticsMapper``` either with the provided ```DefaultDiacriticsMapper``` or with your own implementation of ```IDiacriticsMapper```.
 
 #### Add custom diactrics mappings
-Diacritics is extensible! You can write your own language accent by implementing ```IAccentMapping``` (or ```AccentMapping``` base class). ```DiacriticsMapper``` accepts any ```IAccentMappin```g type at construction time.
+Diacritics is extensible! You can write your own language accent by implementing ```IAccentMapping``` (or ```AccentMapping``` base class). ```DiacriticsMapper``` accepts any ```IAccentMapping```g type at construction time.
 You are highly welcome to contribute to this library. Just create a fork, commit your changes and create a pull request.
 
 TODO: Add/Remove methods for adding/removing accents at runtime.
 
 ### License
-This project is Copyright &copy; 2015 [Thomas Galliker](https://ch.linkedin.com/in/thomasgalliker). Free for non-commercial use. For commercial use please contact the author.
+This project is Copyright &copy; 2018 [Thomas Galliker](https://ch.linkedin.com/in/thomasgalliker). Free for non-commercial use. For commercial use please contact the author.
