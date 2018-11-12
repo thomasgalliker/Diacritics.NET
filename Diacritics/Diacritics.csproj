@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <Description>Diacritics are used across many languages in order to change the sound-values of the letters to which they are added. In software development, diacritics often have to be replaced with non-diacritics, e.g. to improve usability of user input. Diacritics.NET is a basic mapper between diacritic characters an non-diacritic characters.</Description>
@@ -20,10 +20,6 @@
     <NetStandardImplicitPackageVersion Condition=" '$(TargetFramework)' == 'netstandard1.2' ">1.6.1</NetStandardImplicitPackageVersion>
     <SignAssembly>True</SignAssembly>
   </PropertyGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.2'">
-    <PackageReference Include="System.Console" Version="4.3.0" />
-  </ItemGroup>
 
   <PropertyGroup Condition=" '$(TargetFramework)' == 'net45' ">
     <DefineConstants>$(DefineConstants);NET45</DefineConstants>
