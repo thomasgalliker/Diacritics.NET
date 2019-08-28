@@ -33,8 +33,12 @@
     <Product>Diacritics.NET</Product>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <RootNamespace>Diacritics</RootNamespace>
-    <PackageReleaseNotes>2.0.0
+    <PackageReleaseNotes>2.1.0
+- Performance improvements in RemoveDiacritics
+
+2.0.0
 - Refactoring to NetStandard + NET 4.5.2
+- Several bug fixes + new diacritics added
 
 1.0.8
 - Add Turkish ı mapping to i
@@ -87,7 +91,7 @@
 - Added SpanishAccentsMapping
 - Added TurkishAccentsMapping
 - Added UkarainianAccentsMapping</PackageReleaseNotes>
-    <Copyright>Copyright 2018</Copyright>
+    <Copyright>Copyright 2019</Copyright>
   </PropertyGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">

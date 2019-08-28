@@ -15,17 +15,27 @@ namespace Diacritics.Tests.Extensions
             var output = input.RemoveDiacritics();
 
             // Assert
-            hasDiacritics.Should().Be(expectedOutput.Item1);
             output.Should().Be(expectedOutput.Item2);
+            hasDiacritics.Should().Be(expectedOutput.Item1);
         }
 
         public class DiacriticsTestData : TheoryData<string, (bool, string)>
         {
             public DiacriticsTestData()
             {
+                // Lower case
+                this.Add("x", (false, "x"));
+
+                // Upper case
+                this.Add("X", (false, "X"));
+
+                // Mixed with special characters
                 this.Add("ÉÖüä$üàè", (true, "EOua$uae"));
+
+                // Random test words
                 this.Add("pingüino", (true, "pinguino"));
                 this.Add("étoile", (true, "etoile"));
+                this.Add("İngiltere", (true, "Ingiltere"));
             }
         }
     }
