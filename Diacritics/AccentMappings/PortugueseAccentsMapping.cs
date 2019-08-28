@@ -18,6 +18,7 @@ namespace Diacritics.AccentMappings
             { 'ô', "o" },
             { 'ú', "u" },
             { 'ü', "u" },
+            { 'ç', "c" },
         };
 
         public IDictionary<char, string> Mapping { get { return MappingDictionary; } }
