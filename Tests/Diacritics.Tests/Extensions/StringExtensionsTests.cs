@@ -6,30 +6,27 @@ namespace Diacritics.Tests.Extensions
 {
     public class StringExtensionsTests
     {
-        [Fact]
-        public void ShouldTestHasDiacriticsExtensionMethod()
+        [Theory]
+        [ClassData(typeof(DiacriticsTestData))]
+        public void ShouldRemoveDiacritics(string input, (bool, string) expectedOutput)
         {
-            // Arrange
-            const string InputString = "àdslkfjlskf";
-
             // Act
-            bool hasDiacritics = InputString.HasDiacritics();
+            var hasDiacritics = input.HasDiacritics();
+            var output = input.RemoveDiacritics();
 
             // Assert
-            hasDiacritics.Should().BeTrue();
+            hasDiacritics.Should().Be(expectedOutput.Item1);
+            output.Should().Be(expectedOutput.Item2);
         }
 
-        [Fact]
-        public void ShouldTestRemoveDiacriticsExtensionMethod()
+        public class DiacriticsTestData : TheoryData<string, (bool, string)>
         {
-            // Arrange
-            const string InputString = "àdslkfjlskf";
-
-            // Act
-            string removeDiacritics = InputString.RemoveDiacritics();
-
-            // Assert
-            removeDiacritics.Should().Be("adslkfjlskf");
+            public DiacriticsTestData()
+            {
+                this.Add("ÉÖüä$üàè", (true, "EOua$uae"));
+                this.Add("pingüino", (true, "pinguino"));
+                this.Add("étoile", (true, "etoile"));
+            }
         }
     }
 }
