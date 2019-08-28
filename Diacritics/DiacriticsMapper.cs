@@ -47,6 +47,11 @@ namespace Diacritics
 
         public string RemoveDiacritics(string input)
         {
+            if (string.IsNullOrWhiteSpace(input))
+            {
+                return input;
+            }
+
             var result = new StringBuilder(input.Length);
             var inputLowerCase = input.ToLowerInvariant();
 

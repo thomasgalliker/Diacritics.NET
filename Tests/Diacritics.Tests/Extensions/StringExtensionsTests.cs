@@ -23,6 +23,11 @@ namespace Diacritics.Tests.Extensions
         {
             public DiacriticsTestData()
             {
+                // Null, empty, whitespace
+                this.Add(null, (false, null));
+                this.Add("", (false, ""));
+                this.Add(" ", (false, " "));
+
                 // Lower case
                 this.Add("x", (false, "x"));
 
