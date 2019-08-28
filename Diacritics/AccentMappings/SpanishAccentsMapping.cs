@@ -11,6 +11,7 @@ namespace Diacritics.AccentMappings
             { 'í', "i" },
             { 'ó', "o" },
             { 'ú', "u" },
+            { 'ü', "u" },
             { 'ñ', "n" },
         };
 
