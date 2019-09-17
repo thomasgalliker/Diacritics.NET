@@ -1,0 +1,16 @@
+using System.Collections.Generic;
+
+namespace Diacritics.AccentMappings
+{
+    public class SwedishAccentsMapping : IAccentMapping
+    {
+        private static readonly IDictionary<char, string> MappingDictionary = new Dictionary<char, string>
+        {
+            { 'å', "a" },
+            { 'ä', "a" },
+            { 'ö', "o" },
+        };
+
+        public IDictionary<char, string> Mapping { get { return MappingDictionary; } }
+    }
+}
