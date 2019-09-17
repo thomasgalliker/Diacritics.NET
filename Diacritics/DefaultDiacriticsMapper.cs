@@ -10,6 +10,7 @@ namespace Diacritics
                 new CatalanAccentsMapping(),
                 new CroatianAccentsMapping(),
                 new CzechAccentsMapping(),
+                new DanishAccentsMapping(),
                 new DutchAccentsMapping(),
                 new EnglishAccentsMapping(),
                 new EstonianAccentsMapping(),
@@ -27,6 +28,7 @@ namespace Diacritics
                 new RussianAccentsMapping(),
                 new SlovakianAccentsMapping(),
                 new SpanishAccentsMapping(),
+                new SwedishAccentsMapping(),
                 new TurkishAccentsMapping(),
                 new UkarainianAccentsMapping(),
                 new OtherAccentsMapping())

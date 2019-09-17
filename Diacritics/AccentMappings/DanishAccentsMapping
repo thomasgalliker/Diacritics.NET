@@ -1,0 +1,18 @@
+using System.Collections.Generic;
+
+namespace Diacritics.AccentMappings
+{
+    public class DanishAccentsMapping : IAccentMapping
+    {
+        private static readonly IDictionary<char, string> MappingDictionary = new Dictionary<char, string>
+        {
+            { 'é', "e" },
+            { 'ó', "o" },
+            { 'æ', "ae" },
+            { 'ø', "o" },
+            { 'å', "aa" },
+        };
+
+        public IDictionary<char, string> Mapping { get { return MappingDictionary; } }
+    }
+}
