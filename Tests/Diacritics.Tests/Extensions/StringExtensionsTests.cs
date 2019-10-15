@@ -1,11 +1,40 @@
-﻿using Diacritics.Extensions;
-using FluentAssertions;
-using Xunit;
-
-namespace Diacritics.Tests.Extensions
+﻿namespace Diacritics.Tests.Extensions
 {
-    public class StringExtensionsTests
+    using System;
+
+    using Diacritics.Extensions;
+
+    using FluentAssertions;
+
+    using Moq;
+
+    using Xunit;
+
+    public class StringExtensionsTests : IDisposable
     {
+        public void Dispose()
+        {
+            StaticDiacritics.SetDefaultMapper(() => new DefaultDiacriticsMapper());
+        }
+
+        [Fact]
+        public void ShouldCallRemoveDiacriticsOnCustomMapperWhenCallRemoveDiacritics()
+        {
+            //Arrange
+            const string expectedValue = "it s work";
+            const string value = "ÉÖüä$üàè";
+            var diacriticsMapperMock = new Mock<IDiacriticsMapper>();
+            diacriticsMapperMock.Setup(mapper => mapper.RemoveDiacritics(value))
+                                .Returns(expectedValue);
+            StaticDiacritics.SetDefaultMapper(() => diacriticsMapperMock.Object);
+
+            // Act
+            var actual = value.RemoveDiacritics();
+
+            // Assert
+            actual.Should().Be(expectedValue);
+        }
+
         [Theory]
         [ClassData(typeof(DiacriticsTestData))]
         public void ShouldRemoveDiacritics(string input, (bool, string) expectedOutput)
