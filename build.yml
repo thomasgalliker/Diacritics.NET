@@ -1,49 +1,55 @@
 ####################################################################
-# VSTS Build Configuration, Version 1.1
-# 
-# (c)2018 superdev GmbH
+# VSTS Build Configuration, Version 1.3
+#
+# (c)2019 superdev GmbH
 ####################################################################
 
 name: 2.1.$(date:yy)$(DayOfYear).$(rev:rr)
-  
-queue:
-  name: Hosted VS2017
-  demands: 
-  - msbuild
-  - visualstudio
-  - vstest
+
+pool:
+  vmImage: 'windows-2019'
 
 trigger:
-- master
-- develop
-- release/*
+  branches:
+    include:
+    - master
+    - develop
+    - release/*
+    - feature/*
+
+  paths:
+    exclude:
+    - README.md
+
+variables:
+  solution: 'Diacritics.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+  disable.coverage.autogenerate: 'true'
 
 steps:
-- task: bleddynrichards.Assembly-Info-Task.Assembly-Info-Task.Assembly-Info-Task@1
+- task: bleddynrichards.Assembly-Info-Task.Assembly-Info-NetCore.Assembly-Info-NetCore@2
   displayName: 'Set Assembly Manifest Data'
   inputs:
     FileNames: |
      Diacritics.csproj
     InsertAttributes: true
-    Title: 'Diacritics'
+    Product: 'Diacritics'
     Description: ''
     Company: 'superdev GmbH'
-    Copyright: '(c) $(date:yyyy) superdev GmbH'
+    Copyright: '(c) $(date:YYYY) superdev GmbH'
     VersionNumber: '$(Build.BuildNumber)'
     FileVersionNumber: '$(Build.BuildNumber)'
-
 
 - task: NuGetToolInstaller@0
   displayName: 'Use NuGet 4.4.1'
   inputs:
     versionSpec: 4.4.1
 
-
 - task: NuGetCommand@2
   displayName: 'NuGet restore'
   inputs:
     restoreSolution: '$(Parameters.solution)'
-
 
 - powershell: |
    Write-Host "##vso[task.setvariable variable=PackageVersion]$(Build.BuildNumber)"
@@ -63,8 +69,16 @@ steps:
   inputs:
     command: test
     projects: '**/*.Tests.csproj'
-    arguments: ''
+    arguments: '--no-build --configuration $(buildConfiguration) /p:CollectCoverage=true /p:Exclude="[Microsoft*]*%2C[xunit*]*%2C[*.Testdata]*" /p:CoverletOutput=UnitTests.coverage.cobertura.xml /p:MergeWith=$(Build.SourcesDirectory)/Tests/CoverletOutput/coverage.json /p:CoverletOutputFormat=cobertura'
 
+- task: Palmmedia.reportgenerator.reportgenerator-build-release-task.reportgenerator@4
+  displayName: 'Create Code Coverage Report'
+  inputs:
+    reports: '$(Build.SourcesDirectory)/Tests/**/*.coverage.cobertura.xml'
+    targetdir: '$(Build.SourcesDirectory)/CodeCoverage'
+    reporttypes: 'HtmlInline_AzurePipelines;Cobertura'
+    assemblyfilters: '-xunit*'
+    
 - task: DotNetCoreCLI@2
   displayName: 'Pack NuGet PreRelease'
   inputs:
@@ -85,13 +99,17 @@ steps:
   displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
   inputs:
     SourceFolder: '$(system.defaultworkingdirectory)'
-
     Contents: |
      **\bin\$(BuildConfiguration)\**
      **\bin\*.nupkg
-
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
+- task: PublishCodeCoverageResults@1
+  displayName: 'Publish code coverage'
+  inputs:
+    codeCoverageTool: Cobertura
+    summaryFileLocation: '$(Build.SourcesDirectory)/CodeCoverage/Cobertura.xml'
+    reportDirectory: '$(Build.SourcesDirectory)/CodeCoverage'
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: drop'
