@@ -1,8 +1,8 @@
-﻿namespace Diacritics
-{
-    using System;
-    using System.Threading;
+﻿using System;
+using System.Threading;
 
+namespace Diacritics
+{
     public static class StaticDiacritics
     {
         private static Lazy<IDiacriticsMapper> implementation;
