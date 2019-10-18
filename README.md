@@ -6,7 +6,7 @@ Diacritics are used across many languages in order to change the sound-values of
 In software development, diacritics often have to be replaced with non-diacritics, e.g. to improve usability of user input.
 Diacritics.NET is a basic mapper between diacritic characters an non-diacritic characters.
 
-### Download and Install Diacritics
+## Download and Install Diacritics
 This library is available on NuGet: https://www.nuget.org/packages/Diacritics/
 Use the following command to install Diacritics using NuGet package manager console:
 
@@ -14,8 +14,8 @@ Use the following command to install Diacritics using NuGet package manager cons
 
 You can use this library in any .Net project which is compatible to PCL (e.g. Xamarin Android, iOS, Windows Phone, Windows Store, Universal Apps, etc.)
 
-### API Usage
-#### Replace diacritic characters
+## API Usage
+### Replace diacritic characters
 The most common use case of this library is to find and replace diacritic characters in a given string.
 `RemoveDiacritics` is a string extension method which returns a diacritics-free string.
 
@@ -30,7 +30,7 @@ string removeDiacritics = InputString.RemoveDiacritics();
 removeDiacritics.Should().Be("Je veux aller a Saint-Etienne");
 ```
 
-#### Find diacritic characters
+### Find diacritic characters
 The most common use case of this library is to detect and remove diacritic characters from a given string.
 If you just want to check whether a string contains diacritics, use the string extensions method `HasDiacritics`.
 
@@ -45,17 +45,17 @@ bool hasDiacritics = InputString.HasDiacritics();
 hasDiacritics.Should().BeTrue();
 ```
 
-#### Using Diacritics with IoC
+### Using Diacritics with IoC
 The example shown above uses extension methods which use a default implementation of `IDiacriticsMapper`, namely type ```DefaultDiacriticsMapper```. If you're using an IoC container, you can register `IDiacriticsMapper` either with the provided ```DefaultDiacriticsMapper``` or with your own implementation of ```IDiacriticsMapper```.
 
-#### Add custom diactrics mappings
+### Add custom diactrics mappings
 Diacritics is extensible. You can write your own language accent by implementing `IAccentMapping` (or `AccentMapping` base class). `DiacriticsMapper` accepts any `IAccentMapping` type at construction time.
 You are highly welcome to contribute to this library. Just create a fork, commit your changes and create a pull request.
 
 `TODO: Add/Remove methods for adding/removing accents at runtime.`
 
 
-#### Benchmark Tests
+### Benchmark Tests
 
 **Tested Version**<br>
 https://www.nuget.org/packages/Diacritics/2.1.19291.8-pre
@@ -87,5 +87,5 @@ WarmupCount=3
   Rank   : Relative position of current benchmark mean among all benchmarks (Arabic style)<br>
   1 ns   : 1 Nanosecond (0.000000001 sec)<br>
 
-### License
+## License
 This project is Copyright &copy; 2019 [Thomas Galliker](https://ch.linkedin.com/in/thomasgalliker). Free for non-commercial use. For commercial use please contact the author.
