@@ -1,31 +1,23 @@
-﻿namespace Diacritics.Tests.Extensions
+﻿using System;
+using Diacritics.Extensions;
+using FluentAssertions;
+using Moq;
+using Xunit;
+
+namespace Diacritics.Tests.Extensions
 {
-    using System;
-
-    using Diacritics.Extensions;
-
-    using FluentAssertions;
-
-    using Moq;
-
-    using Xunit;
-
+    [Collection("StaticDiacritics")]
     public class StringExtensionsTests : IDisposable
     {
-        public void Dispose()
-        {
-            StaticDiacritics.SetDefaultMapper(() => new DefaultDiacriticsMapper());
-        }
-
         [Fact]
         public void ShouldCallRemoveDiacriticsOnCustomMapperWhenCallRemoveDiacritics()
         {
-            //Arrange
+            // Arrange
             const string expectedValue = "it s work";
             const string value = "ÉÖüä$üàè";
             var diacriticsMapperMock = new Mock<IDiacriticsMapper>();
             diacriticsMapperMock.Setup(mapper => mapper.RemoveDiacritics(value))
-                                .Returns(expectedValue);
+                .Returns(expectedValue);
             StaticDiacritics.SetDefaultMapper(() => diacriticsMapperMock.Object);
 
             // Act
@@ -71,6 +63,11 @@
                 this.Add("étoile", (true, "etoile"));
                 this.Add("İngiltere", (true, "Ingiltere"));
             }
+        }
+
+        public void Dispose()
+        {
+            StaticDiacritics.SetDefaultMapper(() => new DefaultDiacriticsMapper());
         }
     }
 }

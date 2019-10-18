@@ -5,6 +5,7 @@ using Xunit;
 
 namespace Diacritics.Tests
 {
+    [Collection("StaticDiacritics")]
     public class StaticDiacriticsTests : IDisposable
     {
         [Fact]
