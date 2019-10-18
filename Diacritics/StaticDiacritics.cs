@@ -1,23 +1,27 @@
 ﻿using System;
+using System.Threading;
 
 namespace Diacritics
 {
     public static class StaticDiacritics
     {
-        static readonly Lazy<IDiacriticsMapper> Implementation = new Lazy<IDiacriticsMapper>(CreateDefaultDiacriticsMapper, System.Threading.LazyThreadSafetyMode.PublicationOnly);
+        private static Lazy<IDiacriticsMapper> implementation;
 
-        public static IDiacriticsMapper Current
+        static StaticDiacritics()
         {
-            get
-            {
-                return Implementation.Value;
-            }
+            SetDefaultMapper(CreateDefaultDiacriticsMapper);
         }
 
-        static IDiacriticsMapper CreateDefaultDiacriticsMapper()
+        public static IDiacriticsMapper Current => implementation.Value;
+
+        public static void SetDefaultMapper(Func<IDiacriticsMapper> factory)
+        {
+            implementation = new Lazy<IDiacriticsMapper>(factory, LazyThreadSafetyMode.PublicationOnly);
+        }
+
+        private static IDiacriticsMapper CreateDefaultDiacriticsMapper()
         {
             return new DefaultDiacriticsMapper();
         }
     }
 }
-

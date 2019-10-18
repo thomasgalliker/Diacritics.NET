@@ -1,11 +1,32 @@
-﻿using Diacritics.Extensions;
+﻿using System;
+using Diacritics.Extensions;
 using FluentAssertions;
+using Moq;
 using Xunit;
 
 namespace Diacritics.Tests.Extensions
 {
-    public class StringExtensionsTests
+    [Collection("StaticDiacritics")]
+    public class StringExtensionsTests : IDisposable
     {
+        [Fact]
+        public void ShouldCallRemoveDiacriticsOnCustomMapperWhenCallRemoveDiacritics()
+        {
+            // Arrange
+            const string expectedValue = "it s work";
+            const string value = "ÉÖüä$üàè";
+            var diacriticsMapperMock = new Mock<IDiacriticsMapper>();
+            diacriticsMapperMock.Setup(mapper => mapper.RemoveDiacritics(value))
+                .Returns(expectedValue);
+            StaticDiacritics.SetDefaultMapper(() => diacriticsMapperMock.Object);
+
+            // Act
+            var actual = value.RemoveDiacritics();
+
+            // Assert
+            actual.Should().Be(expectedValue);
+        }
+
         [Theory]
         [ClassData(typeof(DiacriticsTestData))]
         public void ShouldRemoveDiacritics(string input, (bool, string) expectedOutput)
@@ -42,6 +63,11 @@ namespace Diacritics.Tests.Extensions
                 this.Add("étoile", (true, "etoile"));
                 this.Add("İngiltere", (true, "Ingiltere"));
             }
+        }
+
+        public void Dispose()
+        {
+            StaticDiacritics.SetDefaultMapper(() => new DefaultDiacriticsMapper());
         }
     }
 }

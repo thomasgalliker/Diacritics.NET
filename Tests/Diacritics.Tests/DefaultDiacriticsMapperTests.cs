@@ -7,6 +7,7 @@ using Xunit.Abstractions;
 
 namespace Diacritics.Tests
 {
+    [Collection("StaticDiacritics")]
     public class DefaultDiacriticsMapperTests
     {
         private readonly ITestOutputHelper testOutputHelper;
