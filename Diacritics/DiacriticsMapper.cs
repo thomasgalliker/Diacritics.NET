@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
 using Diacritics.AccentMappings;
 
 namespace Diacritics
@@ -48,35 +47,33 @@ namespace Diacritics
 
         public string RemoveDiacritics(string input)
         {
-            int startIndex = 0;
-            int currentIndex = 0;
-            var result = new StringBuilder(input.Length);
-            var source = input.ToLower();
-
-            while ((currentIndex = source.IndexOfAny(this.diacriticsMapping.Keys.ToArray(), startIndex)) != -1)
-            {
-                result.Append(input.Substring(startIndex, currentIndex - startIndex));
-                var diacriticChar = source[currentIndex];
-                var diacriticRemovedChar = this.diacriticsMapping[diacriticChar];
-
-                // If the diacritic character from the input is an uppercase letter,
-                // we also want to have the non-diacritic character to be an uppercase letter.
-                if (char.IsUpper(input[currentIndex]))
-                {
-                    diacriticRemovedChar = diacriticRemovedChar.ToUpper();
-                }
-
-                result.Append(diacriticRemovedChar);
-
-                startIndex = currentIndex + 1;
-            }
-
-            if (startIndex == 0)
+            if (string.IsNullOrWhiteSpace(input))
             {
                 return input;
             }
 
-            result.Append(input.Substring(startIndex));
+            var result = new StringBuilder(input.Length);
+            var inputLowerCase = input.ToLowerInvariant();
+
+            for (var currentIndex = 0; currentIndex < input.Length; currentIndex++)
+            {
+                var characterLowerCase = inputLowerCase[currentIndex];
+                if (this.diacriticsMapping.TryGetValue(characterLowerCase, out var diacriticRemovedChar))
+                {
+                    // If the diacritic character from the input is an uppercase letter,
+                    // we also want to have the non-diacritic character to be an uppercase letter.
+                    if (char.IsUpper(input[currentIndex]))
+                    {
+                        diacriticRemovedChar = diacriticRemovedChar.ToUpper();
+                    }
+
+                    result.Append(diacriticRemovedChar);
+                }
+                else
+                {
+                    result.Append(input[currentIndex]);
+                }
+            }
 
             return result.ToString();
         }
