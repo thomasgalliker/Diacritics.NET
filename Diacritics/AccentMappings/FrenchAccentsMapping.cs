@@ -19,7 +19,7 @@ namespace Diacritics.AccentMappings
             { 'î', "i" },
             { 'ï', "i" },
             { 'ô', "o" },
-            { 'œ', "o" },
+            { 'œ', "oe" },
             { 'ù', "u" },
             { 'û', "u" },
             { 'ü', "u" },
