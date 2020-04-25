@@ -36,6 +36,7 @@
     <PackageReleaseNotes>2.1.0
 - Performance improvements in RemoveDiacritics
 - New method StaticDiacritics.SetDefaultMapper to replace the default IDiacriticsMapper
+- Add vietnamese mappings
 
 2.0.0
 - Refactoring to NetStandard + NET 4.5.2
