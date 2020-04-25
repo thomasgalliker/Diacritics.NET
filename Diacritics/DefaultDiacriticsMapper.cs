@@ -29,6 +29,7 @@ namespace Diacritics
                 new SpanishAccentsMapping(),
                 new TurkishAccentsMapping(),
                 new UkarainianAccentsMapping(),
+                new VietnameseAccentsMapping(),
                 new OtherAccentsMapping())
         {
         }

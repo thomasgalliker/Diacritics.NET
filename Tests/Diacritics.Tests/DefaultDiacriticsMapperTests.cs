@@ -30,7 +30,7 @@ namespace Diacritics.Tests
             stopwatch.Stop();
 
             // Assert
-            defaultDiacriticsMapping.Should().HaveCount(107);
+            defaultDiacriticsMapping.Should().HaveCount(117);
             this.testOutputHelper.WriteLine("stopwatch.ElapsedMilliseconds = {0}ms", stopwatch.ElapsedMilliseconds);
             //stopwatch.ElapsedMilliseconds.Should().BeLessThan(100);
         }
