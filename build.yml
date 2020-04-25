@@ -4,7 +4,7 @@
 # (c)2020 superdev GmbH
 ####################################################################
 
-name: 2.1.$(date:yy)$(DayOfYear).$(rev:rr)
+name: 3.0.$(date:yy)$(DayOfYear).$(rev:rr)
 
 pool:
   vmImage: 'windows-2019'

@@ -24,7 +24,9 @@ namespace Diacritics.Tests
         {
             public AccentMappingTestdata()
             {
-                this.Add("Cà phê sữa đá hay còn gọi đơn giản là cà phê sữa là một loại thức uống thông dụng ở Việt Nam.", "Cà phê sữa đá hay còn gọi đơn giản là cà phê sữa là một loại thức uống thông dụng o Việt Nam.");
+                this.Add(
+                    "Cà phê sữa đá hay còn gọi đơn giản là cà phê sữa là một loại thức uống thông dụng ở Việt Nam.", 
+                    "Ca phe sua đa hay con goi đon gian la ca phe sua la mot loai thuc uong thong dung o Viet Nam.");
             }
         }
     }

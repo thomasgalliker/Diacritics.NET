@@ -1,15 +1,15 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
 namespace Diacritics.AccentMappings
 {
-    public class GermanAccentsMapping : IAccentMapping
+    public partial class GermanAccentsMapping : IAccentMapping
     {
         private static readonly IDictionary<char, string> MappingDictionary = new Dictionary<char, string>
         {
-            { 'ä', "a" },
-            { 'ö', "o" },
-            { 'ü', "u" },
-            { 'ß', "ss" },
+			{ 'ß', "ss" },
+			{ 'ä', "a" },
+			{ 'ö', "o" },
+			{ 'ü', "u" }
         };
 
         public IDictionary<char, string> Mapping { get { return MappingDictionary; } }
