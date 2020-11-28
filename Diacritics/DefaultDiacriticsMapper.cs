@@ -15,9 +15,9 @@ namespace Diacritics
                 new CroatianAccentsMapping(),
                 new CzechAccentsMapping(),
                 new DutchAccentsMapping(),
-                new EnglishAccentsMapping(),
                 new EstonianAccentsMapping(),
                 new FilipinoAccentsMapping(),
+                new FinnishAccentsMapping(),
                 new FrenchAccentsMapping(),
                 new GermanAccentsMapping(),
                 new GreekAccentsMapping(),
@@ -25,21 +25,21 @@ namespace Diacritics
                 new IcelandicAccentsMapping(),
                 new ItalianAccentsMapping(),
                 new LatvianAccentsMapping(),
+                new OtherAccentsMapping(),
                 new PolishAccentsMapping(),
                 new PortugueseAccentsMapping(),
                 new RomanianAccentsMapping(),
                 new RussianAccentsMapping(),
                 new SlovakianAccentsMapping(),
                 new SpanishAccentsMapping(),
-                new SwissGermanAccentsMapping(),
                 new SwedishAccentsMapping(),
+                new SwissGermanAccentsMapping(),
                 new TamilAccentsMapping(),
                 new TonganAccentsMapping(),
                 new TurkishAccentsMapping(),
                 new UkarainianAccentsMapping(),
                 new UrduAccentsMapping(),
-                new VietnameseAccentsMapping(),
-                new OtherAccentsMapping())
+                new VietnameseAccentsMapping())
         {
         }
     }

@@ -4,11 +4,11 @@ namespace Diacritics.AccentMappings
 {
     public partial class TamilAccentsMapping : IAccentMapping
     {
-        private static readonly IDictionary<char, string> MappingDictionary = new Dictionary<char, string>
+        private static readonly IDictionary<char, MappingReplacement> MappingDictionary = new Dictionary<char, MappingReplacement>
         {
-			{ 'ஔ', "ஒ" }
+			{ 'ஔ', new MappingReplacement("ஒ", null, null) }
         };
 
-        public IDictionary<char, string> Mapping { get { return MappingDictionary; } }
+        public IDictionary<char, MappingReplacement> Mapping { get { return MappingDictionary; } }
     }
 }

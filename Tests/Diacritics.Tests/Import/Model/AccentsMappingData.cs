@@ -7,9 +7,11 @@ namespace Diacritics.Tests.Import
     {
         public char Source { get; set; }
 
-        public string Target { get; set; }
+        public string Base { get; set; }
 
         public string Decompose { get; set; }
+
+        public string DecomposeTitle { get; set; }
 
         public string Case { get; set; }
     }

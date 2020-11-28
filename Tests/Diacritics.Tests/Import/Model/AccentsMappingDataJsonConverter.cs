@@ -27,20 +27,33 @@ namespace Diacritics.Tests.Import
 
                     var childValue = ((JProperty)child).Value;
                     var @case = childValue["case"].Value<string>();
-                    if (@case == "upper")
-                    {
-                        continue;
-                    }
+                    //if (@case == "upper")
+                    //{
+                    //    continue;
+                    //}
 
                     var mapping = childValue["mapping"];
-                    var target = mapping["base"].Value<string>();
-                    var decompose = mapping["decompose"]["value"].Value<string>();
 
+                    string @base = null;
+                    if (mapping["base"] is JToken baseToken)
+                    {
+                        @base = baseToken.Value<string>();
+                    }
+
+                    string decompose = null;
+                    string decomposeTitle = null;
+                    if (mapping["decompose"] is JToken decomposeToken)
+                    {
+                        decompose = decomposeToken["value"]?.Value<string>();
+                        decomposeTitle = decomposeToken["titleCase"]?.Value<string>();
+                    }
+     
                     var accentsMappingData = new AccentsMappingData
                     {
                         Source = childName,
-                        Target = target,
+                        Base = @base,
                         Decompose = decompose,
+                        DecomposeTitle = decomposeTitle,
                         Case = @case,
                     };
 

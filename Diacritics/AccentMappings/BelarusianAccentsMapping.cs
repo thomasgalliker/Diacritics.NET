@@ -4,13 +4,16 @@ namespace Diacritics.AccentMappings
 {
     public partial class BelarusianAccentsMapping : IAccentMapping
     {
-        private static readonly IDictionary<char, string> MappingDictionary = new Dictionary<char, string>
+        private static readonly IDictionary<char, MappingReplacement> MappingDictionary = new Dictionary<char, MappingReplacement>
         {
-			{ 'й', "и" },
-			{ 'ё', "е" },
-			{ 'ў', "у" }
+			{ 'Ё', new MappingReplacement("Е", null, null) },
+			{ 'Ў', new MappingReplacement("У", null, null) },
+			{ 'Й', new MappingReplacement("И", null, null) },
+			{ 'й', new MappingReplacement("и", null, null) },
+			{ 'ё', new MappingReplacement("е", null, null) },
+			{ 'ў', new MappingReplacement("у", null, null) }
         };
 
-        public IDictionary<char, string> Mapping { get { return MappingDictionary; } }
+        public IDictionary<char, MappingReplacement> Mapping { get { return MappingDictionary; } }
     }
 }

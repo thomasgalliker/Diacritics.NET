@@ -4,15 +4,15 @@ namespace Diacritics.AccentMappings
 {
     public partial class UrduAccentsMapping : IAccentMapping
     {
-        private static readonly IDictionary<char, string> MappingDictionary = new Dictionary<char, string>
+        private static readonly IDictionary<char, MappingReplacement> MappingDictionary = new Dictionary<char, MappingReplacement>
         {
-			{ 'آ', "ا" },
-			{ 'أ', "ا" },
-			{ 'ؤ', "و" },
-			{ 'ئ', "ي" },
-			{ 'ۂ', "ہ" }
+			{ 'آ', new MappingReplacement("ا", null, null) },
+			{ 'أ', new MappingReplacement("ا", null, null) },
+			{ 'ؤ', new MappingReplacement("و", null, null) },
+			{ 'ئ', new MappingReplacement("ي", null, null) },
+			{ 'ۂ', new MappingReplacement("ہ", null, null) }
         };
 
-        public IDictionary<char, string> Mapping { get { return MappingDictionary; } }
+        public IDictionary<char, MappingReplacement> Mapping { get { return MappingDictionary; } }
     }
 }

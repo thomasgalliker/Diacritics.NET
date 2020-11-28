@@ -4,13 +4,12 @@ namespace Diacritics.AccentMappings
 {
     public partial class BulgarianAccentsMapping : IAccentMapping
     {
-        private static readonly IDictionary<char, string> MappingDictionary = new Dictionary<char, string>
+        private static readonly IDictionary<char, MappingReplacement> MappingDictionary = new Dictionary<char, MappingReplacement>
         {
-            { 'ъ', "ь" },
-            { 'ѝ', "и" },
-            { 'й', "и" }
+			{ 'Й', new MappingReplacement("И", null, null) },
+			{ 'й', new MappingReplacement("и", null, null) }
         };
 
-        public IDictionary<char, string> Mapping { get { return MappingDictionary; } }
+        public IDictionary<char, MappingReplacement> Mapping { get { return MappingDictionary; } }
     }
 }

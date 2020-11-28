@@ -1,28 +1,15 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
 namespace Diacritics.AccentMappings
 {
-    public class FilipinoAccentsMapping : IAccentMapping
+    public partial class FilipinoAccentsMapping : IAccentMapping
     {
-        private static readonly IDictionary<char, string> MappingDictionary = new Dictionary<char, string>
+        private static readonly IDictionary<char, MappingReplacement> MappingDictionary = new Dictionary<char, MappingReplacement>
         {
-            { 'á', "a" },
-            { 'à', "a" },
-            { 'â', "a" },
-            { 'é', "e" },
-            { 'è', "e" },
-            { 'ê', "e" },
-            { 'í', "i" },
-            { 'ì', "i" },
-            { 'î', "i" },
-            { 'ó', "o" },
-            { 'ò', "o" },
-            { 'ô', "o" },
-            { 'ú', "u" },
-            { 'ù', "u" },
-            { 'û', "u" },
+			{ 'Ñ', new MappingReplacement("N", null, null) },
+			{ 'ñ', new MappingReplacement("n", null, null) }
         };
 
-        public IDictionary<char, string> Mapping { get { return MappingDictionary; } }
+        public IDictionary<char, MappingReplacement> Mapping { get { return MappingDictionary; } }
     }
 }

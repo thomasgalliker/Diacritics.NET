@@ -8,7 +8,7 @@ namespace Diacritics.Tests
     {
         [Theory]
         [ClassData(typeof(AccentMappingTestdata))]
-        public void ShouldRemoveDiacriticsForAccentsMapping(string input, string expectedOutput)
+        public void ShouldRemoveDiacritics(string input, string expectedOutput)
         {
             // Arrange
             var mapper = new DiacriticsMapper(new VietnameseAccentsMapping());
