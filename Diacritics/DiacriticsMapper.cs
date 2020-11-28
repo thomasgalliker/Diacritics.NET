@@ -1,13 +1,36 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using Diacritics.AccentMappings;
 
 namespace Diacritics
 {
     public class DiacriticsMapper : IDiacriticsMapper
     {
+        #region DiacriticsMapper.Current
+        private static Lazy<IDiacriticsMapper> implementation;
+
+        static DiacriticsMapper()
+        {
+            SetDefaultMapper(CreateDefaultDiacriticsMapper);
+        }
+
+        public static IDiacriticsMapper Current => implementation.Value;
+
+        public static void SetDefaultMapper(Func<IDiacriticsMapper> factory)
+        {
+            implementation = new Lazy<IDiacriticsMapper>(factory, LazyThreadSafetyMode.PublicationOnly);
+        }
+
+        private static IDiacriticsMapper CreateDefaultDiacriticsMapper()
+        {
+            return new DefaultDiacriticsMapper();
+        }
+        #endregion
+
         private Dictionary<char, string> diacriticsMapping;
 
         public DiacriticsMapper(params IAccentMapping[] mappings)
@@ -45,7 +68,7 @@ namespace Diacritics
             return this.GetEnumerator();
         }
 
-        public string RemoveDiacritics(string input)
+        public string RemoveDiacritics(string input, DiacriticsOptions options = null)
         {
             if (string.IsNullOrWhiteSpace(input))
             {
@@ -78,9 +101,9 @@ namespace Diacritics
             return result.ToString();
         }
 
-        public bool HasDiacritics(string source)
+        public bool HasDiacritics(string source, DiacriticsOptions options = null)
         {
-            return source != this.RemoveDiacritics(source);
+            return source != this.RemoveDiacritics(source, options);
         }
     }
 }

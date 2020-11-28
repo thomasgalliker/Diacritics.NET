@@ -16,9 +16,9 @@ namespace Diacritics.Tests.Extensions
             const string expectedValue = "it s work";
             const string value = "ÉÖüä$üàè";
             var diacriticsMapperMock = new Mock<IDiacriticsMapper>();
-            diacriticsMapperMock.Setup(mapper => mapper.RemoveDiacritics(value))
+            diacriticsMapperMock.Setup(mapper => mapper.RemoveDiacritics(value, null))
                 .Returns(expectedValue);
-            StaticDiacritics.SetDefaultMapper(() => diacriticsMapperMock.Object);
+            DiacriticsMapper.SetDefaultMapper(() => diacriticsMapperMock.Object);
 
             // Act
             var actual = value.RemoveDiacritics();
@@ -67,7 +67,7 @@ namespace Diacritics.Tests.Extensions
 
         public void Dispose()
         {
-            StaticDiacritics.SetDefaultMapper(() => new DefaultDiacriticsMapper());
+            DiacriticsMapper.SetDefaultMapper(() => new DefaultDiacriticsMapper());
         }
     }
 }
