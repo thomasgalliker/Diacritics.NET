@@ -4,7 +4,7 @@
 # (c)2020 superdev GmbH
 ####################################################################
 
-name: 3.0.$(date:yy)$(DayOfYear).$(rev:rr)
+name: 3.1.$(date:yy)$(DayOfYear).$(rev:rr)
 
 pool:
   vmImage: 'windows-2019'
@@ -28,23 +28,37 @@ variables:
   disable.coverage.autogenerate: 'true'
 
 steps:
-- task: bleddynrichards.Assembly-Info-Task.Assembly-Info-NetCore.Assembly-Info-NetCore@2
-  displayName: 'Set Assembly Manifest Data'
+- task: Bash@3
+  displayName: 'Print all variables'
   inputs:
+    targetType: 'inline'
+    script: 'env | sort'
+    
+- task: Assembly-Info-NetCore@2
+  displayName: 'Update Assembly Info (.Net Core/Standard)'
+  inputs:
+    Path: '$(Build.SourcesDirectory)'
     FileNames: |
-     Diacritics.csproj
+      **/*.csproj
     InsertAttributes: true
+    FileEncoding: 'auto'
+    WriteBOM: false
     Product: 'Diacritics'
-    Description: ''
+    Description: 'Finds and replaces diacritics in strings'
     Company: 'superdev GmbH'
     Copyright: '(c) $(date:YYYY) superdev GmbH'
     VersionNumber: '$(Build.BuildNumber)'
     FileVersionNumber: '$(Build.BuildNumber)'
+    InformationalVersion: '$(Build.BuildNumber)'
+    PackageVersion: '$(Build.BuildNumber)'
+    LogLevel: 'verbose'
+    FailOnWarning: false
+    DisableTelemetry: false'
 
 - task: NuGetToolInstaller@0
-  displayName: 'Use NuGet 5.5.1'
+  displayName: 'Use NuGet 5.x'
   inputs:
-    versionSpec: 5.5.1
+    versionSpec: 5.x
 
 - task: NuGetCommand@2
   displayName: 'NuGet restore'
