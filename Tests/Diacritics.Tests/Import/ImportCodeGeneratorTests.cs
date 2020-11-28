@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using FluentAssertions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using Xunit;
 
-namespace Diacritics.Tests
+namespace Diacritics.Tests.Import
 {
     /// <summary>
     /// In order to keep accent mapping in sync with the very complete database https://github.com/diacritics/database/tree/master/src
@@ -95,92 +93,5 @@ namespace Diacritics.AccentMappings
             return content;
         }
 
-        public class AccentsMapping
-        {
-            public Metadata Metadata { get; set; }
-
-            [JsonConverter(typeof(AccentsMappingDataConverter))]
-            public List<AccentsMappingData> Data { get; set; }
-        }
-
-        public class Metadata
-        {
-            public string Alphabet { get; set; }
-
-            [JsonProperty("continent")]
-            public ICollection<string> Continents { get; set; }
-
-            public string Language { get; set; }
-
-            public string LanguageNative { get; set; }
-        }
-
-        [DebuggerDisplay("Mapping '{Source}' -> '{Target}' ({Case})")]
-        public class AccentsMappingData
-        {
-            public char Source { get; set; }
-
-            public string Target { get; set; }
-
-            public string Case { get; set; }
-        }
-
-        public class AccentsMappingDataConverter : JsonConverter
-        {
-            public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
-            {
-                var token = JToken.Load(reader);
-                var list = Activator.CreateInstance(objectType) as System.Collections.IList;
-                //var itemType = objectType.GenericTypeArguments[0];
-                if (token.Type.ToString() == "Object")
-                {
-                    foreach (var child in token.Children())
-                    {
-                        var nameProp = ((JProperty)child).Name;
-                        if (nameProp.Length > 1)
-                        {
-                            // Needs refactoring: Some languagues map string->string instead of char->string
-                            continue;
-                        }
-
-                        var childName = nameProp.Single();
-
-                        var childValue = ((JProperty)child).Value;
-                        var @case = childValue["case"].Value<string>();
-                        if (@case == "upper")
-                        {
-                            continue;
-                        }
-
-                        var @base = childValue["mapping"]["base"].Value<string>();
-                        var target = @base;
-                        if (childName.ToString() == target)
-                        {
-                            target = childValue["mapping"]["decompose"]["value"].Value<string>();
-                        }
-
-                        var accentsMappingData = new AccentsMappingData
-                        {
-                            Source = childName,
-                            Target = target,
-                            Case = @case,
-                        };
-
-                        list.Add(accentsMappingData);
-                    }
-                }
-
-                return list;
-
-            }
-
-            public override bool CanConvert(Type objectType)
-            {
-                return objectType.IsGenericType && (objectType.GetGenericTypeDefinition() == typeof(List<>));
-            }
-            public override bool CanWrite => false;
-
-            public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) => throw new NotImplementedException();
-        }
     }
 }
