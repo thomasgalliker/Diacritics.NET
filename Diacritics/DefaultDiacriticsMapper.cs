@@ -5,7 +5,11 @@ namespace Diacritics
     public class DefaultDiacriticsMapper : DiacriticsMapper
     {
         public DefaultDiacriticsMapper() : base(
+                new AfrikaansAccentsMapping(),
                 new ArabicAccentsMapping(),
+                new AzerbaijaniAccentsMapping(),
+                new BelarusianAccentsMapping(),
+                new BosnianAccentsMapping(),
                 new BulgarianAccentsMapping(),
                 new CatalanAccentsMapping(),
                 new CroatianAccentsMapping(),
@@ -27,8 +31,13 @@ namespace Diacritics
                 new RussianAccentsMapping(),
                 new SlovakianAccentsMapping(),
                 new SpanishAccentsMapping(),
+                new SwissGermanAccentsMapping(),
+                new SwedishAccentsMapping(),
+                new TamilAccentsMapping(),
+                new TonganAccentsMapping(),
                 new TurkishAccentsMapping(),
                 new UkarainianAccentsMapping(),
+                new UrduAccentsMapping(),
                 new VietnameseAccentsMapping(),
                 new OtherAccentsMapping())
         {

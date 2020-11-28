@@ -2,13 +2,20 @@ using System.Collections.Generic;
 
 namespace Diacritics.AccentMappings
 {
-    public partial class BulgarianAccentsMapping : IAccentMapping
+    public partial class TonganAccentsMapping : IAccentMapping
     {
         private static readonly IDictionary<char, string> MappingDictionary = new Dictionary<char, string>
         {
-            { 'ъ', "ь" },
-            { 'ѝ', "и" },
-            { 'й', "и" }
+			{ 'á', "a" },
+			{ 'é', "e" },
+			{ 'í', "i" },
+			{ 'ó', "o" },
+			{ 'ú', "u" },
+			{ 'ā', "a" },
+			{ 'ē', "e" },
+			{ 'ī', "i" },
+			{ 'ō', "o" },
+			{ 'ū', "u" }
         };
 
         public IDictionary<char, string> Mapping { get { return MappingDictionary; } }

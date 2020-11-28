@@ -20,12 +20,13 @@ namespace Diacritics.Tests
     {
         private static readonly string AccentMappingsFolder = "..\\..\\..\\..\\..\\Diacritics\\AccentMappings";
 
-        [Theory]
+        [Trait("Category", "Manual")]
+        [Theory(Skip = "Manual Test")]
         [ClassData(typeof(ImportUrls))]
-        public async Task GenerateAccentMappings(string language, string className)
+        public async Task GenerateAccentMappings(string languageUrl, string className)
         {
             // Download accent mappings from diacritics database
-            var url = $"https://raw.githubusercontent.com/diacritics/database/master/src/{language}/{language}.json";
+            var url = $"https://raw.githubusercontent.com/diacritics/database/master/src/{languageUrl}";
             var accentsMapping = await ImportAccentMappingsAsync(url);
             accentsMapping.Should().NotBeNull();
 
@@ -44,9 +45,22 @@ namespace Diacritics.Tests
         {
             public ImportUrls()
             {
-                this.Add("de", "GermanAccentsMapping");
-                this.Add("fr", "FrenchAccentsMapping");
-                this.Add("vi", "VietnameseAccentsMapping");
+                this.Add(@"af/af.json", "AfrikaansAccentsMapping");
+                //this.Add(@"ar/ar.json", "ArabicAccentsMapping");
+                this.Add(@"az/az.json", "AzerbaijaniAccentsMapping");
+                this.Add(@"be/be.json", "BelarusianAccentsMapping");
+                this.Add(@"bg/bg.json", "BulgarianAccentsMapping");
+                this.Add(@"bs/bs.json", "BosnianAccentsMapping");
+                this.Add(@"ca/ca.json", "CatalanAccentsMapping");
+                this.Add(@"fr/fr.json", "FrenchAccentsMapping");
+                this.Add(@"de/de.json", "GermanAccentsMapping");
+                this.Add(@"tr/tr.json", "TurkishAccentsMapping");
+                this.Add(@"de/ch.json", "SwissGermanAccentsMapping");
+                this.Add(@"sv/sv.json", "SwedishAccentsMapping");
+                this.Add(@"ta/ta.json", "TamilAccentsMapping");
+                this.Add(@"to/to.json", "TonganAccentsMapping");
+                this.Add(@"ur/ur.json", "UrduAccentsMapping");
+                this.Add(@"vi/vi.json", "VietnameseAccentsMapping");
             }
         }
 
@@ -122,7 +136,15 @@ namespace Diacritics.AccentMappings
                 {
                     foreach (var child in token.Children())
                     {
-                        var childName = ((JProperty)child).Name.Single();
+                        var nameProp = ((JProperty)child).Name;
+                        if (nameProp.Length > 1)
+                        {
+                            // Needs refactoring: Some languagues map string->string instead of char->string
+                            continue;
+                        }
+
+                        var childName = nameProp.Single();
+
                         var childValue = ((JProperty)child).Value;
                         var @case = childValue["case"].Value<string>();
                         if (@case == "upper")

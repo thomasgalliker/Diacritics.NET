@@ -1,20 +1,21 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
 namespace Diacritics.AccentMappings
 {
-    public class CatalanAccentsMapping : IAccentMapping
+    public partial class CatalanAccentsMapping : IAccentMapping
     {
         private static readonly IDictionary<char, string> MappingDictionary = new Dictionary<char, string>
         {
-            { 'à', "a" },
-            { 'è', "e" },
-            { 'é', "e" },
-            { 'í', "i" },
-            { 'ï', "i" },
-            { 'ò', "o" },
-            { 'ó', "o" },
-            { 'ú', "u" },
-            { 'ü', "u" },
+			{ 'à', "a" },
+			{ 'ç', "c" },
+			{ 'è', "e" },
+			{ 'é', "e" },
+			{ 'í', "i" },
+			{ 'ï', "i" },
+			{ 'ò', "o" },
+			{ 'ó', "o" },
+			{ 'ú', "u" },
+			{ 'ü', "u" }
         };
 
         public IDictionary<char, string> Mapping { get { return MappingDictionary; } }
