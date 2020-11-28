@@ -2,14 +2,16 @@ using System.Collections.Generic;
 
 namespace Diacritics.AccentMappings
 {
-    public partial class CroatianAccentsMapping : IAccentMapping
+    public partial class FinnishAccentsMapping : IAccentMapping
     {
         private static readonly IDictionary<char, MappingReplacement> MappingDictionary = new Dictionary<char, MappingReplacement>
         {
-			{ 'Ć', new MappingReplacement("C", null, null) },
-			{ 'ć', new MappingReplacement("c", null, null) },
-			{ 'Č', new MappingReplacement("C", null, null) },
-			{ 'č', new MappingReplacement("c", null, null) },
+			{ 'Ä', new MappingReplacement("A", null, null) },
+			{ 'Å', new MappingReplacement("A", null, null) },
+			{ 'Ö', new MappingReplacement("O", null, null) },
+			{ 'ä', new MappingReplacement("a", null, null) },
+			{ 'å', new MappingReplacement("a", null, null) },
+			{ 'ö', new MappingReplacement("o", null, null) },
 			{ 'Š', new MappingReplacement("S", null, null) },
 			{ 'š', new MappingReplacement("s", null, null) },
 			{ 'Ž', new MappingReplacement("Z", null, null) },

@@ -2,10 +2,10 @@
 
 namespace Diacritics
 {
-    public interface IDiacriticsMapper : IEnumerable<KeyValuePair<char, string>>
+    public interface IDiacriticsMapper : IEnumerable<KeyValuePair<char, MappingReplacement>>
     {
-        string RemoveDiacritics(string source);
+        string RemoveDiacritics(string source, DiacriticsOptions options = null);
 
-        bool HasDiacritics(string source);
+        bool HasDiacritics(string source, DiacriticsOptions options = null);
     }
 }

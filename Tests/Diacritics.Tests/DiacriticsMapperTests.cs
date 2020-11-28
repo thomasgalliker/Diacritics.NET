@@ -106,8 +106,13 @@ namespace Diacritics.Tests
             const string InputText = "Paßstraße";
             const string ExpectedText = "Passstrasse";
 
+            var options = new DiacriticsOptions
+            {
+                Decompose = true,
+            };
+
             // Act
-            var output = diacriticsMapper.RemoveDiacritics(InputText);
+            var output = diacriticsMapper.RemoveDiacritics(InputText, options);
 
             // Assert
             output.Should().Be(ExpectedText);

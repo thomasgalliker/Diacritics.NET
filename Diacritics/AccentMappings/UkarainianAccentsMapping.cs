@@ -1,14 +1,17 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
 namespace Diacritics.AccentMappings
 {
-    public class UkarainianAccentsMapping : IAccentMapping
+    public partial class UkarainianAccentsMapping : IAccentMapping
     {
-        private static readonly IDictionary<char, string> MappingDictionary = new Dictionary<char, string>
+        private static readonly IDictionary<char, MappingReplacement> MappingDictionary = new Dictionary<char, MappingReplacement>
         {
-            { 'ї', "i" },
-            { 'ґ', "r" },
+			{ 'Ї', new MappingReplacement("І", null, null) },
+			{ 'Й', new MappingReplacement("И", null, null) },
+			{ 'й', new MappingReplacement("и", null, null) },
+			{ 'ї', new MappingReplacement("і", null, null) }
         };
-        public IDictionary<char, string> Mapping { get { return MappingDictionary; } }
+
+        public IDictionary<char, MappingReplacement> Mapping { get { return MappingDictionary; } }
     }
 }
