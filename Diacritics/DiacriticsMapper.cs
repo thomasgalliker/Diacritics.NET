@@ -8,20 +8,20 @@ namespace Diacritics
 {
     public class DiacriticsMapper : IDiacriticsMapper
     {
-        private readonly Dictionary<char, string> diacriticsMapping;
+        protected readonly Dictionary<char, string> DiacriticsMapping;
 
         public DiacriticsMapper(params IAccentMapping[] mappings)
         {
-            diacriticsMapping = new Dictionary<char, string>();
+            DiacriticsMapping = new Dictionary<char, string>();
 
             if (mappings != null)
             {
                 foreach (var accentMapping in mappings.Where(m => m.Mapping != null))
                 {
                     //in case of duplicates, the first one wins
-                    foreach (var charMapping in accentMapping.Mapping.Where(m => !diacriticsMapping.ContainsKey(m.Key)))
+                    foreach (var charMapping in accentMapping.Mapping.Where(m => !DiacriticsMapping.ContainsKey(m.Key)))
                     {
-                        diacriticsMapping.Add(charMapping.Key, charMapping.Value);
+                        DiacriticsMapping.Add(charMapping.Key, charMapping.Value);
                     }
                 }
             }
@@ -29,7 +29,7 @@ namespace Diacritics
 
         public IEnumerator<KeyValuePair<char, string>> GetEnumerator()
         {
-            return diacriticsMapping.GetEnumerator();
+            return DiacriticsMapping.GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
@@ -50,7 +50,7 @@ namespace Diacritics
             for (var currentIndex = 0; currentIndex < input.Length; currentIndex++)
             {
                 var characterLowerCase = inputLowerCase[currentIndex];
-                if (diacriticsMapping.TryGetValue(characterLowerCase, out var diacriticRemovedChar))
+                if (DiacriticsMapping.TryGetValue(characterLowerCase, out var diacriticRemovedChar))
                 {
                     // If the diacritic character from the input is an uppercase letter,
                     // we also want to have the non-diacritic character to be an uppercase letter.
