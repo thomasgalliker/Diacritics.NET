@@ -8,41 +8,33 @@ namespace Diacritics
 {
     public class DiacriticsMapper : IDiacriticsMapper
     {
-        private Dictionary<char, string> diacriticsMapping;
+        protected readonly Dictionary<char, string> DiacriticsMapping;
 
         public DiacriticsMapper(params IAccentMapping[] mappings)
         {
-            this.UpdateMappings(mappings);
-        }
-
-        private void UpdateMappings(IAccentMapping[] mappings)
-        {
-            this.diacriticsMapping = new Dictionary<char, string>();
-            var all = new List<KeyValuePair<char, string>>();
+            DiacriticsMapping = new Dictionary<char, string>();
 
             if (mappings != null)
             {
-                foreach (var accentMapping in mappings)
+                foreach (var accentMapping in mappings.Where(m => m.Mapping != null))
                 {
-                    var map = accentMapping.Mapping;
-                    all.AddRange(map);
+                    //in case of duplicates, the first one wins
+                    foreach (var charMapping in accentMapping.Mapping.Where(m => !DiacriticsMapping.ContainsKey(m.Key)))
+                    {
+                        DiacriticsMapping.Add(charMapping.Key, charMapping.Value);
+                    }
                 }
             }
-
-            // Group keys so that duplicates are eliminated
-            this.diacriticsMapping = all
-                .GroupBy(x => x.Key)
-                .ToDictionary(k => k.Key, v => v.First().Value);
         }
 
         public IEnumerator<KeyValuePair<char, string>> GetEnumerator()
         {
-            return this.diacriticsMapping.GetEnumerator();
+            return DiacriticsMapping.GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return this.GetEnumerator();
+            return GetEnumerator();
         }
 
         public string RemoveDiacritics(string input)
@@ -58,7 +50,7 @@ namespace Diacritics
             for (var currentIndex = 0; currentIndex < input.Length; currentIndex++)
             {
                 var characterLowerCase = inputLowerCase[currentIndex];
-                if (this.diacriticsMapping.TryGetValue(characterLowerCase, out var diacriticRemovedChar))
+                if (DiacriticsMapping.TryGetValue(characterLowerCase, out var diacriticRemovedChar))
                 {
                     // If the diacritic character from the input is an uppercase letter,
                     // we also want to have the non-diacritic character to be an uppercase letter.
@@ -80,7 +72,20 @@ namespace Diacritics
 
         public bool HasDiacritics(string source)
         {
-            return source != this.RemoveDiacritics(source);
+            if (string.IsNullOrWhiteSpace(source))
+            {
+                return false;
+            }
+
+            foreach (var characterLowerCase in source.ToLowerInvariant())
+            {
+                if (DiacriticsMapping.TryGetValue(characterLowerCase, out var diacriticRemovedChar) && diacriticRemovedChar != characterLowerCase.ToString())
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }
