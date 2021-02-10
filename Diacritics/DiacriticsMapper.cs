@@ -72,7 +72,20 @@ namespace Diacritics
 
         public bool HasDiacritics(string source)
         {
-            return source != RemoveDiacritics(source);
+            if (string.IsNullOrWhiteSpace(source))
+            {
+                return false;
+            }
+
+            foreach (var characterLowerCase in source.ToLowerInvariant())
+            {
+                if (DiacriticsMapping.TryGetValue(characterLowerCase, out var diacriticRemovedChar) && diacriticRemovedChar != characterLowerCase.ToString())
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }
