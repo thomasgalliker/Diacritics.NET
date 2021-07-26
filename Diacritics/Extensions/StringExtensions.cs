@@ -5,12 +5,12 @@ namespace Diacritics.Extensions
     {
         public static bool HasDiacritics(this string source)
         {
-            return StaticDiacritics.Current.HasDiacritics(source);
+            return DiacriticsMapper.Current.HasDiacritics(source);
         }
 
         public static string RemoveDiacritics(this string source)
         {
-            return StaticDiacritics.Current.RemoveDiacritics(source);
+            return DiacriticsMapper.Current.RemoveDiacritics(source);
         }
     }
 }

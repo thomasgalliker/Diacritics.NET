@@ -1,32 +1,20 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
 namespace Diacritics.AccentMappings
 {
-    public class ArabicAccentsMapping : IAccentMapping
+    public partial class ArabicAccentsMapping : IAccentMapping
     {
-        private static readonly IDictionary<char, string> MappingDictionary = new Dictionary<char, string>
+        private static readonly IDictionary<char, MappingReplacement> MappingDictionary = new Dictionary<char, MappingReplacement>
         {
-            { 'أ', "ا" },
-            { 'إ', "ا" },
-            { 'آ', "ا" },
-            { 'ء', "ا" },
-            { 'پ', "ب" },
-            { 'ض', "ص" },
-            { 'ذ', "د" },
-            { 'ـ', "ّ" },
-            { 'خ', "ح" },
-            { 'غ', "ع" },
-            { 'ش', "س" },
-            { 'ة', "ت" },
-            { 'ث', "ت" },
-            { 'ً', "َ" },
-            { 'ٰ', "َ" },
-            { 'ؤ', "و" },
-            { 'ظ', "ط" },
-            { 'ى', "ي" },
-            { 'ئ', "ي" },
+			{ 'آ', new MappingReplacement("ا", null, null) },
+			{ 'أ', new MappingReplacement("ا", null, null) },
+			{ 'ؤ', new MappingReplacement("و", null, null) },
+			{ 'إ', new MappingReplacement("ا", null, null) },
+			{ 'ئ', new MappingReplacement("ي", null, null) },
+			{ 'ى', new MappingReplacement("ي", null, null) },
+			{ 'ٱ', new MappingReplacement("ا", null, null) }
         };
 
-        public IDictionary<char, string> Mapping { get { return MappingDictionary; } }
+        public IDictionary<char, MappingReplacement> Mapping { get { return MappingDictionary; } }
     }
 }

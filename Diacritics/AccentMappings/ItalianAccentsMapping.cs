@@ -1,20 +1,27 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
 namespace Diacritics.AccentMappings
 {
-    public class ItalianAccentsMapping : IAccentMapping
+    public partial class ItalianAccentsMapping : IAccentMapping
     {
-        private static readonly IDictionary<char, string> MappingDictionary = new Dictionary<char, string>
+        private static readonly IDictionary<char, MappingReplacement> MappingDictionary = new Dictionary<char, MappingReplacement>
         {
-            { 'à', "a" },
-            { 'è', "e" },
-            { 'é', "e" },
-            { 'ì', "i" },
-            { 'ò', "o" },
-            { 'ó', "o" },
-            { 'ù', "u" },
+			{ 'À', new MappingReplacement("A", null, null) },
+			{ 'È', new MappingReplacement("E", null, null) },
+			{ 'É', new MappingReplacement("E", null, null) },
+			{ 'Ì', new MappingReplacement("I", null, null) },
+			{ 'Ò', new MappingReplacement("O", null, null) },
+			{ 'Ó', new MappingReplacement("O", null, null) },
+			{ 'Ù', new MappingReplacement("U", null, null) },
+			{ 'à', new MappingReplacement("a", null, null) },
+			{ 'è', new MappingReplacement("e", null, null) },
+			{ 'é', new MappingReplacement("e", null, null) },
+			{ 'ì', new MappingReplacement("i", null, null) },
+			{ 'ò', new MappingReplacement("o", null, null) },
+			{ 'ó', new MappingReplacement("o", null, null) },
+			{ 'ù', new MappingReplacement("u", null, null) }
         };
 
-        public IDictionary<char, string> Mapping { get { return MappingDictionary; } }
+        public IDictionary<char, MappingReplacement> Mapping { get { return MappingDictionary; } }
     }
 }
