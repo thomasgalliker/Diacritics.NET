@@ -14,11 +14,12 @@ namespace Diacritics.Tests.Import
     /// In order to keep accent mapping in sync with the very complete database https://github.com/diacritics/database/tree/master/src
     /// the following unit test is used to import accent mappings and refresh implementations of IAccentMapping.
     /// </summary>
+
+    [Trait("Category", "Manual")]
     public class ImportCodeGeneratorTests
     {
         private static readonly string AccentMappingsFolder = "..\\..\\..\\..\\..\\Diacritics\\AccentMappings";
 
-        [Trait("Category", "Manual")]
         [Theory]
         [ClassData(typeof(ImportUrls))]
         public async Task GenerateAccentMappings(string languageUrl, string className)
@@ -116,6 +117,5 @@ namespace Diacritics.AccentMappings
 
             return content;
         }
-
     }
 }
