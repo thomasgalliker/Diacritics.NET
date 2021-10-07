@@ -6,7 +6,7 @@
     <VersionPrefix>1.0.0</VersionPrefix>
     <Version>1.0.0</Version>
     <Authors>Thomas Galliker</Authors>
-    <TargetFrameworks>netstandard1.2;netstandard2.0;net45</TargetFrameworks>
+    <TargetFrameworks>net45;netstandard1.2;netstandard2.0;netstandard2.1</TargetFrameworks>
     <AssemblyName>Diacritics</AssemblyName>
     <PackageId>Diacritics</PackageId>
     <PackageTags>diacritics;diacritic;Diacritics.NET plugin for diacritics special character replacement;special;character;replacement</PackageTags>
@@ -33,7 +33,11 @@
     <Product>Diacritics.NET</Product>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <RootNamespace>Diacritics</RootNamespace>
-    <PackageReleaseNotes>2.1.0
+    <PackageReleaseNotes>3.x
+- Continuous improvement, new diacritics mappings
+- Bug fixes and performance improvements
+
+2.1.0
 - Performance improvements in RemoveDiacritics
 - New method StaticDiacritics.SetDefaultMapper to replace the default IDiacriticsMapper
 - Add vietnamese mappings
@@ -93,7 +97,7 @@
 - Added SpanishAccentsMapping
 - Added TurkishAccentsMapping
 - Added UkarainianAccentsMapping</PackageReleaseNotes>
-    <Copyright>Copyright 2019</Copyright>
+    <Copyright>Copyright 2021</Copyright>
   </PropertyGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
