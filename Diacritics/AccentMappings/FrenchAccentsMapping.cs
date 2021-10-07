@@ -1,30 +1,41 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
 namespace Diacritics.AccentMappings
 {
-    public class FrenchAccentsMapping : IAccentMapping
+    public partial class FrenchAccentsMapping : IAccentMapping
     {
-        private static readonly IDictionary<char, string> MappingDictionary = new Dictionary<char, string>
+        private static readonly IDictionary<char, MappingReplacement> MappingDictionary = new Dictionary<char, MappingReplacement>
         {
-            { 'à', "a" },
-            { 'â', "a" },
-            { 'ä', "a" },
-            { 'æ', "a" },
-            { 'ç', "c" },
-            { '̧', "" },
-            { 'é', "e" },
-            { 'è', "e" },
-            { 'ê', "e" },
-            { 'ë', "e" },
-            { 'î', "i" },
-            { 'ï', "i" },
-            { 'ô', "o" },
-            { 'œ', "oe" },
-            { 'ù', "u" },
-            { 'û', "u" },
-            { 'ü', "u" },
+			{ 'À', new MappingReplacement("A", null, null) },
+			{ 'Â', new MappingReplacement("A", null, null) },
+			{ 'Ç', new MappingReplacement("C", null, null) },
+			{ 'È', new MappingReplacement("E", null, null) },
+			{ 'É', new MappingReplacement("E", null, null) },
+			{ 'Ê', new MappingReplacement("E", null, null) },
+			{ 'Ë', new MappingReplacement("E", null, null) },
+			{ 'Î', new MappingReplacement("I", null, null) },
+			{ 'Ï', new MappingReplacement("I", null, null) },
+			{ 'Ô', new MappingReplacement("O", null, null) },
+			{ 'Ù', new MappingReplacement("U", null, null) },
+			{ 'Û', new MappingReplacement("U", null, null) },
+			{ 'Ü', new MappingReplacement("U", null, null) },
+			{ 'à', new MappingReplacement("a", null, null) },
+			{ 'â', new MappingReplacement("a", null, null) },
+			{ 'ç', new MappingReplacement("c", null, null) },
+			{ 'è', new MappingReplacement("e", null, null) },
+			{ 'é', new MappingReplacement("e", null, null) },
+			{ 'ê', new MappingReplacement("e", null, null) },
+			{ 'ë', new MappingReplacement("e", null, null) },
+			{ 'î', new MappingReplacement("i", null, null) },
+			{ 'ï', new MappingReplacement("i", null, null) },
+			{ 'ô', new MappingReplacement("o", null, null) },
+			{ 'ù', new MappingReplacement("u", null, null) },
+			{ 'û', new MappingReplacement("u", null, null) },
+			{ 'ü', new MappingReplacement("u", null, null) },
+			{ 'ÿ', new MappingReplacement("y", null, null) },
+			{ 'Ÿ', new MappingReplacement("Y", null, null) }
         };
 
-        public IDictionary<char, string> Mapping { get { return MappingDictionary; } }
+        public IDictionary<char, MappingReplacement> Mapping { get { return MappingDictionary; } }
     }
 }

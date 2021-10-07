@@ -4,19 +4,19 @@ namespace Diacritics.AccentMappings
 {
     public class OtherAccentsMapping : IAccentMapping
     {
-        private static readonly IDictionary<char, string> MappingDictionary = new Dictionary<char, string>
+        private static readonly IDictionary<char, MappingReplacement> MappingDictionary = new Dictionary<char, MappingReplacement>
         {
-            { 'ė', "e" },
-            { 'ÿ', "y" },
-            { 'ū', "u" },
-            { 'ī', "i" },
-            { 'į', "i" },
-            { 'ø', "o" },
-            { 'ō', "o" },
-            { 'å', "a" },
-            { 'ā', "a" }
+            { 'ė', new MappingReplacement("e", null, null) },
+            { 'ÿ', new MappingReplacement("y", null, null) },
+            { 'ū', new MappingReplacement("u", null, null) },
+            { 'ī', new MappingReplacement("i", null, null) },
+            { 'į', new MappingReplacement("i", null, null) },
+            { 'ø', new MappingReplacement("o", null, null) },
+            { 'ō', new MappingReplacement("o", null, null) },
+            { 'å', new MappingReplacement("a", null, null) },
+            { 'ā', new MappingReplacement("a", null, null) }
         };
 
-        public IDictionary<char, string> Mapping { get { return MappingDictionary; } }
+        public IDictionary<char, MappingReplacement> Mapping { get { return MappingDictionary; } }
     }
 }

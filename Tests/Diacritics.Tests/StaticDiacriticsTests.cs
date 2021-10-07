@@ -13,10 +13,10 @@ namespace Diacritics.Tests
         {
             // Arrange
             var diacriticsMapperMock = new Mock<IDiacriticsMapper>();
-           
+
             // Act
-            StaticDiacritics.SetDefaultMapper(() => diacriticsMapperMock.Object);
-            var diacriticsMapper = StaticDiacritics.Current;
+            DiacriticsMapper.SetDefaultMapper(() => diacriticsMapperMock.Object);
+            var diacriticsMapper = DiacriticsMapper.Current;
 
             // Assert
             diacriticsMapper.Should().BeSameAs(diacriticsMapperMock.Object);
@@ -26,7 +26,7 @@ namespace Diacritics.Tests
         public void ShouldReturnDefaultDiacriticsMapperWhenCallCurrent()
         {
             // Act
-            var diacriticsMapper = StaticDiacritics.Current;
+            var diacriticsMapper = DiacriticsMapper.Current;
 
             // Assert
             diacriticsMapper.Should().BeOfType<DefaultDiacriticsMapper>();
@@ -34,7 +34,7 @@ namespace Diacritics.Tests
 
         public void Dispose()
         {
-            StaticDiacritics.SetDefaultMapper(() => new DefaultDiacriticsMapper());
+            DiacriticsMapper.SetDefaultMapper(() => new DefaultDiacriticsMapper());
         }
     }
 }
