@@ -11,18 +11,18 @@ namespace Diacritics
     public class DiacriticsMapper : IDiacriticsMapper
     {
         #region DiacriticsMapper.Current
-        private static Lazy<IDiacriticsMapper> implementation;
+        private static Lazy<IDiacriticsMapper> Implementation;
 
         static DiacriticsMapper()
         {
             SetDefaultMapper(CreateDefaultDiacriticsMapper);
         }
 
-        public static IDiacriticsMapper Current => implementation.Value;
+        public static IDiacriticsMapper Current => Implementation.Value;
 
         public static void SetDefaultMapper(Func<IDiacriticsMapper> factory)
         {
-            implementation = new Lazy<IDiacriticsMapper>(factory, LazyThreadSafetyMode.PublicationOnly);
+            Implementation = new Lazy<IDiacriticsMapper>(factory, LazyThreadSafetyMode.PublicationOnly);
         }
 
         private static IDiacriticsMapper CreateDefaultDiacriticsMapper()
