@@ -34,6 +34,7 @@
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <RootNamespace>Diacritics</RootNamespace>
     <PackageReleaseNotes>3.x
+- New portuguese accents (masculine or
 - Continuous improvement, new diacritics mappings
 - Bug fixes and performance improvements
 

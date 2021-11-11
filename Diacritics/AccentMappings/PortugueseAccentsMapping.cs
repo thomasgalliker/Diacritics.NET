@@ -31,7 +31,6 @@ namespace Diacritics.AccentMappings
 			{ 'ó', new MappingReplacement("o", null, null) },
 			{ 'ô', new MappingReplacement("o", null, null) },
 			{ 'õ', new MappingReplacement("o", null, null) },
-            { 'º', new MappingReplacement("o", null, null) },
 			{ 'ú', new MappingReplacement("u", null, null) }
         };
 
