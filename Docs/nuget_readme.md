@@ -1,1 +1,0 @@
-[readme.md](https://github.com/thomasgalliker/Diacritics.NET/blob/develop/README.md)

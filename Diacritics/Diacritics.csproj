@@ -99,7 +99,7 @@
 - Added TurkishAccentsMapping
 - Added UkarainianAccentsMapping</PackageReleaseNotes>
     <Copyright>Copyright 2022</Copyright>
-    <PackageReadmeFile>nuget_readme.md</PackageReadmeFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
@@ -107,7 +107,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\Docs\nuget_readme.md">
+    <None Include="..\README.md">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
