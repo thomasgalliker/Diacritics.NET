@@ -98,11 +98,19 @@
 - Added SpanishAccentsMapping
 - Added TurkishAccentsMapping
 - Added UkarainianAccentsMapping</PackageReleaseNotes>
-    <Copyright>Copyright 2021</Copyright>
+    <Copyright>Copyright 2022</Copyright>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
     <Reference Include="System" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
