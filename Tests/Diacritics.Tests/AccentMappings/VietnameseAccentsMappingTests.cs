@@ -26,7 +26,67 @@ namespace Diacritics.Tests
             {
                 this.Add(
                     "Cà phê sữa đá hay còn gọi đơn giản là cà phê sữa là một loại thức uống thông dụng ở Việt Nam.", 
-                    "Ca phe sua đa hay con goi đon gian la ca phe sua la mot loai thuc uong thong dung o Viet Nam.");
+                    "Ca phe sua da hay con goi don gian la ca phe sua la mot loai thuc uong thong dung o Viet Nam.");
+
+                this.Add(
+                    "áàạảãâấầậẩẫăắằặẳẵ",
+                    "aaaaaaaaaaaaaaaaa");
+
+                this.Add(
+                    "ÁÀẠẢÃÂẤẦẬẨẪĂẮẰẶẲẴ",
+                    "AAAAAAAAAAAAAAAAA");
+
+                this.Add(
+                    "éèẹẻẽêếềệểễ",
+                    "eeeeeeeeeee");
+
+                this.Add(
+                    "ÉÈẸẺẼÊẾỀỆỂỄ",
+                    "EEEEEEEEEEE");
+
+                this.Add(
+                    "óòọỏõôốồộổỗơớờợởỡ",
+                    "ooooooooooooooooo");
+
+                this.Add(
+                    "ÓÒỌỎÕÔỐỒỘỔỖƠỚỜỢỞỠ",
+                    "OOOOOOOOOOOOOOOOO");
+
+                this.Add(
+                    "ÓÒỌỎÕÔỐỒỘỔỖƠỚỜỢỞỠ",
+                    "OOOOOOOOOOOOOOOOO");
+
+                this.Add(
+                    "úùụủũưứừựửữ",
+                    "uuuuuuuuuuu");
+
+                this.Add(
+                    "ÚÙỤỦŨƯỨỪỰỬỮ",
+                    "UUUUUUUUUUU");
+
+                this.Add(
+                    "íìịỉĩ",
+                    "iiiii");
+
+                this.Add(
+                    "ÍÌỊỈĨ",
+                    "IIIII");
+
+                this.Add(
+                    "đ",
+                    "d");
+
+                this.Add(
+                    "Đ",
+                    "D");
+
+                this.Add(
+                    "ýỳỵỷỹ",
+                    "yyyyy");
+
+                this.Add(
+                    "ÝỲỴỶỸ",
+                    "YYYYY");
             }
         }
     }

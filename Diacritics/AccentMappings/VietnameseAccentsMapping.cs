@@ -137,7 +137,9 @@ namespace Diacritics.AccentMappings
 			{ 'Ỷ', new MappingReplacement("Y", null, null) },
 			{ 'ỷ', new MappingReplacement("y", null, null) },
 			{ 'Ỹ', new MappingReplacement("Y", null, null) },
-			{ 'ỹ', new MappingReplacement("y", null, null) }
+			{ 'ỹ', new MappingReplacement("y", null, null) },
+            { 'đ', new MappingReplacement("d", null, null) },
+            { 'Đ', new MappingReplacement("D", null, null) }
         };
 
         public IDictionary<char, MappingReplacement> Mapping { get { return MappingDictionary; } }
