@@ -67,7 +67,7 @@ steps:
     PackageVersion: '$(Build.BuildNumber)'
     LogLevel: 'verbose'
     FailOnWarning: false
-    DisableTelemetry: false'
+    DisableTelemetry: true
 
 
 - task: NuGetToolInstaller@0
