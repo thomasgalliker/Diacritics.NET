@@ -1,5 +1,5 @@
 # Diacritics.NET
-[![Version](https://img.shields.io/nuget/v/Diacritics.svg)](https://www.nuget.org/packages/Diacritics)  [![Downloads](https://img.shields.io/nuget/dt/Diacritics.svg)](https://www.nuget.org/packages/Diacritics)
+[![Version](https://img.shields.io/nuget/v/Diacritics.svg)](https://www.nuget.org/packages/Diacritics) [![Downloads](https://img.shields.io/nuget/dt/Diacritics.svg)](https://www.nuget.org/packages/Diacritics) [![Buy Me a Coffee](https://img.shields.io/badge/support-buy%20me%20a%20coffee-FFDD00)](https://buymeacoffee.com/thomasgalliker)
 
 Diacritics are used across many languages in order to change the sound-values of the letters to which they are added.
 In software development, diacritics often have to be replaced with non-diacritics, e.g. to improve usability of user input.
@@ -87,4 +87,9 @@ WarmupCount=3
   1 ns   : 1 Nanosecond (0.000000001 sec)<br>
 
 ## License
-This project is Copyright &copy; 2019 [Thomas Galliker](https://ch.linkedin.com/in/thomasgalliker). Free for non-commercial use. For commercial use please contact the author.
+This project is offered under a dual license:
+- **Free for non-commercial use**, including private and educational purposes.
+- **Commercial use requires a license**, please support the project by making a one-time donation of $50+ via https://buymeacoffee.com/thomasgalliker.
+
+Recurring or more generous sponsorships are sincerely appreciated and help sustain ongoing development. Thank you for your support!
+If you have any questions about licensing, feel free to contact [Thomas Galliker](https://ch.linkedin.com/in/thomasgalliker).
