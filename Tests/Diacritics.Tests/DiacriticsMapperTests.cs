@@ -1,4 +1,6 @@
-﻿using Diacritics.AccentMappings;
+﻿using System;
+using System.Linq;
+using Diacritics.AccentMappings;
 using FluentAssertions;
 using Xunit;
 
@@ -116,6 +118,26 @@ namespace Diacritics.Tests
 
             // Assert
             output.Should().Be(ExpectedText);
+        }
+
+        [Fact]
+        public void ShouldRemoveUmlaut_Decomposed()
+        {
+            // Arrange
+            IDiacriticsMapper diacriticsMapper = new DiacriticsMapper(new FinnishAccentsMapping(), new GermanAccentsMapping());
+            const string InputText = "gefäß";
+            const string ExpectedText = "gefaess";
+
+            var options = new DiacriticsOptions
+            {
+                Decompose = true,
+            };
+
+            // Act
+            var result = diacriticsMapper.RemoveDiacritics(InputText, options);
+
+            // Assert
+            result.Should().Be(ExpectedText);
         }
         #endregion
 
