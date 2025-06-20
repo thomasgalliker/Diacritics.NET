@@ -44,12 +44,12 @@ namespace Diacritics.Tests
             {
                 // Arrange
                 var source = new string((char)testData[1], (int)testData[0]);
-                var defaultDiacriticsMapper = new DefaultDiacriticsMapper();
+                var diacriticsMapper = new DefaultDiacriticsMapper();
                 var stopwatch = new Stopwatch();
 
                 // Act
                 stopwatch.Start();
-                var defaultDiacriticsMapping = defaultDiacriticsMapper.RemoveDiacritics(source);
+                var result = diacriticsMapper.RemoveDiacritics(source);
                 stopwatch.Stop();
 
                 // Assert
@@ -60,7 +60,7 @@ namespace Diacritics.Tests
                 this.testOutputHelper.WriteLine("----------------------------------------");
                 this.testOutputHelper.WriteLine("");
 
-                defaultDiacriticsMapping.HasDiacritics().Should().BeFalse();
+                result.HasDiacritics().Should().BeFalse();
             }
         }
 
