@@ -93,3 +93,8 @@ This project is offered under a dual license:
 
 Recurring or more generous sponsorships are sincerely appreciated and help sustain ongoing development. Thank you for your support!
 If you have any questions about licensing, feel free to contact [Thomas Galliker](https://ch.linkedin.com/in/thomasgalliker).
+
+## Links
+- https://en.wikipedia.org/wiki/Diacritic
+- https://www.unicode.org/cldr/charts/47/by_type/core_data.alphabetic_information.main.html
+- https://github.com/diacritics/database
