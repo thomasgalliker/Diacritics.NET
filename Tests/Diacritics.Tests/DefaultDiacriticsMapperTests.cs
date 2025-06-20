@@ -36,7 +36,7 @@ namespace Diacritics.Tests
         }
 
         [Fact]
-        public void ShouldMeasurePerformanceOfRemoveDiacritics_2()
+        public void ShouldMeasurePerformanceOfRemoveDiacritics()
         {
             var performanceTestData = new PerformanceTestData();
 

@@ -125,8 +125,8 @@ namespace Diacritics.Tests
         {
             // Arrange
             IDiacriticsMapper diacriticsMapper = new DiacriticsMapper(new FinnishAccentsMapping(), new GermanAccentsMapping());
-            const string InputText = "gefäß";
-            const string ExpectedText = "gefaess";
+            const string InputText = "Gefäß";
+            const string ExpectedText = "Gefaess";
 
             var options = new DiacriticsOptions
             {
