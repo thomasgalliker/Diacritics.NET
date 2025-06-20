@@ -3,9 +3,6 @@
   <PropertyGroup>
     <TargetFrameworks>net462;netstandard1.2;netstandard2.0;netstandard2.1;net7.0;net8.0;net9.0</TargetFrameworks>
     <OutputType>Library</OutputType>
-<!--    <RuntimeIdentifiers>win10-x64</RuntimeIdentifiers>-->
-    <PackageTargetFallback Condition=" '$(TargetFramework)' == 'netstandard1.2' ">$(PackageTargetFallback);netcoreapp1.0</PackageTargetFallback>
-    <NetStandardImplicitPackageVersion Condition=" '$(TargetFramework)' == 'netstandard1.2' ">1.6.1</NetStandardImplicitPackageVersion>
     <SignAssembly>True</SignAssembly>
   </PropertyGroup>
   
