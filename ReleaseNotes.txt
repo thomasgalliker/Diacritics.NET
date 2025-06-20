@@ -1,5 +1,6 @@
 4.0
-- Remove unsupported target frameworks.
+- Remove unsupported target frameworks, update dependencies, maintenance and cleanup.
+- Add IDiacriticsMapper.Current (for net7.0+ and netstandard2.1+).
 
 3.2
 - Bug fixes and performance improvements.
