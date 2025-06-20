@@ -43,7 +43,9 @@ namespace Diacritics.Tests
             foreach (var testData in performanceTestData)
             {
                 // Arrange
-                var source = new string((char)testData[1], (int)testData[0]);
+                var sourceChar = (char)testData[1];
+                var sourceLength = (int)testData[0];
+                var source = new string(sourceChar, sourceLength);
                 var diacriticsMapper = new DefaultDiacriticsMapper();
                 var stopwatch = new Stopwatch();
 
@@ -53,7 +55,7 @@ namespace Diacritics.Tests
                 stopwatch.Stop();
 
                 // Assert
-                this.testOutputHelper.WriteLine($"input.Length = {source.Length}");
+                this.testOutputHelper.WriteLine($"source = {source.Length}x '{sourceChar}'");
                 this.testOutputHelper.WriteLine($"stopwatch.ElapsedMilliseconds = {stopwatch.ElapsedMilliseconds}ms");
                 this.testOutputHelper.WriteLine($"stopwatch.ElapsedTicks = {stopwatch.ElapsedTicks}");
                 this.testOutputHelper.WriteLine("");
@@ -78,7 +80,9 @@ namespace Diacritics.Tests
                 this.Add(1000000, '*');
                 this.Add(10000000, '*');
                 this.Add(100000000, '*');
+#if DEBUG
                 this.Add(1000000000, '*');
+#endif
 
                 // Diacritics
                 this.Add(1, 'é');
@@ -90,7 +94,9 @@ namespace Diacritics.Tests
                 this.Add(1000000, 'é');
                 this.Add(10000000, 'é');
                 this.Add(100000000, 'é');
+#if DEBUG
                 this.Add(1000000000, 'é');
+#endif
             }
         }
     }
