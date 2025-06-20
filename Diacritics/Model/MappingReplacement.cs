@@ -51,5 +51,10 @@ namespace Diacritics
         {
             return !left.Equals(right);
         }
+
+        public override string ToString()
+        {
+            return $"{this.Base}, {(this.Decompose is string c ? $"{c}" : "null")}, {(this.DecomposeTitle is string ct ? $"{ct}" : "null")}";
+        }
     }
 }
