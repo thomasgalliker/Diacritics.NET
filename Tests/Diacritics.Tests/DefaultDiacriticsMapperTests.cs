@@ -43,8 +43,8 @@ namespace Diacritics.Tests
             foreach (var testData in performanceTestData)
             {
                 // Arrange
-                var sourceChar = (char)testData[1];
-                var sourceLength = (int)testData[0];
+                var sourceChar = (char)testData[0];
+                var sourceLength = (int)testData[1];
                 var source = new string(sourceChar, sourceLength);
                 var diacriticsMapper = new DefaultDiacriticsMapper();
                 var stopwatch = new Stopwatch();
@@ -55,7 +55,7 @@ namespace Diacritics.Tests
                 stopwatch.Stop();
 
                 // Assert
-                this.testOutputHelper.WriteLine($"source = {source.Length}x '{sourceChar}'");
+                this.testOutputHelper.WriteLine($"source = {source.Length} × '{sourceChar}'");
                 this.testOutputHelper.WriteLine($"stopwatch.ElapsedMilliseconds = {stopwatch.ElapsedMilliseconds}ms");
                 this.testOutputHelper.WriteLine($"stopwatch.ElapsedTicks = {stopwatch.ElapsedTicks}");
                 this.testOutputHelper.WriteLine("");
@@ -66,36 +66,36 @@ namespace Diacritics.Tests
             }
         }
 
-        public class PerformanceTestData : TheoryData<int, char>
+        public class PerformanceTestData : TheoryData<char, int>
         {
             public PerformanceTestData()
             {
-                // Non-diacritics
-                this.Add(1, '*');
-                this.Add(10, '*');
-                this.Add(100, '*');
-                this.Add(1000, '*');
-                this.Add(10000, '*');
-                this.Add(100000, '*');
-                this.Add(1000000, '*');
-                this.Add(10000000, '*');
-                this.Add(100000000, '*');
+                // Diacritics
+                this.Add('é', 1);
+                this.Add('é', 10);
+                this.Add('é', 100);
+                this.Add('é', 1000);
+                this.Add('é', 10000);
+                this.Add('é', 100000);
+                this.Add('é', 1000000);
+                this.Add('é', 10000000);
+                this.Add('é', 100000000);
 #if DEBUG
-                this.Add(1000000000, '*');
+                this.Add('é', 1000000000);
 #endif
 
-                // Diacritics
-                this.Add(1, 'é');
-                this.Add(10, 'É');
-                this.Add(100, 'ä');
-                this.Add(1000, 'Ä');
-                this.Add(10000, 'é');
-                this.Add(100000, 'é');
-                this.Add(1000000, 'é');
-                this.Add(10000000, 'é');
-                this.Add(100000000, 'é');
+                // Non-diacritics
+                this.Add('*', 1);
+                this.Add('*', 10);
+                this.Add('*', 100);
+                this.Add('*', 1000);
+                this.Add('*', 10000);
+                this.Add('*', 100000);
+                this.Add('*', 1000000);
+                this.Add('*', 10000000);
+                this.Add('*', 100000000);
 #if DEBUG
-                this.Add(1000000000, 'é');
+                this.Add('*', 1000000000);
 #endif
             }
         }

@@ -121,48 +121,22 @@ namespace Diacritics
 
             var result = new StringBuilder(source.Length);
 
-            // Replace first character (if available)
+            for (var currentIndex = 0; currentIndex < source.Length; currentIndex++)
             {
-                var firstChar = source[0];
+                var currentChar = source[currentIndex];
 
-                if (diacriticsMappings.TryGetValue(firstChar, out var mappingReplacement))
+                if (diacriticsMappings.TryGetValue(currentChar, out var mappingReplacement))
                 {
-                    if (decompose)
-                    {
-                        result.Append(mappingReplacement.DecomposeTitle);
-                    }
-                    else
-                    {
-                        result.Append(mappingReplacement.Base);
-                    }
+                    var replacement = decompose ? currentIndex == 0 ?
+                        mappingReplacement.DecomposeTitle :
+                        mappingReplacement.Decompose :
+                        mappingReplacement.Base;
+
+                    result.Append(replacement);
                 }
                 else
                 {
-                    result.Append(firstChar);
-                }
-            }
-
-            // Replace characters N+1
-            {
-                for (var currentIndex = 1; currentIndex < source.Length; currentIndex++)
-                {
-                    var currentChar = source[currentIndex];
-
-                    if (diacriticsMappings.TryGetValue(currentChar, out var mappingReplacement))
-                    {
-                        if (decompose)
-                        {
-                            result.Append(mappingReplacement.Decompose);
-                        }
-                        else
-                        {
-                            result.Append(mappingReplacement.Base);
-                        }
-                    }
-                    else
-                    {
-                        result.Append(currentChar);
-                    }
+                    result.Append(currentChar);
                 }
             }
 
