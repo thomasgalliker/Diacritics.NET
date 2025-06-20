@@ -4,9 +4,9 @@ namespace Diacritics.AccentMappings
     {
         static FrenchAccentsMapping()
         {
-            MappingDictionary.Add('̧', new MappingReplacement("", null, null));
-            MappingDictionary.Add('æ', new MappingReplacement("ae", null, null));
-            MappingDictionary.Add('œ', new MappingReplacement("oe", null, null));
+            MappingDictionary.Add('̧', "");
+            MappingDictionary.Add('æ', "ae");
+            MappingDictionary.Add('œ', "oe");
         }
     }
 }

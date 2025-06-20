@@ -14,5 +14,7 @@
         public string Decompose { get; set; }
 
         public string DecomposeTitle { get; set; }
+
+        public static implicit operator MappingReplacement(string value) => new MappingReplacement(value, null, null);
     }
 }

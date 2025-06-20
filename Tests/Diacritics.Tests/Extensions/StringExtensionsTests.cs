@@ -84,7 +84,10 @@ namespace Diacritics.Tests.Extensions
 
         private class MyGermanAccentsMapping : IAccentMapping
         {
-            public IDictionary<char, MappingReplacement> Mapping { get; } = new Dictionary<char, MappingReplacement> { { 'ö', new MappingReplacement("oe", "oe", "Oe") } };
+            public IDictionary<char, MappingReplacement> Mapping { get; } = new Dictionary<char, MappingReplacement>
+            {
+                { 'ö', "oe" }
+            };
         }
     }
 }

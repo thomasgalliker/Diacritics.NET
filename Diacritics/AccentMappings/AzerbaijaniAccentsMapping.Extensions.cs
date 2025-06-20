@@ -4,8 +4,8 @@ namespace Diacritics.AccentMappings
     {
         static AzerbaijaniAccentsMapping()
         {
-            MappingDictionary.Add('Ə', new MappingReplacement("A", null, null));
-            MappingDictionary.Add('ə', new MappingReplacement("a", null, null));
+            MappingDictionary.Add('Ə', "A");
+            MappingDictionary.Add('ə', "a");
         }
     }
 }
