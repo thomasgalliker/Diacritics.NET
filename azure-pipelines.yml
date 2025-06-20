@@ -7,33 +7,30 @@
 name: $[format('{0}', variables['buildName'])]
 
 pool:
-  vmImage: 'windows-2019'
+  vmImage: 'windows-2022'
 
 trigger:
   branches:
     include:
-    - master
-    - develop
-    - feature/*
-    - bugfix/*
+      - main
+      - develop
+      - feature/*
+      - bugfix/*
 
   paths:
     exclude:
-    - README.md
-    - Images/*
-    - Samples/*
+      - Docs/*
 
 variables:
-  solution: 'Diacritics.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
   majorVersion: 3
   minorVersion: 4
   patchVersion: $[counter(format('{0}.{1}', variables.majorVersion, variables.minorVersion), 0)]
-  ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/master') }}:
+  ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/main') }}:
     # Versioning: 1.0.0
     semVersion: $[format('{0}.{1}.{2}', variables.majorVersion, variables.minorVersion, variables.patchVersion)]
-  ${{ if and(ne(variables['Build.SourceBranch'], 'refs/heads/master'), not(startsWith(variables['Build.SourceBranch'], 'refs/pull/'))) }}:
+  ${{ if and(ne(variables['Build.SourceBranch'], 'refs/heads/main'), not(startsWith(variables['Build.SourceBranch'], 'refs/pull/'))) }}:
     # Versioning: 1.0.0-pre
     semVersion: $[format('{0}.{1}.{2}-pre', variables.majorVersion, variables.minorVersion, variables.patchVersion)]
   ${{ if startsWith(variables['Build.SourceBranch'], 'refs/pull/') }}:
@@ -47,8 +44,8 @@ steps:
   inputs:
     targetType: 'inline'
     script: 'env | sort'
-   
-- task: Assembly-Info-NetCore@2
+
+- task: Assembly-Info-NetCore@3
   displayName: 'Update Assembly Info'
   inputs:
     Path: '$(Build.SourcesDirectory)'
@@ -69,32 +66,47 @@ steps:
     FailOnWarning: false
     DisableTelemetry: true
 
+- task: UseDotNet@2
+  displayName: 'Use .NET 9'
+  inputs:
+    version: 9.0.x
 
 - task: NuGetToolInstaller@0
-  displayName: 'Use NuGet 5.x'
+  displayName: 'Use NuGet 6.x'
   inputs:
-    versionSpec: 5.x
+    versionSpec: 6.x
 
-- task: NuGetCommand@2
+- task: DotNetCoreCLI@2
   displayName: 'NuGet restore'
   inputs:
-    restoreSolution: '$(solution)'
+    command: restore
+    projects: |
+      Diacritics/**/*.csproj
+      Tests/**/*.Tests.csproj
 
-- task: VSBuild@1
+- task: DotNetCoreCLI@2
   displayName: 'Build solution'
   inputs:
-    solution: '$(solution)'
-    msbuildArgs: ''
-    platform: '$(BuildPlatform)'
-    configuration: '$(BuildConfiguration)'
+    projects: |
+      Diacritics/**/*.csproj
+      Tests/**/*.Tests.csproj
+    arguments: >
+      --no-restore --configuration $(buildConfiguration)
 
 - task: DotNetCoreCLI@2
   displayName: 'Run UnitTests'
   inputs:
     command: test
-    projects: '**/*.Tests.csproj'
-    arguments: '--no-restore --no-build --configuration $(buildConfiguration) --filter Category!=Ignore&Category!=Manual /p:CollectCoverage=true /p:Exclude="[Microsoft*]*%2C[Mono*]*%2C[xunit*]*%2C[*.Testdata]*" /p:CoverletOutput=UnitTests.coverage.cobertura.xml /p:MergeWith=$(Build.SourcesDirectory)/Tests/CoverletOutput/coverage.json /p:CoverletOutputFormat=cobertura'
-    
+    projects: 'Tests/**/*.Tests.csproj'
+    arguments: >
+      --no-restore --no-build --configuration $(buildConfiguration) 
+      --filter Category!=Ignore&Category!=Manual
+      /p:CollectCoverage=true 
+      /p:Exclude="[Microsoft*]*%2C[Mono*]*%2C[xunit*]*%2C[*.Testdata]*" 
+      /p:CoverletOutput=UnitTests.coverage.cobertura.xml 
+      /p:MergeWith=$(Build.SourcesDirectory)/Tests/CoverletOutput/coverage.json 
+      /p:CoverletOutputFormat=cobertura
+
 - task: reportgenerator@5
   displayName: 'Create Code Coverage Report'
   inputs:
@@ -102,7 +114,7 @@ steps:
     targetdir: '$(Build.SourcesDirectory)/CodeCoverage'
     reporttypes: 'Cobertura'
     assemblyfilters: '-xunit*'
-    
+
 - task: DotNetCoreCLI@2
   displayName: 'Pack Diacritics'
   inputs:
@@ -110,16 +122,18 @@ steps:
     packagesToPack: Diacritics/Diacritics.csproj
     versioningScheme: byEnvVar
     versionEnvVar: semVersion
-    
+    nobuild: true
+
 - task: CopyFiles@2
   displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
   inputs:
     SourceFolder: '$(system.defaultworkingdirectory)'
     Contents: |
-     **\bin\$(BuildConfiguration)\**
-     **\bin\*.nupkg
+      **\bin\*.nupkg
+      **\bin\*.snupkg
+      **\ReleaseNotes.txt
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
-     
+
 - task: PublishCodeCoverageResults@2
   displayName: 'Publish code coverage'
   inputs:
