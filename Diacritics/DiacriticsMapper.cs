@@ -11,6 +11,7 @@ namespace Diacritics
     public class DiacriticsMapper : IDiacriticsMapper
     {
         #region DiacriticsMapper.Current
+
         private static Lazy<IDiacriticsMapper> Implementation;
 
         static DiacriticsMapper()
@@ -29,6 +30,7 @@ namespace Diacritics
         {
             return new DefaultDiacriticsMapper();
         }
+
         #endregion
 
         private readonly IDictionary<char, MappingReplacement> diacriticsMappings;
@@ -38,25 +40,43 @@ namespace Diacritics
             this.diacriticsMappings = ConvertMappings(mappings);
         }
 
-        private static IDictionary<char, MappingReplacement> ConvertMappings(IAccentMapping[] mappings)
+        private static IDictionary<char, MappingReplacement> ConvertMappings(IAccentMapping[] accentMappings)
         {
-            var all = new List<KeyValuePair<char, MappingReplacement>>();
+            var all = new Dictionary<char, MappingReplacement>();
 
-            if (mappings != null)
+            if (accentMappings != null)
             {
-                foreach (var accentMapping in mappings)
+                foreach (var accentMapping in accentMappings)
                 {
-                    var map = accentMapping.Mapping;
-                    all.AddRange(map);
+                    var mappings = accentMapping.Mapping;
+                    foreach (var mapping in mappings)
+                    {
+                        if (!all.TryGetValue(mapping.Key, out var mappingReplacement))
+                        {
+                            all[mapping.Key] = mapping.Value;
+                        }
+                        else
+                        {
+                            // Merge existing DecomposeTitle and Decompose properties,
+                            // unless the current mapping replacement defines them.
+                            if (mappingReplacement.DecomposeTitle == null)
+                            {
+                                mappingReplacement.DecomposeTitle = mapping.Value.DecomposeTitle;
+                            }
+
+                            if (mappingReplacement.Decompose == null)
+                            {
+                                mappingReplacement.Decompose = mapping.Value.Decompose;
+                            }
+
+                            all[mapping.Key] = mappingReplacement;
+                        }
+                    }
                 }
             }
 
             // Group keys so that duplicates are eliminated
-            var diacriticsMappings = all
-                .GroupBy(x => x.Key)
-                .ToDictionary(k => k.Key, v => v.First().Value);
-
-            return diacriticsMappings;
+            return all;
         }
 
         public IEnumerator<KeyValuePair<char, MappingReplacement>> GetEnumerator()
@@ -104,6 +124,7 @@ namespace Diacritics
             // Replace first character (if available)
             {
                 var firstChar = source[0];
+
                 if (diacriticsMappings.TryGetValue(firstChar, out var mappingReplacement))
                 {
                     if (decompose)
@@ -121,12 +142,12 @@ namespace Diacritics
                 }
             }
 
-
             // Replace characters N+1
             {
                 for (var currentIndex = 1; currentIndex < source.Length; currentIndex++)
                 {
                     var currentChar = source[currentIndex];
+
                     if (diacriticsMappings.TryGetValue(currentChar, out var mappingReplacement))
                     {
                         if (decompose)
