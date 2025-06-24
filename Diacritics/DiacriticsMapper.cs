@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using Diacritics.AccentMappings;
+using Diacritics.Internals;
 
 namespace Diacritics
 {
@@ -119,7 +120,7 @@ namespace Diacritics
 
             var decompose = options?.Decompose ?? false;
 
-            var result = new StringBuilder(source.Length);
+            var result = StringBuilderCache.Acquire(source.Length);
 
             for (var currentIndex = 0; currentIndex < source.Length; currentIndex++)
             {
@@ -140,7 +141,7 @@ namespace Diacritics
                 }
             }
 
-            return result.ToString();
+            return StringBuilderCache.GetStringAndRelease(result);
         }
 
         public bool HasDiacritics(string source)
