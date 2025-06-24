@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using Diacritics.AccentMappings;
 using Diacritics.Extensions;
 using FluentAssertions;
 using Moq;
@@ -16,7 +18,7 @@ namespace Diacritics.Tests.Extensions
             const string expectedValue = "it s work";
             const string value = "ÉÖüä$üàè";
             var diacriticsMapperMock = new Mock<IDiacriticsMapper>();
-            diacriticsMapperMock.Setup(mapper => mapper.RemoveDiacritics(value, null))
+            diacriticsMapperMock.Setup(mapper => mapper.RemoveDiacritics(value))
                 .Returns(expectedValue);
             DiacriticsMapper.SetDefaultMapper(() => diacriticsMapperMock.Object);
 
@@ -65,9 +67,27 @@ namespace Diacritics.Tests.Extensions
             }
         }
 
+        [Fact]
+        public void ShouldRemoveDiacritics_WithCustomMappings()
+        {
+            // Act
+            var result = "Thöni".RemoveDiacritics(new MyGermanAccentsMapping());
+
+            // Assert
+            result.Should().Be("Thoeni");
+        }
+
         public void Dispose()
         {
             DiacriticsMapper.SetDefaultMapper(() => new DefaultDiacriticsMapper());
+        }
+
+        private class MyGermanAccentsMapping : IAccentMapping
+        {
+            public IDictionary<char, MappingReplacement> Mapping { get; } = new Dictionary<char, MappingReplacement>
+            {
+                { 'ö', "oe" }
+            };
         }
     }
 }

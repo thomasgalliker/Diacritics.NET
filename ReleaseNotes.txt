@@ -1,0 +1,75 @@
+4.0
+- Remove unsupported target frameworks, update dependencies, maintenance and cleanup.
+- Add IDiacriticsMapper.Current (for net7.0+ and netstandard2.1+).
+
+3.2
+- Bug fixes and performance improvements.
+
+3.1
+- Bug fixes and performance improvements.
+
+3.0
+- New portuguese accents.
+- Continuous improvement, new diacritics mappings.
+- Bug fixes and performance improvements.
+
+2.1.0
+- Performance improvements in RemoveDiacritics.
+- New method StaticDiacritics.SetDefaultMapper to replace the default IDiacriticsMapper.
+- Add vietnamese mappings.
+
+2.0.0
+- Refactoring to NetStandard + NET 4.5.2.
+- Several bug fixes + new diacritics added.
+
+1.0.8
+- Add Turkish ı mapping to i.
+
+1.0.7
+- Support for .Net Standard 1.0.
+- Add Icelandic ð mapping to o.
+
+1.0.6
+- Add Spanish ñ mapping to n.
+
+1.0.5
+- Add support for combined cedilla characters.
+- Fix German ß mapping to ss.
+
+1.0.4
+- Add .Net 4.5 implementation as dedicated assembly.
+- Add missing accents mappings.
+- Bug fix: Russian accents mapping fixed.
+
+1.0.3
+- Bug fix: RemoveDiacritics now also removes upper case diacritic characters.
+- Bug fix: Correct handling of first letter upper case characters.
+
+1.0.2
+- Improved initialization performance by factor 8.
+
+1.0.1
+- Added diacritics mappings ArabicAccentsMapping.
+- Added diacritics mappings BulgarianAccentsMapping.
+- Added diacritics mappings CatalanAccentsMapping.
+- Added diacritics mappings CroatianAccentsMapping.
+- Added diacritics mappings CzechAccentsMapping.
+- Added diacritics mappings DutchAccentsMapping.
+- Added diacritics mappings EnglishAccentsMapping.
+- Added diacritics mappings EstonianAccentsMapping.
+- Added diacritics mappings FilipinoAccentsMapping.
+- Added diacritics mappings FrenchAccentsMapping.
+- Added diacritics mappings GermanAccentsMapping.
+- Added diacritics mappings GreekAccentsMapping.
+- Added diacritics mappings HungarianAccentsMapping.
+- Added diacritics mappings IcelandicAccentsMapping.
+- Added diacritics mappings ItalianAccentsMapping.
+- Added diacritics mappings LatvianAccentsMapping.
+- Added diacritics mappings PolishAccentsMapping.
+- Added diacritics mappings PortugueseAccentsMapping.
+- Added diacritics mappings RomanianAccentsMapping.
+- Added diacritics mappings RussianAccentsMapping.
+- Added diacritics mappings SlovakianAccentsMapping.
+- Added diacritics mappings SpanishAccentsMapping.
+- Added diacritics mappings TurkishAccentsMapping.
+- Added diacritics mappings UkarainianAccentsMapping.

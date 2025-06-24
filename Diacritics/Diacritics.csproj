@@ -1,116 +1,49 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Description>Diacritics are used across many languages in order to change the sound-values of the letters to which they are added. In software development, diacritics often have to be replaced with non-diacritics, e.g. to improve usability of user input. Diacritics.NET is a basic mapper between diacritic characters an non-diacritic characters.</Description>
-    <AssemblyTitle>Diacritics</AssemblyTitle>
-    <VersionPrefix>1.0.0</VersionPrefix>
-    <Version>1.0.0</Version>
-    <Authors>Thomas Galliker</Authors>
-    <TargetFrameworks>net45;netstandard1.2;netstandard2.0;netstandard2.1</TargetFrameworks>
-    <AssemblyName>Diacritics</AssemblyName>
-    <PackageId>Diacritics</PackageId>
-    <PackageTags>diacritics;diacritic;Diacritics.NET plugin for diacritics special character replacement;special;character;replacement</PackageTags>
-    <PackageIconUrl>https://raw.githubusercontent.com/thomasgalliker/Diacritics.NET/master/logo.png</PackageIconUrl>
-    <PackageProjectUrl>https://github.com/thomasgalliker/Diacritics.NET</PackageProjectUrl>
-    <PackageLicenseUrl>http://opensource.org/licenses/Apache-2.0</PackageLicenseUrl>
-    <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/thomasgalliker/Diacritics.NET</RepositoryUrl>
-    <RuntimeIdentifiers>win10-x64</RuntimeIdentifiers>
-    <PackageTargetFallback Condition=" '$(TargetFramework)' == 'netstandard1.2' ">$(PackageTargetFallback);netcoreapp1.0</PackageTargetFallback>
-    <NetStandardImplicitPackageVersion Condition=" '$(TargetFramework)' == 'netstandard1.2' ">1.6.1</NetStandardImplicitPackageVersion>
+    <TargetFrameworks>net462;netstandard1.2;netstandard2.0;netstandard2.1;net7.0;net8.0;net9.0</TargetFrameworks>
+    <OutputType>Library</OutputType>
     <SignAssembly>True</SignAssembly>
   </PropertyGroup>
-
-  <PropertyGroup Condition=" '$(TargetFramework)' == 'net45' ">
-    <DefineConstants>$(DefineConstants);NET45</DefineConstants>
-  </PropertyGroup>
-
+  
+  <!--NuGet package-->
   <PropertyGroup>
-    <ApplicationIcon />
-    <OutputType>Library</OutputType>
-    <StartupObject />
-    <Company>superdev GmbH</Company>
     <Product>Diacritics.NET</Product>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <RootNamespace>Diacritics</RootNamespace>
-    <PackageReleaseNotes>3.x
-- New portuguese accents (masculine or
-- Continuous improvement, new diacritics mappings
-- Bug fixes and performance improvements
-
-2.1.0
-- Performance improvements in RemoveDiacritics
-- New method StaticDiacritics.SetDefaultMapper to replace the default IDiacriticsMapper
-- Add vietnamese mappings
-
-2.0.0
-- Refactoring to NetStandard + NET 4.5.2
-- Several bug fixes + new diacritics added
-
-1.0.8
-- Add Turkish ı mapping to i
-
-1.0.7
-- Support for .Net Standard 1.0
-- Add Icelandic ð mapping to o
-
-1.0.6
-- Add Spanish ñ mapping to n
-
-1.0.5
-- Add support for combined cedilla characters
-- Fix German ß mapping to ss
-
-1.0.4
-- Add .Net 4.5 implementation as dedicated assembly
-- Add missing accents mappings
-- Bug fix: Russian accents mapping fixed
-
-1.0.3
-- Bug fix: RemoveDiacritics now also removes upper case diacritic characters
-- Bug fix: Correct handling of first letter upper case characters
-
-1.0.2
-- Improved initialization performance by factor 8
-
-1.0.1
-- Added ArabicAccentsMapping
-- Added BulgarianAccentsMapping
-- Added CatalanAccentsMapping
-- Added CroatianAccentsMapping
-- Added CzechAccentsMapping
-- Added DutchAccentsMapping
-- Added EnglishAccentsMapping
-- Added EstonianAccentsMapping
-- Added FilipinoAccentsMapping
-- Added FrenchAccentsMapping
-- Added GermanAccentsMapping
-- Added GreekAccentsMapping
-- Added HungarianAccentsMapping
-- Added IcelandicAccentsMapping
-- Added ItalianAccentsMapping
-- Added LatvianAccentsMapping
-- Added PolishAccentsMapping
-- Added PortugueseAccentsMapping
-- Added RomanianAccentsMapping
-- Added RussianAccentsMapping
-- Added SlovakianAccentsMapping
-- Added SpanishAccentsMapping
-- Added TurkishAccentsMapping
-- Added UkarainianAccentsMapping</PackageReleaseNotes>
-    <Copyright>Copyright 2022</Copyright>
+    <Description>Diacritics are used across many languages in order to change the sound-values of the letters to which they are added. In software development, diacritics often have to be replaced with non-diacritics, e.g. to improve usability of user input. Diacritics.NET is a basic mapper between diacritic characters an non-diacritic characters.</Description>
+    <Version>1.0.0</Version>
+    <Authors>Thomas Galliker</Authors>
+    <PackageId>Diacritics</PackageId>
+    <PackageTags>diacritics;diacritic;Diacritics.NET plugin for diacritics special character replacement;special;character;replacement</PackageTags>
+    <PackageIcon>logo.png</PackageIcon>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageProjectUrl>https://github.com/thomasgalliker/Diacritics.NET</PackageProjectUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/thomasgalliker/Diacritics.NET</RepositoryUrl>
+    <Company>superdev GmbH</Company>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <Copyright>Copyright $([System.DateTime]::Now.ToString(`yyyy`)) © Thomas Galliker</Copyright>
+    <PackageReleaseNotes>$([System.IO.File]::ReadAllText("$(MSBuildProjectDirectory)/../ReleaseNotes.txt"))</PackageReleaseNotes>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <EmbedAllSources>true</EmbedAllSources>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <SignAssembly>True</SignAssembly>
   </PropertyGroup>
-
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
-    <Reference Include="System" />
+  
+  <ItemGroup>
+    <None Include="..\README.md" Pack="True" PackagePath="\" />
+    <None Include="..\LICENSE" Pack="True" PackagePath="\" />
+    <None Include="..\logo.png" Pack="True" PackagePath="\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Include="..\README.md">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net462' ">
+    <Reference Include="System" />
   </ItemGroup>
 
 </Project>

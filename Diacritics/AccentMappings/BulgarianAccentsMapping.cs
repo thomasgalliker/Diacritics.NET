@@ -6,8 +6,8 @@ namespace Diacritics.AccentMappings
     {
         private static readonly IDictionary<char, MappingReplacement> MappingDictionary = new Dictionary<char, MappingReplacement>
         {
-			{ 'Й', new MappingReplacement("И", null, null) },
-			{ 'й', new MappingReplacement("и", null, null) }
+			{ 'Й', "И" },
+			{ 'й', "и" }
         };
 
         public IDictionary<char, MappingReplacement> Mapping { get { return MappingDictionary; } }

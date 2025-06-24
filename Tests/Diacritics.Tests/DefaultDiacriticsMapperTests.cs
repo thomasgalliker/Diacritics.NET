@@ -35,26 +35,35 @@ namespace Diacritics.Tests
             this.testOutputHelper.WriteLine($"defaultDiacriticsMapping.Count = {defaultDiacriticsMapping.Count}");
         }
 
-        [Theory]
-        [ClassData(typeof(PerformanceTestData))]
-        public void ShouldMeasurePerformanceOfRemoveDiacritics(int count, char c)
+        [Fact]
+        public void ShouldMeasurePerformanceOfRemoveDiacritics()
         {
-            // Arrange
-            var input = new string(c, count);
-            var defaultDiacriticsMapper = new DefaultDiacriticsMapper();
-            var stopwatch = new Stopwatch();
+            var performanceTestData = new PerformanceTestData();
 
-            // Act
-            stopwatch.Start();
-            var defaultDiacriticsMapping = defaultDiacriticsMapper.RemoveDiacritics(input);
-            stopwatch.Stop();
+            foreach (var testData in performanceTestData)
+            {
+                // Arrange
+                var sourceChar = (char)testData[1];
+                var sourceLength = (int)testData[0];
+                var source = new string(sourceChar, sourceLength);
+                var diacriticsMapper = new DefaultDiacriticsMapper();
+                var stopwatch = new Stopwatch();
 
-            // Assert
-            this.testOutputHelper.WriteLine($"input.Length = {input.Length}");
-            this.testOutputHelper.WriteLine($"stopwatch.ElapsedMilliseconds = {stopwatch.ElapsedMilliseconds}ms");
-            this.testOutputHelper.WriteLine($"stopwatch.ElapsedTicks = {stopwatch.ElapsedTicks}");
+                // Act
+                stopwatch.Start();
+                var result = diacriticsMapper.RemoveDiacritics(source);
+                stopwatch.Stop();
 
-            defaultDiacriticsMapping.HasDiacritics().Should().BeFalse();
+                // Assert
+                this.testOutputHelper.WriteLine($"source = {source.Length}x '{sourceChar}'");
+                this.testOutputHelper.WriteLine($"stopwatch.ElapsedMilliseconds = {stopwatch.ElapsedMilliseconds}ms");
+                this.testOutputHelper.WriteLine($"stopwatch.ElapsedTicks = {stopwatch.ElapsedTicks}");
+                this.testOutputHelper.WriteLine("");
+                this.testOutputHelper.WriteLine("----------------------------------------");
+                this.testOutputHelper.WriteLine("");
+
+                result.HasDiacritics().Should().BeFalse();
+            }
         }
 
         public class PerformanceTestData : TheoryData<int, char>
@@ -68,6 +77,12 @@ namespace Diacritics.Tests
                 this.Add(1000, '*');
                 this.Add(10000, '*');
                 this.Add(100000, '*');
+                this.Add(1000000, '*');
+                this.Add(10000000, '*');
+                this.Add(100000000, '*');
+#if DEBUG
+                this.Add(1000000000, '*');
+#endif
 
                 // Diacritics
                 this.Add(1, 'é');
@@ -76,6 +91,12 @@ namespace Diacritics.Tests
                 this.Add(1000, 'Ä');
                 this.Add(10000, 'é');
                 this.Add(100000, 'é');
+                this.Add(1000000, 'é');
+                this.Add(10000000, 'é');
+                this.Add(100000000, 'é');
+#if DEBUG
+                this.Add(1000000000, 'é');
+#endif
             }
         }
     }

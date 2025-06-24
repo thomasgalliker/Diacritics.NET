@@ -6,11 +6,11 @@ namespace Diacritics.AccentMappings
     {
         private static readonly IDictionary<char, MappingReplacement> MappingDictionary = new Dictionary<char, MappingReplacement>
         {
-			{ 'آ', new MappingReplacement("ا", null, null) },
-			{ 'أ', new MappingReplacement("ا", null, null) },
-			{ 'ؤ', new MappingReplacement("و", null, null) },
-			{ 'ئ', new MappingReplacement("ي", null, null) },
-			{ 'ۂ', new MappingReplacement("ہ", null, null) }
+			{ 'آ', "ا" },
+			{ 'أ', "ا" },
+			{ 'ؤ', "و" },
+			{ 'ئ', "ي" },
+			{ 'ۂ', "ہ" }
         };
 
         public IDictionary<char, MappingReplacement> Mapping { get { return MappingDictionary; } }
