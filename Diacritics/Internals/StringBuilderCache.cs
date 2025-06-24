@@ -1,5 +1,4 @@
 using System;
-using System.Diagnostics;
 using System.Text;
 
 namespace Diacritics.Internals
@@ -8,7 +7,8 @@ namespace Diacritics.Internals
     /// Provides a cached reusable instance of <see cref="StringBuilder"/> per thread
     /// it is an optimization that reduces the number of instances constructed and collected by the GC.
     /// <remarks>
-    /// <para>A StringBuilder instance is cached in <c>Thread Local Storage</c> and so there is one per thread.</para>
+    /// <para>A StringBuilder instance is cached in <c>Thread Local Storage</c>
+    /// so there is one cached StringBuilder instance per thread.</para>
     /// </remarks>
     /// </summary>
     internal static class StringBuilderCache
@@ -23,7 +23,7 @@ namespace Diacritics.Internals
         /// Acquires a cached instance of <see cref="StringBuilder"/> if one exists otherwise a new instance.
         /// </summary>
         /// <returns>An instance of <see cref="StringBuilder"/>.</returns>
-        // [DebuggerStepThrough]
+        /// <param name="capacity">The expected string length (optional).</param>
         public static StringBuilder Acquire(int capacity = DefaultCapacity)
         {
             if (capacity <= MaxSize)
@@ -46,7 +46,6 @@ namespace Diacritics.Internals
         /// </summary>
         /// <param name="stringBuilder">The <see cref="StringBuilder"/> instance.</param>
         /// <returns>The string representation of the <paramref name="stringBuilder"/></returns>
-        // [DebuggerStepThrough]
         public static string GetStringAndRelease(StringBuilder stringBuilder)
         {
             var str = stringBuilder.ToString();
@@ -54,7 +53,6 @@ namespace Diacritics.Internals
             return str;
         }
 
-        // [DebuggerStepThrough]
         public static void Release(StringBuilder stringBuilder)
         {
             if (stringBuilder.Capacity <= MaxSize)

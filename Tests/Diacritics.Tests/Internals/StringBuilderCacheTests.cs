@@ -2,7 +2,6 @@ using System.Text;
 using System.Threading;
 using Diacritics.Internals;
 using FluentAssertions;
-using Moq;
 using Xunit;
 
 namespace Diacritics.Tests.Internals
@@ -10,11 +9,47 @@ namespace Diacritics.Tests.Internals
     public class StringBuilderCacheTests
     {
         [Fact]
+        public void Acquire_ShouldReturnNewInstance_WhenCacheIsEmpty()
+        {
+            // Act
+            var stringBuilder = StringBuilderCache.Acquire();
+
+            // Assert
+            stringBuilder.Should().NotBeNull();
+            stringBuilder.Length.Should().Be(0);
+        }
+
+        [Fact]
+        public void Acquire_ShouldNotReturnTheSameInstance()
+        {
+            // Act
+            var stringBuilder1 = StringBuilderCache.Acquire();
+            var stringBuilder2 = StringBuilderCache.Acquire();
+
+            // Assert
+            stringBuilder1.Should().NotBe(stringBuilder2);
+        }
+
+        [Fact]
+        public void Acquire_ShouldReturnTheSameInstance()
+        {
+            // Arrange
+            var stringBuilder1 = StringBuilderCache.Acquire();
+            StringBuilderCache.Release(stringBuilder1);
+
+            // Act
+            var stringBuilder2 = StringBuilderCache.Acquire();
+
+            // Assert
+            stringBuilder2.Should().BeSameAs(stringBuilder1);
+        }
+
+        [Fact]
         public void Acquire_ShouldReturnExistingStringBuilder()
         {
             // Arrange
-            const string expectedString1  = "string 1";
-            const string expectedString2 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+            const string expectedString1 = "string 1";
+            const string expectedString2 = "string 2";
 
             var stringBuilder1 = StringBuilderCache.Acquire(100);
             stringBuilder1.Append(expectedString1);
@@ -33,94 +68,61 @@ namespace Diacritics.Tests.Internals
         }
 
         [Fact]
-        public void Acquire_ShouldNotReturnTheSameInstance()
-        {
-            // Act
-            var builderOne = StringBuilderCache.Acquire();
-            var builderTwo = StringBuilderCache.Acquire();
-
-            // Assert
-            builderOne.Should().NotBe(builderTwo);
-        }
-
-        [Fact]
-        public void Acquire_ShouldReturnTheSameInstance()
-        {
-            // Arrange
-            var builderOne = StringBuilderCache.Acquire();
-
-            StringBuilderCache.Release(builderOne);
-
-            // Act
-            var builderTwo = StringBuilderCache.Acquire();
-
-            // Assert
-            builderTwo.Should().BeSameAs(builderOne);
-        }
-
-        [Fact]
-        public void Acquire_ShouldReturnNewInstance_WhenCacheIsEmpty()
-        {
-            var builder = StringBuilderCache.Acquire();
-
-            Assert.NotNull(builder);
-            Assert.Equal(0, builder.Length);
-        }
-
-        [Fact]
         public void GetStringAndRelease_ShouldReturnString_AndStoreInstanceInCache()
         {
-            var builder = StringBuilderCache.Acquire();
-            builder.Append("test");
+            // Arrange
+            var stringBuilder1 = StringBuilderCache.Acquire();
+            stringBuilder1.Append("test");
 
-            var result = StringBuilderCache.GetStringAndRelease(builder);
+            // Act
+            var result = StringBuilderCache.GetStringAndRelease(stringBuilder1);
 
-            Assert.Equal("test", result);
+            // Assert
+            result.Should().Be("test");
 
             // Next Acquire should reuse the same instance
-            var reused = StringBuilderCache.Acquire();
-            Assert.Same(builder, reused);
-            Assert.Equal(0, reused.Length);
+            var stringBuilder2 = StringBuilderCache.Acquire();
+            stringBuilder2.Should().BeSameAs(stringBuilder1);
+            stringBuilder2.Length.Should().Be(0);
         }
 
         [Fact]
         public void Acquire_ShouldNotReuseBuilder_UntilReleased()
         {
-            var first = StringBuilderCache.Acquire();
+            // Arrange
+            var stringBuilder1 = StringBuilderCache.Acquire();
 
-            // Not released, should not be reused
-            var second = StringBuilderCache.Acquire();
+            // Act
+            var stringBuilder2 = StringBuilderCache.Acquire();
 
-            Assert.NotSame(first, second);
+            // Assert
+            stringBuilder1.Should().NotBeSameAs(stringBuilder2);
         }
 
         [Fact]
         public void Cache_ShouldBeThreadLocal()
         {
             // Arrange
-            StringBuilder mainThreadBuilder;
-            StringBuilder otherThreadBuilder = null;
+            var stringBuilder1 = StringBuilderCache.Acquire(); // Acquire and release in main thread
+            stringBuilder1.Append("main");
+            StringBuilderCache.GetStringAndRelease(stringBuilder1);
 
-            // Acquire and release in main thread
-            var builder = StringBuilderCache.Acquire();
-            builder.Append("main");
-            StringBuilderCache.GetStringAndRelease(builder);
-            mainThreadBuilder = builder;
+            StringBuilder stringBuilder2 = null;
 
-            // Start new thread and acquire
+            // Act
             var thread = new Thread(() =>
             {
                 var other = StringBuilderCache.Acquire();
-                otherThreadBuilder = other;
+                stringBuilder2 = other;
             });
 
             thread.Start();
             thread.Join();
 
             // Arrange
-            mainThreadBuilder.Should().NotBeNull();
-            otherThreadBuilder.Should().NotBeNull();
-            otherThreadBuilder.Should().NotBeSameAs(mainThreadBuilder);
+            stringBuilder1.Should().NotBeNull();
+            stringBuilder2.Should().NotBeNull();
+            stringBuilder2.Should().NotBeSameAs(stringBuilder1);
         }
     }
 }
