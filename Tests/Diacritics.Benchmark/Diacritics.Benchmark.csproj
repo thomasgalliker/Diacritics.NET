@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BenchmarkDotNet" Version="0.15.2"/>
+    <PackageReference Include="ResourceLoader" Version="3.3.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Diacritics\Diacritics.csproj"/>
+  </ItemGroup>
+
+  <!-- Include files in the Resources directory to be used across the test suite -->
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\**\*.*"/>
+  </ItemGroup>
+  
+</Project>
