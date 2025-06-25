@@ -1,11 +1,10 @@
 ﻿using BenchmarkDotNet.Running;
-using Diacritics.Benchmark;
 
-namespace Diacritical.Benchmark
+namespace Diacritics.Benchmark
 {
-    class Program
+    public static class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             BenchmarkRunner.Run<RemoveDiacriticsBenchmark>();
             Console.WriteLine("Press any key to continue");
