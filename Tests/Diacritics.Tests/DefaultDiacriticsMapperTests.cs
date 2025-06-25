@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using Diacritics.Extensions;
 using FluentAssertions;
 using Xunit;
@@ -36,7 +37,7 @@ namespace Diacritics.Tests
         }
 
         [Fact]
-        public void ShouldMeasurePerformanceOfRemoveDiacritics()
+        public void ShouldMeasurePerformanceOfRemoveDiacritics_Chars()
         {
             var performanceTestData = new PerformanceTestData();
 
@@ -98,6 +99,29 @@ namespace Diacritics.Tests
                 this.Add('*', 1000000000);
 #endif
             }
+        }
+
+        [Fact]
+        public void ShouldMeasurePerformanceOfRemoveDiacritics_LoremIpsum100kWords()
+        {
+            // Arrange
+            const string sourceFile = "LoremIpsum100k.txt";
+            var source = ResourceLoader.Current.GetEmbeddedResourceString(Assembly.GetExecutingAssembly(), sourceFile);
+            var diacriticsMapper = new DefaultDiacriticsMapper();
+            var stopwatch = new Stopwatch();
+
+            // Act
+            stopwatch.Start();
+            var result = diacriticsMapper.RemoveDiacritics(source);
+            stopwatch.Stop();
+
+            // Assert
+            this.testOutputHelper.WriteLine($"sourceFile = {sourceFile}");
+            this.testOutputHelper.WriteLine($"source.Length = {source.Length}");
+            this.testOutputHelper.WriteLine($"stopwatch.ElapsedMilliseconds = {stopwatch.ElapsedMilliseconds}ms");
+            this.testOutputHelper.WriteLine($"stopwatch.ElapsedTicks = {stopwatch.ElapsedTicks}");
+
+            result.HasDiacritics().Should().BeFalse();
         }
     }
 }
