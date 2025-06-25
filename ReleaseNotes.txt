@@ -1,4 +1,5 @@
 4.0
+- Use cached StringBuilder instances to improve memory usage and reduce garbage collection pressure.
 - Remove unsupported target frameworks, update dependencies, maintenance and cleanup.
 - Add IDiacriticsMapper.Current (for net7.0+ and netstandard2.1+).
 

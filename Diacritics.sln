@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		ReleaseNotes.txt = ReleaseNotes.txt
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diacritics.Benchmark", "Tests\Diacritics.Benchmark\Diacritics.Benchmark.csproj", "{9F23954E-202F-4D5F-B8E0-DEA0DA3E553C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,12 +33,17 @@ Global
 		{D8F20DC2-E69A-4432-A68B-FD4A8232BA43}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D8F20DC2-E69A-4432-A68B-FD4A8232BA43}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D8F20DC2-E69A-4432-A68B-FD4A8232BA43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F23954E-202F-4D5F-B8E0-DEA0DA3E553C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F23954E-202F-4D5F-B8E0-DEA0DA3E553C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F23954E-202F-4D5F-B8E0-DEA0DA3E553C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F23954E-202F-4D5F-B8E0-DEA0DA3E553C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{D8F20DC2-E69A-4432-A68B-FD4A8232BA43} = {82C933E0-5F3A-46DD-BE18-233590F11503}
+		{9F23954E-202F-4D5F-B8E0-DEA0DA3E553C} = {82C933E0-5F3A-46DD-BE18-233590F11503}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {46294172-BC59-4710-8105-CF322C619EA8}
