@@ -6,16 +6,16 @@ namespace Diacritics.AccentMappings
     {
         private static readonly IDictionary<char, MappingReplacement> MappingDictionary = new Dictionary<char, MappingReplacement>
         {
-			{ 'Â', new MappingReplacement("A", null, null) },
-			{ 'Î', new MappingReplacement("I", null, null) },
-			{ 'â', new MappingReplacement("a", null, null) },
-			{ 'î', new MappingReplacement("i", null, null) },
-			{ 'Ă', new MappingReplacement("A", null, null) },
-			{ 'ă', new MappingReplacement("a", null, null) },
-			{ 'Ș', new MappingReplacement("S", null, null) },
-			{ 'ș', new MappingReplacement("s", null, null) },
-			{ 'Ț', new MappingReplacement("T", null, null) },
-			{ 'ț', new MappingReplacement("t", null, null) }
+			{ 'Â', "A" },
+			{ 'Î', "I" },
+			{ 'â', "a" },
+			{ 'î', "i" },
+			{ 'Ă', "A" },
+			{ 'ă', "a" },
+			{ 'Ș', "S" },
+			{ 'ș', "s" },
+			{ 'Ț', "T" },
+			{ 'ț', "t" }
         };
 
         public IDictionary<char, MappingReplacement> Mapping { get { return MappingDictionary; } }

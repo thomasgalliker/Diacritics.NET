@@ -4,8 +4,8 @@ namespace Diacritics.AccentMappings
     {
         static PortugueseAccentsMapping()
         {
-            MappingDictionary.Add('ª', new MappingReplacement("a", null, null));
-            MappingDictionary.Add('º', new MappingReplacement("o", null, null));
+            MappingDictionary.Add('ª', "a");
+            MappingDictionary.Add('º', "o");
         }
     }
 }

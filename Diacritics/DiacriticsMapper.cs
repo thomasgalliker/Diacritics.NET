@@ -5,12 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using Diacritics.AccentMappings;
+using Diacritics.Internals;
 
 namespace Diacritics
 {
     public class DiacriticsMapper : IDiacriticsMapper
     {
         #region DiacriticsMapper.Current
+
         private static Lazy<IDiacriticsMapper> Implementation;
 
         static DiacriticsMapper()
@@ -29,38 +31,58 @@ namespace Diacritics
         {
             return new DefaultDiacriticsMapper();
         }
+
         #endregion
 
-        private Dictionary<char, MappingReplacement> diacriticsMapping;
+        private readonly IDictionary<char, MappingReplacement> diacriticsMappings;
 
         public DiacriticsMapper(params IAccentMapping[] mappings)
         {
-            this.UpdateMappings(mappings);
+            this.diacriticsMappings = ConvertMappings(mappings);
         }
 
-        private void UpdateMappings(IAccentMapping[] mappings)
+        private static IDictionary<char, MappingReplacement> ConvertMappings(IAccentMapping[] accentMappings)
         {
-            this.diacriticsMapping = new Dictionary<char, MappingReplacement>();
-            var all = new List<KeyValuePair<char, MappingReplacement>>();
+            var all = new Dictionary<char, MappingReplacement>();
 
-            if (mappings != null)
+            if (accentMappings != null)
             {
-                foreach (var accentMapping in mappings)
+                foreach (var accentMapping in accentMappings)
                 {
-                    var map = accentMapping.Mapping;
-                    all.AddRange(map);
+                    var mappings = accentMapping.Mapping;
+                    foreach (var mapping in mappings)
+                    {
+                        if (!all.TryGetValue(mapping.Key, out var mappingReplacement))
+                        {
+                            all[mapping.Key] = mapping.Value;
+                        }
+                        else
+                        {
+                            // Merge existing DecomposeTitle and Decompose properties,
+                            // unless the current mapping replacement defines them.
+                            if (mappingReplacement.DecomposeTitle == null)
+                            {
+                                mappingReplacement.DecomposeTitle = mapping.Value.DecomposeTitle;
+                            }
+
+                            if (mappingReplacement.Decompose == null)
+                            {
+                                mappingReplacement.Decompose = mapping.Value.Decompose;
+                            }
+
+                            all[mapping.Key] = mappingReplacement;
+                        }
+                    }
                 }
             }
 
             // Group keys so that duplicates are eliminated
-            this.diacriticsMapping = all
-                .GroupBy(x => x.Key)
-                .ToDictionary(k => k.Key, v => v.First().Value);
+            return all;
         }
 
         public IEnumerator<KeyValuePair<char, MappingReplacement>> GetEnumerator()
         {
-            return this.diacriticsMapping.GetEnumerator();
+            return this.diacriticsMappings.GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
@@ -68,65 +90,66 @@ namespace Diacritics
             return this.GetEnumerator();
         }
 
-        public string RemoveDiacritics(string input, DiacriticsOptions options = null)
+        public string RemoveDiacritics(string source)
         {
-            if (string.IsNullOrWhiteSpace(input))
+            return this.RemoveDiacritics(source, options: null);
+        }
+
+        public string RemoveDiacritics(string source, DiacriticsOptions options)
+        {
+            return RemoveDiacritics(source, this.diacriticsMappings, options);
+        }
+
+        public string RemoveDiacritics(string source, IAccentMapping[] mappings)
+        {
+            return this.RemoveDiacritics(source, mappings, options: null);
+        }
+
+        public string RemoveDiacritics(string source, IAccentMapping[] mappings, DiacriticsOptions options)
+        {
+            var diacriticsMappings = ConvertMappings(mappings);
+            return RemoveDiacritics(source, diacriticsMappings, options);
+        }
+
+        private static string RemoveDiacritics(string source, IDictionary<char, MappingReplacement> diacriticsMappings, DiacriticsOptions options)
+        {
+            if (string.IsNullOrWhiteSpace(source))
             {
-                return input;
+                return source;
             }
 
             var decompose = options?.Decompose ?? false;
 
-            var result = new StringBuilder(input.Length);
+            var result = StringBuilderCache.Acquire(source.Length);
 
-            // Replace first character (if available)
+            for (var currentIndex = 0; currentIndex < source.Length; currentIndex++)
             {
-                var firstChar = input[0];
-                if (this.diacriticsMapping.TryGetValue(firstChar, out var mappingReplacement))
+                var currentChar = source[currentIndex];
+
+                if (diacriticsMappings.TryGetValue(currentChar, out var mappingReplacement))
                 {
-                    if (decompose)
-                    {
-                        result.Append(mappingReplacement.DecomposeTitle);
-                    }
-                    else
-                    {
-                        result.Append(mappingReplacement.Base);
-                    }
+                    var replacement = decompose ? currentIndex == 0 ?
+                        mappingReplacement.DecomposeTitle :
+                        mappingReplacement.Decompose :
+                        mappingReplacement.Base;
+
+                    result.Append(replacement);
                 }
                 else
                 {
-                    result.Append(firstChar);
+                    result.Append(currentChar);
                 }
             }
 
-
-            // Replace characters N+1
-            {
-                for (var currentIndex = 1; currentIndex < input.Length; currentIndex++)
-                {
-                    var currentChar = input[currentIndex];
-                    if (this.diacriticsMapping.TryGetValue(currentChar, out var mappingReplacement))
-                    {
-                        if (decompose)
-                        {
-                            result.Append(mappingReplacement.Decompose);
-                        }
-                        else
-                        {
-                            result.Append(mappingReplacement.Base);
-                        }
-                    }
-                    else
-                    {
-                        result.Append(currentChar);
-                    }
-                }
-            }
-
-            return result.ToString();
+            return StringBuilderCache.GetStringAndRelease(result);
         }
 
-        public bool HasDiacritics(string source, DiacriticsOptions options = null)
+        public bool HasDiacritics(string source)
+        {
+            return this.HasDiacritics(source, options: null);
+        }
+
+        public bool HasDiacritics(string source, DiacriticsOptions options)
         {
             return source != this.RemoveDiacritics(source, options);
         }
