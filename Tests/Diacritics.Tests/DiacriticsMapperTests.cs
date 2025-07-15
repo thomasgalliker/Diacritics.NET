@@ -11,7 +11,7 @@ namespace Diacritics.Tests
         #region RemoveDiacritics
 
         [Fact]
-        public void ShouldNotRemoveDiacriticsIfNoMappingsAvailable()
+        public void ShouldNotRemoveDiacritics_IfNoMappingsAvailable()
         {
             // Arrange
             IDiacriticsMapper diacriticsMapper = new DiacriticsMapper();
@@ -26,7 +26,7 @@ namespace Diacritics.Tests
         }
 
         [Fact]
-        public void ShouldRemoveDiacriticsFromSingleMapping()
+        public void ShouldRemoveDiacritics_WithSingleMapping()
         {
             // Arrange
             IDiacriticsMapper diacriticsMapper = new DiacriticsMapper(new FrenchAccentsMapping());
@@ -41,7 +41,7 @@ namespace Diacritics.Tests
         }
 
         [Fact]
-        public void ShouldNotRemoveDiacriticsIfTheyAreNotPartOfTheMapping()
+        public void ShouldNotRemoveDiacritics_IfTheyAreNotPartOfTheMapping()
         {
             // Arrange
             IDiacriticsMapper diacriticsMapper = new DiacriticsMapper(new FrenchAccentsMapping());
@@ -56,7 +56,7 @@ namespace Diacritics.Tests
         }
 
         [Fact]
-        public void ShouldRemoveDiacriticsFromMultipleMappings()
+        public void ShouldRemoveDiacritics_WithMultipleMappings()
         {
             // Arrange
             IDiacriticsMapper diacriticsMapper = new DiacriticsMapper(new FrenchAccentsMapping(), new GermanAccentsMapping());
@@ -71,12 +71,12 @@ namespace Diacritics.Tests
         }
 
         [Fact]
-        public void ShouldRemoveDiacriticsFromUppercaseCharacters()
+        public void ShouldRemoveDiacritics_FromUppercaseCharacters()
         {
             // Arrange
             IDiacriticsMapper diacriticsMapper = new DiacriticsMapper(new FrenchAccentsMapping());
-            const string InputText = "ÈtoilE";
-            const string ExpectedText = "EtoilE";
+            const string InputText = "Ètoilé";
+            const string ExpectedText = "Etoile";
 
             // Act
             var output = diacriticsMapper.RemoveDiacritics(InputText);
@@ -86,7 +86,7 @@ namespace Diacritics.Tests
         }
 
         [Fact]
-        public void ShouldRemoveCombinedCedilleDiacritics()
+        public void ShouldRemoveDiacritics_CombinedCedilleDiacritics()
         {
             // Arrange
             IDiacriticsMapper diacriticsMapper = new DiacriticsMapper(new FrenchAccentsMapping());
@@ -134,10 +134,90 @@ namespace Diacritics.Tests
             };
 
             // Act
-            var result = diacriticsMapper.RemoveDiacritics(InputText, options);
+            var output = diacriticsMapper.RemoveDiacritics(InputText, options);
 
             // Assert
-            result.Should().Be(ExpectedText);
+            output.Should().Be(ExpectedText);
+        }
+
+        [Fact]
+        public void ShouldRemoveFirstCharacter_WithSingleMapping_AndDecomposeFalse()
+        {
+            // Arrange
+            IDiacriticsMapper diacriticsMapper = new DiacriticsMapper(new FrenchAccentsMapping());
+            const string InputText = "épaule";
+            const string ExpectedText = "epaule";
+
+            var options = new DiacriticsOptions
+            {
+                Decompose = false,
+            };
+
+            // Act
+            var output = diacriticsMapper.RemoveDiacritics(InputText, options);
+
+            // Assert
+            output.Should().Be(ExpectedText);
+        }
+
+        [Fact]
+        public void ShouldRemoveFirstCharacter_WithSingleMapping_AndDecomposeTrue()
+        {
+            // Arrange
+            IDiacriticsMapper diacriticsMapper = new DiacriticsMapper(new GermanAccentsMapping());
+            const string InputText = "Ärzte";
+            const string ExpectedText = "Aerzte";
+
+            var options = new DiacriticsOptions
+            {
+                Decompose = true,
+            };
+
+            // Act
+            var output = diacriticsMapper.RemoveDiacritics(InputText, options);
+
+            // Assert
+            output.Should().Be(ExpectedText);
+        }
+
+        [Fact]
+        public void ShouldRemoveFirstCharacter_WithMultipleMappings_AndDecomposeFalse()
+        {
+            // Arrange
+            IDiacriticsMapper diacriticsMapper = new DiacriticsMapper(new FrenchAccentsMapping(), new GermanAccentsMapping());
+            const string InputText = "épaule";
+            const string ExpectedText = "epaule";
+
+            var options = new DiacriticsOptions
+            {
+                Decompose = false,
+            };
+
+            // Act
+            var output = diacriticsMapper.RemoveDiacritics(InputText, options);
+
+            // Assert
+            output.Should().Be(ExpectedText);
+        }
+
+        [Fact]
+        public void ShouldRemoveFirstCharacter_WithMultipleMappings_AndDecomposeTrue()
+        {
+            // Arrange
+            IDiacriticsMapper diacriticsMapper = new DiacriticsMapper(new FrenchAccentsMapping(), new GermanAccentsMapping());
+            const string InputText = "épaule";
+            const string ExpectedText = "epaule";
+
+            var options = new DiacriticsOptions
+            {
+                Decompose = true,
+            };
+
+            // Act
+            var output = diacriticsMapper.RemoveDiacritics(InputText, options);
+
+            // Assert
+            output.Should().Be(ExpectedText);
         }
         #endregion
 
