@@ -128,10 +128,10 @@ namespace Diacritics
 
                 if (diacriticsMappings.TryGetValue(currentChar, out var mappingReplacement))
                 {
-                    var replacement = decompose ? currentIndex == 0 ?
-                        mappingReplacement.DecomposeTitle :
+                    var replacement = (decompose ? currentIndex == 0 ?
+                        mappingReplacement.DecomposeTitle ?? mappingReplacement.Decompose :
                         mappingReplacement.Decompose :
-                        mappingReplacement.Base;
+                        mappingReplacement.Base) ?? mappingReplacement.Base;
 
                     result.Append(replacement);
                 }
