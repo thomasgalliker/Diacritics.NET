@@ -79,9 +79,11 @@ set:
 ### Benchmark Tests
 
 #### Testversion
+
 [4.0.10-pre](https://www.nuget.org/packages/Diacritics/4.0.10-pre)
 
 #### Benchmark Environment
+
 ```
 BenchmarkDotNet v0.15.2, macOS Sequoia 15.5 (24F74) [Darwin 24.5.0]
 Apple M3 Max, 1 CPU, 14 logical and 14 physical cores
@@ -94,10 +96,11 @@ WarmupCount=3
 ```
 
 #### Benchmark Results
-| Method                     |     Mean |     Error |  StdDev | Rank |    Gen0 |    Gen1 |    Gen2 | Allocated |
-|----------------------------|---------:|----------:|--------:|-----:|--------:|--------:|--------:|----------:|
-| RemoveDiacritics_100kWords | 404.2 us | 114.19 us | 6.26 us |    1 | 83.0078 | 83.0078 | 83.0078 | 265.13 KB |
-| RemoveDiacritics_1mWords   | 403.7 us |  35.59 us | 1.95 us |    1 | 83.0078 | 83.0078 | 83.0078 | 264.46 KB |
+
+| Method                     |     Mean |     Error |   StdDev |    Gen0 |    Gen1 |    Gen2 | Allocated |
+|----------------------------|---------:|----------:|---------:|--------:|--------:|--------:|----------:|
+| RemoveDiacritics_100kWords | 389.8 us |  15.25 us |  0.84 us | 83.0078 | 83.0078 | 83.0078 | 265.13 KB |
+| RemoveDiacritics_1mWords   | 409.8 us | 229.40 us | 12.57 us | 83.0078 | 83.0078 | 83.0078 | 264.46 KB |
 
 **_Legend_**
 
