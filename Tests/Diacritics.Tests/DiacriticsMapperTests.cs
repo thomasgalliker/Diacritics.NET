@@ -1,6 +1,4 @@
-﻿using System;
-using System.Linq;
-using Diacritics.AccentMappings;
+﻿using Diacritics.AccentMappings;
 using FluentAssertions;
 using Xunit;
 
@@ -15,14 +13,14 @@ namespace Diacritics.Tests
         {
             // Arrange
             IDiacriticsMapper diacriticsMapper = new DiacriticsMapper();
-            const string InputText = "ètôile";
-            const string ExpectedText = "ètôile";
+            const string inputText = "ètôile";
+            const string expectedText = "ètôile";
 
             // Act
-            var output = diacriticsMapper.RemoveDiacritics(InputText);
+            var output = diacriticsMapper.RemoveDiacritics(inputText);
 
             // Assert
-            output.Should().Be(ExpectedText);
+            output.Should().Be(expectedText);
         }
 
         [Fact]
@@ -30,14 +28,14 @@ namespace Diacritics.Tests
         {
             // Arrange
             IDiacriticsMapper diacriticsMapper = new DiacriticsMapper(new FrenchAccentsMapping());
-            const string InputText = "Delémont";
-            const string ExpectedText = "Delemont";
+            const string inputText = "Delémont";
+            const string expectedText = "Delemont";
 
             // Act
-            var output = diacriticsMapper.RemoveDiacritics(InputText);
+            var output = diacriticsMapper.RemoveDiacritics(inputText);
 
             // Assert
-            output.Should().Be(ExpectedText);
+            output.Should().Be(expectedText);
         }
 
         [Fact]
@@ -45,14 +43,14 @@ namespace Diacritics.Tests
         {
             // Arrange
             IDiacriticsMapper diacriticsMapper = new DiacriticsMapper(new FrenchAccentsMapping());
-            const string InputText = "ètöile";
-            const string ExpectedText = "etöile";
+            const string inputText = "ètöile";
+            const string expectedText = "etöile";
 
             // Act
-            var output = diacriticsMapper.RemoveDiacritics(InputText);
+            var output = diacriticsMapper.RemoveDiacritics(inputText);
 
             // Assert
-            output.Should().Be(ExpectedText);
+            output.Should().Be(expectedText);
         }
 
         [Fact]
@@ -60,14 +58,14 @@ namespace Diacritics.Tests
         {
             // Arrange
             IDiacriticsMapper diacriticsMapper = new DiacriticsMapper(new FrenchAccentsMapping(), new GermanAccentsMapping());
-            const string InputText = "ètöile";
-            const string ExpectedText = "etoile";
+            const string inputText = "ètöile";
+            const string expectedText = "etoile";
 
             // Act
-            var output = diacriticsMapper.RemoveDiacritics(InputText);
+            var output = diacriticsMapper.RemoveDiacritics(inputText);
 
             // Assert
-            output.Should().Be(ExpectedText);
+            output.Should().Be(expectedText);
         }
 
         [Fact]
@@ -75,14 +73,14 @@ namespace Diacritics.Tests
         {
             // Arrange
             IDiacriticsMapper diacriticsMapper = new DiacriticsMapper(new FrenchAccentsMapping());
-            const string InputText = "Ètoilé";
-            const string ExpectedText = "Etoile";
+            const string inputText = "Ètoilé";
+            const string expectedText = "Etoile";
 
             // Act
-            var output = diacriticsMapper.RemoveDiacritics(InputText);
+            var output = diacriticsMapper.RemoveDiacritics(inputText);
 
             // Assert
-            output.Should().Be(ExpectedText);
+            output.Should().Be(expectedText);
         }
 
         [Fact]
@@ -90,14 +88,14 @@ namespace Diacritics.Tests
         {
             // Arrange
             IDiacriticsMapper diacriticsMapper = new DiacriticsMapper(new FrenchAccentsMapping());
-            const string InputText = "François";
-            const string ExpectedText = "Francois";
+            const string inputText = "François";
+            const string expectedText = "Francois";
 
             // Act
-            var output = diacriticsMapper.RemoveDiacritics(InputText);
+            var output = diacriticsMapper.RemoveDiacritics(inputText);
 
             // Assert
-            output.Should().Be(ExpectedText);
+            output.Should().Be(expectedText);
         }
 
         [Fact]
@@ -105,8 +103,8 @@ namespace Diacritics.Tests
         {
             // Arrange
             IDiacriticsMapper diacriticsMapper = new DiacriticsMapper(new GermanAccentsMapping());
-            const string InputText = "Paßstraße";
-            const string ExpectedText = "Passstrasse";
+            const string inputText = "Paßstraße";
+            const string expectedText = "Passstrasse";
 
             var options = new DiacriticsOptions
             {
@@ -114,10 +112,10 @@ namespace Diacritics.Tests
             };
 
             // Act
-            var output = diacriticsMapper.RemoveDiacritics(InputText, options);
+            var output = diacriticsMapper.RemoveDiacritics(inputText, options);
 
             // Assert
-            output.Should().Be(ExpectedText);
+            output.Should().Be(expectedText);
         }
 
         [Fact]
@@ -125,8 +123,8 @@ namespace Diacritics.Tests
         {
             // Arrange
             IDiacriticsMapper diacriticsMapper = new DiacriticsMapper(new FinnishAccentsMapping(), new GermanAccentsMapping());
-            const string InputText = "Gefäß";
-            const string ExpectedText = "Gefaess";
+            const string inputText = "Gefäß";
+            const string expectedText = "Gefaess";
 
             var options = new DiacriticsOptions
             {
@@ -134,10 +132,10 @@ namespace Diacritics.Tests
             };
 
             // Act
-            var output = diacriticsMapper.RemoveDiacritics(InputText, options);
+            var output = diacriticsMapper.RemoveDiacritics(inputText, options);
 
             // Assert
-            output.Should().Be(ExpectedText);
+            output.Should().Be(expectedText);
         }
 
         [Fact]
@@ -145,8 +143,8 @@ namespace Diacritics.Tests
         {
             // Arrange
             IDiacriticsMapper diacriticsMapper = new DiacriticsMapper(new FrenchAccentsMapping());
-            const string InputText = "épaule";
-            const string ExpectedText = "epaule";
+            const string inputText = "épaule";
+            const string expectedText = "epaule";
 
             var options = new DiacriticsOptions
             {
@@ -154,10 +152,10 @@ namespace Diacritics.Tests
             };
 
             // Act
-            var output = diacriticsMapper.RemoveDiacritics(InputText, options);
+            var output = diacriticsMapper.RemoveDiacritics(inputText, options);
 
             // Assert
-            output.Should().Be(ExpectedText);
+            output.Should().Be(expectedText);
         }
 
         [Fact]
@@ -165,8 +163,8 @@ namespace Diacritics.Tests
         {
             // Arrange
             IDiacriticsMapper diacriticsMapper = new DiacriticsMapper(new GermanAccentsMapping());
-            const string InputText = "Ärzte";
-            const string ExpectedText = "Aerzte";
+            const string inputText = "Ärzte";
+            const string expectedText = "Aerzte";
 
             var options = new DiacriticsOptions
             {
@@ -174,10 +172,10 @@ namespace Diacritics.Tests
             };
 
             // Act
-            var output = diacriticsMapper.RemoveDiacritics(InputText, options);
+            var output = diacriticsMapper.RemoveDiacritics(inputText, options);
 
             // Assert
-            output.Should().Be(ExpectedText);
+            output.Should().Be(expectedText);
         }
 
         [Fact]
@@ -185,8 +183,8 @@ namespace Diacritics.Tests
         {
             // Arrange
             IDiacriticsMapper diacriticsMapper = new DiacriticsMapper(new FrenchAccentsMapping(), new GermanAccentsMapping());
-            const string InputText = "épaule";
-            const string ExpectedText = "epaule";
+            const string inputText = "épaule";
+            const string expectedText = "epaule";
 
             var options = new DiacriticsOptions
             {
@@ -194,10 +192,10 @@ namespace Diacritics.Tests
             };
 
             // Act
-            var output = diacriticsMapper.RemoveDiacritics(InputText, options);
+            var output = diacriticsMapper.RemoveDiacritics(inputText, options);
 
             // Assert
-            output.Should().Be(ExpectedText);
+            output.Should().Be(expectedText);
         }
 
         [Fact]
@@ -205,8 +203,8 @@ namespace Diacritics.Tests
         {
             // Arrange
             IDiacriticsMapper diacriticsMapper = new DiacriticsMapper(new FrenchAccentsMapping(), new GermanAccentsMapping());
-            const string InputText = "épaule";
-            const string ExpectedText = "epaule";
+            const string inputText = "épaule";
+            const string expectedText = "epaule";
 
             var options = new DiacriticsOptions
             {
@@ -214,10 +212,10 @@ namespace Diacritics.Tests
             };
 
             // Act
-            var output = diacriticsMapper.RemoveDiacritics(InputText, options);
+            var output = diacriticsMapper.RemoveDiacritics(inputText, options);
 
             // Assert
-            output.Should().Be(ExpectedText);
+            output.Should().Be(expectedText);
         }
         #endregion
 
@@ -228,10 +226,10 @@ namespace Diacritics.Tests
         {
             // Arrange
             IDiacriticsMapper diacriticsMapper = new DiacriticsMapper();
-            const string InputText = "ètôile";
+            const string inputText = "ètôile";
 
             // Act
-            var output = diacriticsMapper.HasDiacritics(InputText);
+            var output = diacriticsMapper.HasDiacritics(inputText);
 
             // Assert
             output.Should().BeFalse();
@@ -242,10 +240,10 @@ namespace Diacritics.Tests
         {
             // Arrange
             IDiacriticsMapper diacriticsMapper = new DiacriticsMapper(new FrenchAccentsMapping());
-            const string InputText = "etoile";
+            const string inputText = "etoile";
 
             // Act
-            var output = diacriticsMapper.HasDiacritics(InputText);
+            var output = diacriticsMapper.HasDiacritics(inputText);
 
             // Assert
             output.Should().BeFalse();
@@ -256,10 +254,10 @@ namespace Diacritics.Tests
         {
             // Arrange
             IDiacriticsMapper diacriticsMapper = new DiacriticsMapper(new FrenchAccentsMapping());
-            const string InputText = "ètôile";
+            const string inputText = "ètôile";
 
             // Act
-            var output = diacriticsMapper.HasDiacritics(InputText);
+            var output = diacriticsMapper.HasDiacritics(inputText);
 
             // Assert
             output.Should().BeTrue();

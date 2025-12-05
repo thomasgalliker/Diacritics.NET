@@ -17,7 +17,7 @@ namespace Diacritics.Internals
         private const int DefaultCapacity = 16;
 
         [ThreadStatic]
-        private static StringBuilder CachedInstance;
+        private static StringBuilder? CachedInstance;
 
         /// <summary>
         /// Acquires a cached instance of <see cref="StringBuilder"/> if one exists otherwise a new instance.
