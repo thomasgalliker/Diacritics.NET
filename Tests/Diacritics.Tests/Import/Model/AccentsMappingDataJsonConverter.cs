@@ -35,14 +35,14 @@ namespace Diacritics.Tests.Import
                     var mapping = childValue["mapping"];
 
                     string? @base = null;
-                    if (mapping["base"] is JToken baseToken)
+                    if (mapping?["base"] is JToken baseToken)
                     {
                         @base = baseToken.Value<string>();
                     }
 
                     string? decompose = null;
                     string? decomposeTitle = null;
-                    if (mapping["decompose"] is JToken decomposeToken)
+                    if (mapping?["decompose"] is JToken decomposeToken)
                     {
                         decompose = decomposeToken["value"]?.Value<string>();
                         decomposeTitle = decomposeToken["titleCase"]?.Value<string>();

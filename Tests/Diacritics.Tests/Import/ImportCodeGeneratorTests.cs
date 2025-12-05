@@ -86,7 +86,7 @@ namespace Diacritics.Tests.Import
             using (var httpClient = new HttpClient())
             {
                 var json = await httpClient.GetStringAsync(url);
-                return JsonConvert.DeserializeObject<AccentsMapping>(json);
+                return JsonConvert.DeserializeObject<AccentsMapping>(json)!;
             }
         }
 
