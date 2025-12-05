@@ -37,7 +37,7 @@ namespace Diacritics.Tests.Import
             // Generate mapping file
             var fileContent = GenerateTemplate(className, mappings);
             var filePath = Path.Combine(AccentMappingsFolder, className + ".cs");
-            File.WriteAllText(filePath, fileContent);
+            await File.WriteAllTextAsync(filePath, fileContent);
         }
 
         internal class ImportUrls : TheoryData<string, string>
