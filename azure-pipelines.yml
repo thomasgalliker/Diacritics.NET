@@ -1,25 +1,25 @@
 ####################################################################
-# VSTS Build Configuration, Version 1.4
+# Azure DevOps Build Configuration
 #
-# (c)2022 superdev GmbH
+# (c)2026 superdev GmbH
 ####################################################################
 
 name: $[format('{0}', variables['buildName'])]
 
 pool:
-  vmImage: 'windows-2022'
+  vmImage: 'windows-latest'
 
 trigger:
   branches:
     include:
-      - main
-      - develop
-      - feature/*
-      - bugfix/*
+    - main
+    - develop
+    - feature/*
+    - bugfix/*
 
   paths:
     exclude:
-      - Docs/*
+    - Docs/*
 
 variables:
   buildPlatform: 'Any CPU'
@@ -44,7 +44,7 @@ steps:
   inputs:
     targetType: 'inline'
     script: 'env | sort'
-
+   
 - task: Assembly-Info-NetCore@3
   displayName: 'Update Assembly Info'
   inputs:
@@ -67,9 +67,9 @@ steps:
     DisableTelemetry: true
 
 - task: UseDotNet@2
-  displayName: 'Use .NET 9'
+  displayName: 'Use .NET 9.x'
   inputs:
-    version: 9.0.x
+    version: 9.x
 
 - task: NuGetToolInstaller@0
   displayName: 'Use NuGet 6.x'
@@ -106,7 +106,7 @@ steps:
       /p:CoverletOutput=UnitTests.coverage.cobertura.xml 
       /p:MergeWith=$(Build.SourcesDirectory)/Tests/CoverletOutput/coverage.json 
       /p:CoverletOutputFormat=cobertura
-
+    
 - task: reportgenerator@5
   displayName: 'Create Code Coverage Report'
   inputs:
@@ -114,7 +114,7 @@ steps:
     targetdir: '$(Build.SourcesDirectory)/CodeCoverage'
     reporttypes: 'Cobertura'
     assemblyfilters: '-xunit*'
-
+    
 - task: DotNetCoreCLI@2
   displayName: 'Pack Diacritics'
   inputs:
@@ -133,7 +133,7 @@ steps:
       **\bin\*.snupkg
       **\ReleaseNotes.txt
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
-
+     
 - task: PublishCodeCoverageResults@2
   displayName: 'Publish code coverage'
   inputs:
