@@ -14,8 +14,8 @@ namespace Diacritics.Benchmark
         private static readonly IResourceLoader ResourceLoader = System.Reflection.ResourceLoader.Current;
         private static readonly IDiacriticsMapper DiacriticsMapper = IDiacriticsMapper.Current;
 
-        private string loremIpsum100K;
-        private string loremIpsum1M;
+        private string? loremIpsum100K;
+        private string? loremIpsum1M;
 
         [GlobalSetup]
 		public void Setup()
@@ -25,13 +25,13 @@ namespace Diacritics.Benchmark
 		}
 
 		[Benchmark]
-		public string RemoveDiacritics_100kWords()
+		public string? RemoveDiacritics_100kWords()
         {
             return DiacriticsMapper.RemoveDiacritics(this.loremIpsum100K);
         }
 
 		[Benchmark]
-		public string RemoveDiacritics_1mWords()
+		public string? RemoveDiacritics_1mWords()
         {
             return DiacriticsMapper.RemoveDiacritics(this.loremIpsum1M);
         }

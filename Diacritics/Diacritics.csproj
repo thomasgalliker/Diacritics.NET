@@ -1,9 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net462;netstandard1.2;netstandard2.0;netstandard2.1;net7.0;net8.0;net9.0</TargetFrameworks>
+    <TargetFrameworks>net48;netstandard1.2;netstandard2.0;netstandard2.1;net7.0;net8.0;net9.0</TargetFrameworks>
     <OutputType>Library</OutputType>
     <SignAssembly>True</SignAssembly>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
   
   <!--NuGet package-->
@@ -28,7 +30,6 @@
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <EmbedAllSources>true</EmbedAllSources>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    <SignAssembly>True</SignAssembly>
   </PropertyGroup>
   
   <ItemGroup>
@@ -40,7 +41,6 @@
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
-
   
   <ItemGroup Condition=" '$(TargetFramework)' == 'net462' ">
     <Reference Include="System" />

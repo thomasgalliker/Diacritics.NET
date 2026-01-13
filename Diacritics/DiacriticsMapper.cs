@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using Diacritics.AccentMappings;
 using Diacritics.Internals;
+
+// ReSharper disable ConvertIfStatementToNullCoalescingAssignment
 
 namespace Diacritics
 {
@@ -13,7 +14,7 @@ namespace Diacritics
     {
         #region DiacriticsMapper.Current
 
-        private static Lazy<IDiacriticsMapper> Implementation;
+        private static Lazy<IDiacriticsMapper> Implementation = null!;
 
         static DiacriticsMapper()
         {
@@ -43,35 +44,37 @@ namespace Diacritics
 
         private static IDictionary<char, MappingReplacement> ConvertMappings(IAccentMapping[] accentMappings)
         {
+            if (accentMappings == null)
+            {
+                throw new ArgumentNullException(nameof(accentMappings));
+            }
+
             var all = new Dictionary<char, MappingReplacement>();
 
-            if (accentMappings != null)
+            foreach (var accentMapping in accentMappings)
             {
-                foreach (var accentMapping in accentMappings)
+                var mappings = accentMapping.Mapping;
+                foreach (var mapping in mappings)
                 {
-                    var mappings = accentMapping.Mapping;
-                    foreach (var mapping in mappings)
+                    if (!all.TryGetValue(mapping.Key, out var mappingReplacement))
                     {
-                        if (!all.TryGetValue(mapping.Key, out var mappingReplacement))
+                        all[mapping.Key] = mapping.Value;
+                    }
+                    else
+                    {
+                        // Merge existing DecomposeTitle and Decompose properties,
+                        // unless the current mapping replacement defines them.
+                        if (mappingReplacement.DecomposeTitle == null)
                         {
-                            all[mapping.Key] = mapping.Value;
+                            mappingReplacement.DecomposeTitle = mapping.Value.DecomposeTitle;
                         }
-                        else
+
+                        if (mappingReplacement.Decompose == null)
                         {
-                            // Merge existing DecomposeTitle and Decompose properties,
-                            // unless the current mapping replacement defines them.
-                            if (mappingReplacement.DecomposeTitle == null)
-                            {
-                                mappingReplacement.DecomposeTitle = mapping.Value.DecomposeTitle;
-                            }
-
-                            if (mappingReplacement.Decompose == null)
-                            {
-                                mappingReplacement.Decompose = mapping.Value.Decompose;
-                            }
-
-                            all[mapping.Key] = mappingReplacement;
+                            mappingReplacement.Decompose = mapping.Value.Decompose;
                         }
+
+                        all[mapping.Key] = mappingReplacement;
                     }
                 }
             }
@@ -90,28 +93,33 @@ namespace Diacritics
             return this.GetEnumerator();
         }
 
-        public string RemoveDiacritics(string source)
+        [return: NotNullIfNotNull(nameof(source))]
+        public string? RemoveDiacritics(string? source)
         {
             return this.RemoveDiacritics(source, options: null);
         }
 
-        public string RemoveDiacritics(string source, DiacriticsOptions options)
+        [return: NotNullIfNotNull(nameof(source))]
+        public string? RemoveDiacritics(string? source, DiacriticsOptions? options)
         {
             return RemoveDiacritics(source, this.diacriticsMappings, options);
         }
 
-        public string RemoveDiacritics(string source, IAccentMapping[] mappings)
+        [return: NotNullIfNotNull(nameof(source))]
+        public string? RemoveDiacritics(string? source, IAccentMapping[] mappings)
         {
             return this.RemoveDiacritics(source, mappings, options: null);
         }
 
-        public string RemoveDiacritics(string source, IAccentMapping[] mappings, DiacriticsOptions options)
+        [return: NotNullIfNotNull(nameof(source))]
+        public string? RemoveDiacritics(string? source, IAccentMapping[] mappings, DiacriticsOptions? options)
         {
             var diacriticsMappings = ConvertMappings(mappings);
             return RemoveDiacritics(source, diacriticsMappings, options);
         }
 
-        private static string RemoveDiacritics(string source, IDictionary<char, MappingReplacement> diacriticsMappings, DiacriticsOptions options)
+        [return: NotNullIfNotNull(nameof(source))]
+        private static string? RemoveDiacritics(string? source, IDictionary<char, MappingReplacement> diacriticsMappings, DiacriticsOptions? options)
         {
             if (string.IsNullOrWhiteSpace(source))
             {
@@ -120,7 +128,8 @@ namespace Diacritics
 
             var decompose = options?.Decompose ?? false;
 
-            var result = StringBuilderCache.Acquire(source.Length);
+            // ReSharper disable once RedundantSuppressNullableWarningExpression
+            var result = StringBuilderCache.Acquire(source!.Length);
 
             for (var currentIndex = 0; currentIndex < source.Length; currentIndex++)
             {
@@ -128,10 +137,8 @@ namespace Diacritics
 
                 if (diacriticsMappings.TryGetValue(currentChar, out var mappingReplacement))
                 {
-                    var replacement = (decompose ? currentIndex == 0 ?
-                        mappingReplacement.DecomposeTitle ?? mappingReplacement.Decompose :
-                        mappingReplacement.Decompose :
-                        mappingReplacement.Base) ?? mappingReplacement.Base;
+                    var replacement = (decompose ? currentIndex == 0 ? mappingReplacement.DecomposeTitle ?? mappingReplacement.Decompose : mappingReplacement.Decompose : mappingReplacement.Base) ??
+                                      mappingReplacement.Base;
 
                     result.Append(replacement);
                 }
@@ -144,12 +151,12 @@ namespace Diacritics
             return StringBuilderCache.GetStringAndRelease(result);
         }
 
-        public bool HasDiacritics(string source)
+        public bool HasDiacritics(string? source)
         {
             return this.HasDiacritics(source, options: null);
         }
 
-        public bool HasDiacritics(string source, DiacriticsOptions options)
+        public bool HasDiacritics(string? source, DiacriticsOptions? options)
         {
             return source != this.RemoveDiacritics(source, options);
         }

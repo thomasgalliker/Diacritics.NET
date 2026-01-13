@@ -37,7 +37,7 @@ namespace Diacritics.Tests.Import
             // Generate mapping file
             var fileContent = GenerateTemplate(className, mappings);
             var filePath = Path.Combine(AccentMappingsFolder, className + ".cs");
-            File.WriteAllText(filePath, fileContent);
+            await File.WriteAllTextAsync(filePath, fileContent);
         }
 
         internal class ImportUrls : TheoryData<string, string>
@@ -86,7 +86,7 @@ namespace Diacritics.Tests.Import
             using (var httpClient = new HttpClient())
             {
                 var json = await httpClient.GetStringAsync(url);
-                return JsonConvert.DeserializeObject<AccentsMapping>(json);
+                return JsonConvert.DeserializeObject<AccentsMapping>(json)!;
             }
         }
 
