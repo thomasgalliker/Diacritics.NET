@@ -4,18 +4,18 @@ namespace Diacritics
 {
     public struct MappingReplacement : IEquatable<MappingReplacement>
     {
-        public MappingReplacement(string @base, string decompose, string decomposeTitle) : this()
+        public MappingReplacement(string? @base, string? decompose, string? decomposeTitle) : this()
         {
             this.Base = @base;
             this.Decompose = decompose;
             this.DecomposeTitle = decomposeTitle;
         }
 
-        public string Base { get; set; }
+        public string? Base { get; set; }
 
-        public string Decompose { get; set; }
+        public string? Decompose { get; set; }
 
-        public string DecomposeTitle { get; set; }
+        public string? DecomposeTitle { get; set; }
 
         public static implicit operator MappingReplacement(string value) => new MappingReplacement(value, null, null);
 
@@ -26,7 +26,7 @@ namespace Diacritics
                    string.Equals(this.DecomposeTitle, other.DecomposeTitle, StringComparison.Ordinal);
         }
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
             return obj is MappingReplacement other && this.Equals(other);
         }

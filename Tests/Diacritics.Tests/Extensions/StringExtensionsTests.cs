@@ -31,7 +31,7 @@ namespace Diacritics.Tests.Extensions
 
         [Theory]
         [ClassData(typeof(DiacriticsTestData))]
-        public void ShouldRemoveDiacritics(string input, (bool, string) expectedOutput)
+        public void ShouldRemoveDiacritics(string? input, (bool, string?) expectedOutput)
         {
             // Act
             var hasDiacritics = input.HasDiacritics();
@@ -42,7 +42,7 @@ namespace Diacritics.Tests.Extensions
             hasDiacritics.Should().Be(expectedOutput.Item1);
         }
 
-        public class DiacriticsTestData : TheoryData<string, (bool, string)>
+        public class DiacriticsTestData : TheoryData<string?, (bool, string?)>
         {
             public DiacriticsTestData()
             {

@@ -107,7 +107,7 @@ namespace Diacritics.Tests.Internals
             stringBuilder1.Append("main");
             StringBuilderCache.GetStringAndRelease(stringBuilder1);
 
-            StringBuilder stringBuilder2 = null;
+            StringBuilder? stringBuilder2 = null;
 
             // Act
             var thread = new Thread(() =>
