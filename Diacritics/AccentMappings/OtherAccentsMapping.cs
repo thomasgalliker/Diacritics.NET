@@ -22,7 +22,7 @@ namespace Diacritics.AccentMappings
             { 'ō', "o" },
             { 'Å', "A" },
             { 'å', "a" },
-            { 'Ā', "A" }
+            { 'Ā', "A" },
             { 'ā', "a" }
         };
 
