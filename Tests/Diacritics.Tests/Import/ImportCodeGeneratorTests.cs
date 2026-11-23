@@ -14,11 +14,11 @@ namespace Diacritics.Tests.Import
     /// In order to keep accent mapping in sync with the very complete database https://github.com/diacritics/database/tree/master/src
     /// the following unit test is used to import accent mappings and refresh implementations of IAccentMapping.
     /// </summary>
-
     [Trait("Category", "Manual")]
     public class ImportCodeGeneratorTests
     {
-        private static readonly string AccentMappingsFolder = "..\\..\\..\\..\\..\\Diacritics\\AccentMappings";
+        private static readonly string AccentMappingsFolder = Path.GetFullPath(
+            Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "..", "..", "Diacritics", "AccentMappings"));
 
         [Theory]
         [ClassData(typeof(ImportUrls))]
@@ -94,6 +94,12 @@ namespace Diacritics.Tests.Import
         {
             var mappingsDump = string.Join($",{Environment.NewLine}", mappings.Select(m =>
             {
+                if (m.Base != null && m.Decompose == null && m.DecomposeTitle == null)
+                {
+                    // Base-only mappings use the implicit string conversion of MappingReplacement
+                    return $"\t\t\t{{ '{m.Source}', \"{m.Base}\" }}";
+                }
+
                 var paramBase = m.Base != null ? $"\"{m.Base}\"" : "null";
                 var paramDecompose = m.Decompose != null ? $"\"{m.Decompose}\"" : "null";
                 var paramDecomposeTitle = m.DecomposeTitle != null ? $"\"{m.DecomposeTitle}\"" : "null";
