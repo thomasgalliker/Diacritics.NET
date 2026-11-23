@@ -36,6 +36,13 @@
     <None Include="..\logo.png" Pack="True" PackagePath="\" />
   </ItemGroup>
 
+  <!-- NETStandard.Library 1.6.1 (netstandard1.2) references vulnerable versions of these packages:
+       GHSA-7jgj-8wvc-jh57 (System.Net.Http < 4.3.4), GHSA-cmhx-cq75-c4mj (System.Text.RegularExpressions < 4.3.1) -->
+  <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard1.2' ">
+    <PackageReference Include="System.Net.Http" Version="4.3.4" />
+    <PackageReference Include="System.Text.RegularExpressions" Version="4.3.1" />
+  </ItemGroup>
+
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
