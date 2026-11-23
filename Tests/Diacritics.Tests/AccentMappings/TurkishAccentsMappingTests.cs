@@ -4,14 +4,14 @@ using Xunit;
 
 namespace Diacritics.Tests
 {
-    public class OtherAccentsMappingTests
+    public class TurkishAccentsMappingTests
     {
         [Theory]
         [ClassData(typeof(AccentMappingTestdata))]
         public void ShouldRemoveDiacritics(string input, string expectedOutput)
         {
             // Arrange
-            var mapper = new DiacriticsMapper(new OtherAccentsMapping());
+            var mapper = new DiacriticsMapper(new TurkishAccentsMapping());
 
             // Act
             var output = mapper.RemoveDiacritics(input);
@@ -24,6 +24,22 @@ namespace Diacritics.Tests
         {
             public AccentMappingTestdata()
             {
+                this.Add(
+                    "Şişli'de güzel bir ağaç gördüğümü İzmir'deki ılık havada düşündüm.",
+                    "Sisli'de guzel bir agac gordugumu Izmir'deki ilik havada dusundum.");
+
+                this.Add(
+                    "ÇĞİÖŞÜÂÎÛ",
+                    "CGIOSUAIU");
+
+                this.Add(
+                    "çğıöşüâîû",
+                    "cgiosuaiu");
+
+                // G with breve (U+011E, U+011F)
+                this.Add("Ğ", "G");
+                this.Add("ğ", "g");
+
                 // G with caron (U+01E6, U+01E7)
                 this.Add("Ǧ", "G");
                 this.Add("ǧ", "g");
