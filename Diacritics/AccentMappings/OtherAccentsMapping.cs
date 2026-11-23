@@ -23,7 +23,9 @@ namespace Diacritics.AccentMappings
             { 'Å', "A" },
             { 'å', "a" },
             { 'Ā', "A" },
-            { 'ā', "a" }
+            { 'ā', "a" },
+            { 'Ǧ', "G" }, // U+01E6 Latin capital letter G with caron
+            { 'ǧ', "g" }  // U+01E7 Latin small letter G with caron
         };
 
         public IDictionary<char, MappingReplacement> Mapping { get { return MappingDictionary; } }

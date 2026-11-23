@@ -36,6 +36,24 @@ namespace Diacritics.Tests
             this.testOutputHelper.WriteLine($"defaultDiacriticsMapping.Count = {defaultDiacriticsMapping.Count}");
         }
 
+        [Theory]
+        [InlineData("ğ", "g")] // ğ - G with breve (Turkish, Azerbaijani)
+        [InlineData("Ğ", "G")] // Ğ - G with breve (Turkish, Azerbaijani)
+        [InlineData("ǧ", "g")] // ǧ - G with caron
+        [InlineData("Ǧ", "G")] // Ǧ - G with caron
+        [InlineData("Dağ ǧ", "Dag g")]
+        public void ShouldRemoveDiacritics_GWithBreveAndCaron(string input, string expectedOutput)
+        {
+            // Arrange
+            var diacriticsMapper = new DefaultDiacriticsMapper();
+
+            // Act
+            var output = diacriticsMapper.RemoveDiacritics(input);
+
+            // Assert
+            output.Should().Be(expectedOutput);
+        }
+
         [Fact]
         public void ShouldMeasurePerformanceOfRemoveDiacritics_Chars()
         {
