@@ -67,9 +67,11 @@ steps:
     DisableTelemetry: true
 
 - task: UseDotNet@2
-  displayName: 'Use .NET 9.x'
+  displayName: 'Use .NET SDK from global.json'
   inputs:
-    version: 9.x
+    packageType: 'sdk'
+    useGlobalJson: true
+    workingDirectory: '$(Build.SourcesDirectory)'
 
 - task: NuGetToolInstaller@0
   displayName: 'Use NuGet 6.x'
