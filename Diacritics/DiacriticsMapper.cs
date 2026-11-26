@@ -49,7 +49,9 @@ namespace Diacritics
                 throw new ArgumentNullException(nameof(accentMappings));
             }
 
-            var all = new Dictionary<char, MappingReplacement>();
+            // Pre-size the dictionary to avoid repeated resizing while merging.
+            var totalMappingCount = accentMappings.Sum(accentMapping => accentMapping.Mapping.Count);
+            var all = new Dictionary<char, MappingReplacement>(totalMappingCount);
 
             foreach (var accentMapping in accentMappings)
             {

@@ -23,7 +23,59 @@ namespace Diacritics.AccentMappings
             { 'Å', "A" },
             { 'å', "a" },
             { 'Ā', "A" },
-            { 'ā', "a" }
+            { 'ā', "a" },
+
+            // Letters with stroke, bar or hook (no canonical Unicode decomposition)
+            { 'ƀ', "b" },
+            { 'Ɓ', "B" },
+            { 'ɓ', "b" },
+            { 'Ɖ', "D" },
+            { 'ɖ', "d" },
+            { 'Ɗ', "D" },
+            { 'ɗ', "d" },
+            { 'Ǥ', "G" },
+            { 'ǥ', "g" },
+            { 'Ħ', "H" },
+            { 'ħ', "h" },
+            { 'Ɨ', "I" },
+            { 'ɨ', "i" },
+            { 'Ƙ', "K" },
+            { 'ƙ', "k" },
+            { 'Ŀ', "L" },
+            { 'ŀ', "l" },
+            { 'Ŧ', "T" },
+            { 'ŧ', "t" },
+            { 'Ƴ', "Y" },
+            { 'ƴ', "y" },
+            { 'Ƶ', "Z" },
+            { 'ƶ', "z" },
+
+            // Digraphs and ligatures
+            { 'Ĳ', "IJ" },
+            { 'ĳ', "ij" },
+            { 'Ǆ', "DZ" },
+            { 'ǅ', "Dz" },
+            { 'ǆ', "dz" },
+            { 'Ǉ', "LJ" },
+            { 'ǈ', "Lj" },
+            { 'ǉ', "lj" },
+            { 'Ǌ', "NJ" },
+            { 'ǋ', "Nj" },
+            { 'ǌ', "nj" },
+            { 'Ǳ', "DZ" },
+            { 'ǲ', "Dz" },
+            { 'ǳ', "dz" },
+            { 'ﬀ', "ff" },
+            { 'ﬁ', "fi" },
+            { 'ﬂ', "fl" },
+            { 'ﬃ', "ffi" },
+            { 'ﬄ', "ffl" },
+            { 'ﬅ', "st" },
+            { 'ﬆ', "st" },
+
+            // Other letters
+            { 'ŉ', "'n" },
+            { 'ſ', "s" }
         };
 
         public IDictionary<char, MappingReplacement> Mapping { get { return MappingDictionary; } }
