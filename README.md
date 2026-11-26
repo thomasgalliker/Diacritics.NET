@@ -51,10 +51,10 @@ bool hasDiacritics = InputString.HasDiacritics();
 hasDiacritics.Should().BeTrue();
 ```
 
-### Using IDiacriticsMapper with IoC
+### Using IDiacriticsMapper with Dependency Injection
 
 The example shown above uses extension methods which use a default implementation of `IDiacriticsMapper`, namely type
-`DefaultDiacriticsMapper`. If you're using an IoC container, you can register `IDiacriticsMapper` either with the
+`DefaultDiacriticsMapper`. If you're using a DI container, you can register `IDiacriticsMapper` either with the
 provided `DefaultDiacriticsMapper` or with your own implementation of `IDiacriticsMapper`.
 
 ### Add custom diactrics mappings
