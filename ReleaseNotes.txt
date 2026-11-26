@@ -1,3 +1,7 @@
+4.2
+- Add accent mappings for 18 more languages (e.g. Danish, Norwegian, Lithuanian, Welsh, Japanese) and for all Latin, Greek and Cyrillic letters with a Unicode decomposition.
+- Remove combining diacritical marks (e.g. in NFD-normalized text). RemoveDiacritics now changes characters which were left unchanged before.
+
 4.1
 - Support for nullable reference types.
 - Replace StaticDiacritics class with IDiacriticsMapper.Current.
